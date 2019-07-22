@@ -1,0 +1,127 @@
+/* body{
+    background-color: #292828;
+} */
+
+.grid {
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    /* padding: 10px 50px 50px 50px; */
+    /*   border-radius: 50px;
+    border: 2px solid #021a6b;
+    box-shadow: 10px 15px 15px #cbcbcb28; */
+}
+
+.grid h1 {
+    font-family: "sans-serif";
+    background-color: #3c67c5;
+    font-size: 60px;
+    text-align: center;
+    color: #ffffff;
+    padding: 2px 0px;
+    border-radius: 10px;
+}
+
+#score {
+    color: #5A6772;
+    text-align: center;
+    font-size: 30px;
+}
+
+.grid #question {
+    text-align: center;
+    font-family: "monospace";
+    font-size: 3em;
+    color: rgb(40, 46, 51);
+}
+
+.question {
+    text-align: center;
+    font-family: "monospace";
+    font-size: 3em;
+    color: rgb(40, 46, 51);
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+#btn0, #btn1, #btn2, #btn3 {
+    background-color: #136bb8;
+    width: 250px;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid #0e284e;
+    border-radius: 10px;
+    margin: 10px 40px 10px 0px;
+    padding: 10px 10px;
+}
+
+.btn {
+    background-color: #136bb8;
+    width: 250px;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid #0e284e;
+    border-radius: 10px;
+    margin: 10px 40px 10px 0px;
+    padding: 10px 10px;
+}
+
+#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+    cursor: pointer;
+    background-color: #1582e9;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #1582e9;
+}
+
+#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
+    outline: 0;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+#progress {
+    color: #292828;
+    font-size: 1em;
+}
+
+.progress {
+    color: #292828;
+    font-size: 1em;
+}
+
+.bouncy {
+    animation: bouncy 5s infinite linear;
+    position: relative;
+}
+
+@keyframes bouncy {
+    0% {
+        top: 0em
+    }
+    40% {
+        top: 0em
+    }
+    43% {
+        top: -0.9em
+    }
+    46% {
+        top: 0em
+    }
+    48% {
+        top: -0.4em
+    }
+    50% {
+        top: 0em
+    }
+    100% {
+        top: 0em;
+    }
+}
