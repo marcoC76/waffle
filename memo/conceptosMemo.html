@@ -1,0 +1,309 @@
+  <style>
+    @font-face {
+      font-family: "code";
+      src: url(../memo/FreePixel.woff);
+      /* src: url(/Pokemon-Classic.woff); */
+    }
+
+    #juego {
+      opacity: 0;
+      width: 100%;
+      height: 50vh;
+      font-family: "code";
+    }
+
+    table {
+      width: 100%;
+      height: 100%;
+    }
+
+    td {
+      width: 25%;
+      height: 25%;
+      background-color: #bbbbbb;
+      /* border: 3px solid black; */
+      border-radius: 5px;
+
+    }
+
+    .letra {
+      color: white;
+      font-size: 3em;
+      text-align: center;
+    }
+
+
+
+
+    .final {
+      font-size: 5em;
+      color: white;
+    }
+
+
+    #reset {
+      display: none;
+    }
+
+    .button {
+      font-family: "code";
+      width: 50%;
+      font-size: 250%;
+      padding: 0.35em 1.2em;
+      border: 0.15em solid rgba(255, 255, 255, 0.418);
+      margin: 0 0.3em 0.3em 0;
+      border-radius: 0.4em;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-weight: 300;
+      color: #FFFFFF;
+      text-align: center;
+      transition: all 0.2s;
+      background-color: transparent;
+    }
+
+    .button:hover {
+      cursor: pointer;
+      background-color: rgba(173, 173, 173, 0.185);
+      border-color: #ffffff;
+
+    }
+  </style>
+
+
+
+  <center>
+    <div class="contenedor">
+      <div id="juego">
+        <table>
+          <tr>
+            <td id="0" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="1" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="2" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="3" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+          </tr>
+          <tr>
+            <td id="4" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="5" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="6" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="7" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+          </tr>
+          <tr>
+            <td id="8" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="9" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="10" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="11" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+          </tr>
+          <tr>
+            <td id="12" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="13" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="14" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+            <td id="15" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+          </tr>
+
+        </table>
+
+
+      </div>
+      <br>
+      <div class="centrar">
+        <input class="button" id="iniciar" type="button" value="Iniciar" onclick="iniciarJuego()" />
+        <input class="button" id="reset" type="button" value="Reset" onclick="resetearJuego()" />
+      </div>
+
+    </div>
+  </center>
+
+  <!-- <script src="./script.js"></script> -->
+  <script>
+    var cartas = new Array({
+      nombre: '1',
+      bin: '0001',
+      seleccion: false
+    }, {
+      nombre: '2',
+      bin: '0010',
+      seleccion: false
+    }, {
+      nombre: '3',
+      bin: '0011',
+      seleccion: false
+    }, {
+      nombre: '4',
+      bin: '0100',
+      seleccion: false
+    }, {
+      nombre: '5',
+      bin: '0101',
+      seleccion: false
+    }, {
+      nombre: '6',
+      bin: '0110',
+      seleccion: false
+    }, {
+      nombre: '7',
+      bin: '0111',
+      seleccion: false
+    }, {
+      nombre: '8',
+      bin: '1000',
+      seleccion: false
+    }, {
+      nombre: '1',
+      bin: '1',
+      seleccion: false
+    }, {
+      nombre: '2',
+      bin: '2',
+      seleccion: false
+    }, {
+      nombre: '3',
+      bin: '3',
+      seleccion: false
+    }, {
+      nombre: '4',
+      bin: '4',
+      seleccion: false
+    }, {
+      nombre: '5',
+      bin: '5',
+      seleccion: false
+    }, {
+      nombre: '6',
+      bin: '6',
+      seleccion: false
+    }, {
+      nombre: '7',
+      bin: '7',
+      seleccion: false
+    }, {
+      nombre: '8',
+      bin: '8',
+      seleccion: false
+    });
+
+    var intentos = 0;
+    var jugada1 = "";
+    var jugada2 = "";
+    var identificadorJ1 = "";
+    var identificadorJ2 = "";
+    var iniciado = false;
+
+
+    /*     if (!iniciado) {
+          document.getElementsByTagName(table).style.display="none";
+        } */
+
+    function iniciarJuego() {
+      var dato = document.getElementById("juego");
+      dato.style.opacity = 1;
+      cartas.sort(function () {
+        return Math.random() - 0.5
+      });
+      for (var i = 0; i < 16; i++) {
+        var carta = cartas[i].bin;
+        var dato = document.getElementById(i.toString());
+        dato.dataset.valor = carta;
+      }
+      document.getElementById('iniciar').style.display = "none";
+      document.getElementById('reset').style.display = "inline";
+      iniciado = true;
+    }
+
+    function resetearJuego() {
+      var dato = document.getElementById("juego");
+      dato.style.opacity = 1;
+      cartas.sort(function () {
+        return Math.random() - 0.5
+      });
+      for (var i = 0; i < 16; i++) {
+        var carta = cartas[i].bin;
+        var dato = document.getElementById(i.toString());
+        dato.dataset.valor = carta;
+        colorCambio(i, '#bbbbbb', '');
+      }
+      document.getElementById('iniciar').style.display = "none";
+
+    }
+
+    function girarCarta() {
+      var evento = window.event;
+
+
+      jugada2 = cartas[evento.target.id].nombre;
+      identificadorJ2 = evento.target.id;
+
+
+
+      if (jugada1 !== "") {
+
+        if (jugada1 === jugada2 && identificadorJ1 !== identificadorJ2 && cartas[parseInt(identificadorJ2)].seleccion !=
+          true && cartas[parseInt(identificadorJ1)].seleccion != true) {
+
+          cartas[parseInt(identificadorJ1)].seleccion = true;
+          cartas[parseInt(identificadorJ2)].seleccion = true;
+
+          colorCambio(identificadorJ2, "#5594B5", cartas[evento.target.id].bin);
+
+          vaciar();
+          comprobar();
+        } else if (identificadorJ1 !== identificadorJ2) {
+          var self = this;
+          setTimeout(function () {
+            colorCambio(self.identificadorJ1, "#bbbbbb", "")
+            colorCambio(self.identificadorJ2, "#bbbbbb", "")
+            vaciar()
+          }, 200);
+
+          colorCambio(identificadorJ2, "#5594B5", cartas[evento.target.id].bin);
+        }
+      } else if (jugada2 !== "valor") {
+
+        colorCambio(identificadorJ2, "#5594B5", cartas[evento.target.id].bin);
+
+        jugada1 = jugada2;
+        identificadorJ1 = identificadorJ2;
+      }
+    };
+
+    function vaciar() {
+      jugada1 = "";
+      jugada2 = "";
+
+      identificadorJ1 = "";
+      identificadorJ2 = "";
+    }
+
+    function colorCambio(posicion, color, contenido) {
+      document.getElementById(posicion.toString()).style.backgroundColor = color;
+
+      document.getElementById(posicion.toString()).innerHTML = contenido;
+    }
+
+    function comprobar() {
+      var aciertos = 0;
+      for (var i = 0; i < 16; i++) {
+        if (cartas[i].seleccion == true) {
+          aciertos++;
+        }
+
+      }
+
+      if (aciertos == 16) {
+        document.getElementById("juego").innerHTML = ` 
+        
+        <span class="final">
+        <br>
+        <br>
+        <br>
+          <center>
+            GANASTE
+          </center>
+        </span>
+        
+                                                    `;
+        document.getElementById('reset').style.display = "none";
+      }
+    }
+  </script>
+

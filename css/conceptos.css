@@ -46,13 +46,13 @@ a {
 }
 
 .title {
-    font-size: 85px;
+    font-size: 2em;
     text-shadow: 2px 2px #ff0000;
 }
 
 .subtitle {
-    font-size: 50px;
-    color: rgb(192, 192, 192);
+    font-size: 1.2em;
+    color: rgb(223, 223, 223);
     text-shadow: 2px 2px #0c029b;
 }
 #ciencia{

@@ -4,37 +4,30 @@
 		// proporcionar entradas de crucigramas en una matriz de objetos como el siguiente ejemplo
 		// Posición se refiere al orden numérico de una entrada. Cada posición puede tener
 		// dos entradas: una entrada cruzada y una entrada abajo
-		var puzzleData = [{
-				clue: "Tema de la primer unidad",
-				answer: "informacion",
-				position: 1,
-				orientation: "across",
-				startx: 1,
-				starty: 1
-			},
+		var puzzleData = [
 			{
 				clue: "Tema de la segunda unidad",
 				answer: "programacion",
-				position: 2,
+				position: 1,
 				orientation: "across",
-				startx: 2,
-				starty: 3
+				startx: 4,
+				starty: 10
 			},
 			{
 				clue: "Tiene el 30% de valor en la calificación de cada periodo",
 				answer: "proyecto",
-				position: 4,
+				position: 2,
 				orientation: "across",
 				startx: 4,
-				starty: 11
+				starty: 7
 			},
 			{
 				clue: "Se resuelven de manera individual en formularios de google",
 				answer: "cuestionarios",
-				position: 6,
+				position: 3,
 				orientation: "across",
 				startx: 1,
-				starty: 7
+				starty: 3
 			},
 			/* {
 				clue: "Complex resistances",
@@ -71,26 +64,26 @@
 			{
 				clue: "Tema de la tercera unidad",
 				answer: "comunicacion",
-				position: 1,
-				orientation: "down",
+				position: 4,
+				orientation: "across",
 				startx: 1,
-				starty: 1
+				starty: 13
 			},
 			{
 				clue: "Tema de la cuarta unidad",
 				answer: "seguridad",
-				position: 3,
+				position: 5,
 				orientation: "down",
-				startx: 13,
-				starty: 7
+				startx: 8,
+				starty: 6
 			},
 			{
 				clue: "En ella se realizaran los apuntes de la clase asi como los reportes de las reuniones de pie",
 				answer: "bitacora",
-				position: 5,
+				position: 6,
 				orientation: "down",
-				startx: 11,
-				starty: 6
+				startx: 5,
+				starty: 1
 			} /* ,
 			{
 				clue: "Greek variable that usually describes rotor positon",
