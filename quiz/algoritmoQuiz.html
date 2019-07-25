@@ -1,0 +1,265 @@
+<style>
+    .grid {
+
+        width: 600px;
+        height: 400px;
+        margin: 0 auto;
+        /* background-color: #fff; */
+        color: white;
+
+    }
+
+    #quiz>* {
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .grid h1 {
+
+        font-size: 2.5em;
+        text-align: center;
+
+        padding: 0.3em 1em;
+        border: 0.1em solid rgb(255, 255, 255);
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.4em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-weight: 300;
+        color: #FFFFFF;
+        text-align: center;
+        transition: all 0.2s;
+        background-color: transparent;
+
+    }
+
+    #score {
+        font-size: 4em;
+
+
+        padding: 0.3em 1em;
+        border: 0.1em solid rgb(255, 255, 255);
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.4em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-weight: 300;
+        color: #FFFFFF;
+        text-align: center;
+        transition: all 0.2s;
+        background-color: #570606;
+
+        text-align: center;
+
+    }
+
+    .grid #question {
+        text-align: center;
+
+        font-size: 3em;
+
+    }
+
+
+
+    .buttons {
+        margin-top: 30px;
+        width: 100%;
+        margin-left: 5%;
+
+    }
+
+    #btn0,
+    #btn1,
+    #btn2,
+    #btn3 {
+        width: 100%;
+        font-size: 2.5em;
+        padding: 0.35em 1.2em;
+        border: 0.15em solid rgba(255, 255, 255, 0.418);
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.4em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-weight: 300;
+        color: #FFFFFF;
+        text-align: center;
+        transition: all 0.2s;
+        background-color: transparent;
+    }
+
+
+    #btn0:hover,
+    #btn1:hover,
+    #btn2:hover,
+    #btn3:hover {
+
+        cursor: pointer;
+        /* background-color: #FFFFFF; */
+
+        border-color: #ffffff;
+    }
+
+
+
+    #btn0:focus,
+    #btn1:focus,
+    #btn2:focus,
+    #btn3:focus {
+        outline: 0;
+    }
+
+    #progress {
+
+        font-size: 1em;
+    }
+
+    .bouncy {
+        animation: bouncy 5s infinite linear;
+        position: relative;
+    }
+
+    @keyframes bouncy {
+        0% {
+            top: 0em
+        }
+
+        40% {
+            top: 0em
+        }
+
+        43% {
+            top: -0.9em
+        }
+
+        46% {
+            top: 0em
+        }
+
+        48% {
+            top: -0.4em
+        }
+
+        50% {
+            top: 0em
+        }
+
+        100% {
+            top: 0em;
+        }
+    }
+</style>
+
+<div class="grid">
+
+    <div id="quiz">
+
+        <!-- <h1>Contesta</h1> -->
+        <p id="question"></p>
+
+        <div class="buttons">
+
+            <button id="btn0" class="bouncy" style="animation-delay:0.07s"><span id="choice0"></span></button>
+            <button id="btn1" class="bouncy" style="animation-delay:0.14s"><span id="choice1"></span></button>
+            <!--  <button id="btn2" class="bouncy" style="animation-delay:0.21s"><span id="choice2"></span></button>
+            <button id="btn3" class="bouncy"><span id="choice3"></span></button> -->
+
+        </div>
+
+        <footer>
+            <p id="progress">Pregunta x de y</p>
+        </footer>
+    </div>
+</div>
+
+<script src="quiz.js"></script>
+<script src="question.js"></script>
+
+<script>
+    function populate() {
+        if (quiz.isEnded()) {
+            showScores();
+        } else {
+            // ver la pregunta
+            var element = document.getElementById("question");
+            element.innerHTML = quiz.getQuestionIndex().text;
+
+            // ver las opciones
+            var choices = quiz.getQuestionIndex().choices;
+            for (var i = 0; i < choices.length; i++) {
+                var element = document.getElementById("choice" + i);
+                element.innerHTML = choices[i];
+                guess("btn" + i, choices[i]);
+            }
+
+            showProgress();
+        }
+    };
+
+    function guess(id, guess) {
+        var button = document.getElementById(id);
+        button.onclick = function () {
+            quiz.guess(guess);
+            populate();
+        }
+
+    };
+
+
+    function showProgress() {
+        var currentQuestionNumber = quiz.questionIndex + 1;
+        var element = document.getElementById("progress");
+        element.innerHTML = "Pregunta " + currentQuestionNumber + " de " + quiz.questions.length;
+    };
+
+    function showScores() {
+        var gameOverHTML = "<h1>Resultados</h1>";
+        gameOverHTML += "<h2 id='score'> Tus puntos: " + quiz.score + "</h2>";
+        var element = document.getElementById("quiz");
+        element.innerHTML = gameOverHTML;
+    };
+
+    // creando preguntas
+
+    var questions = [
+        new Question(
+            "Conjunto finito y ordenado de pasos que dan solución a un problema ",
+            [
+                "Algoritmo",
+                "Programa"
+            ],
+            "Algoritmo"
+        ),
+        new Question(
+            "Un algoritmo debe ser preciso e indicar el orden de realización de cada paso",
+            [
+                "Falso",
+                "Verdadero"
+            ],
+            "Verdadero"
+        ),
+        new Question(
+            "Permite la representación gráfica de un algoritmo",
+            [
+                "Diagrama de flujo",
+                "Diagrama de bloques"
+            ],
+            "Diagrama de flujo"
+        ),
+        new Question(
+            "Evalúa una condición en su interior y se selecciona uno de los caminos",
+            [
+                "Bucle",
+                "Decisión"
+            ],
+            "Decisión"
+        )
+    ];
+
+    // creando el cuestionario
+    var quiz = new Quiz(questions);
+
+
+    // mostrar el cuestionario
+    populate();
+</script>
