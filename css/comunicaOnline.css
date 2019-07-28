@@ -27,11 +27,7 @@
     text-align: center;
 }
 
-h2,
-h3,
-h4,
-p,
-a {
+h2, h3, h4, p, a {
     font-family: 'Encode Sans', sans-serif !important;
     font-size: 25px !important;
     color: white;
@@ -50,16 +46,22 @@ a {
 #color-bar {
     width: 100%;
     height: 150px;
-    background-color: #000000;
+    background-image: linear-gradient(35deg, #c21515, #520606);
+    /* background-color: #000000; */
     position: absolute;
     z-index: -2;
     top: 0;
 }
-.flipH { 
--moz-transform: scaleX(-1); /* Firefox */
--o-transform: scaleX(-1); /* Opera */
--webkit-transform: scaleX(-1); /* Chrome y Safari */
-transform: scaleX(-1); /* w3org */
+
+.flipH {
+    -moz-transform: scaleX(-1);
+    /* Firefox */
+    -o-transform: scaleX(-1);
+    /* Opera */
+    -webkit-transform: scaleX(-1);
+    /* Chrome y Safari */
+    transform: scaleX(-1);
+    /* w3org */
 }
 
 .texto {
@@ -84,8 +86,6 @@ transform: scaleX(-1); /* w3org */
     text-shadow: 2px 2px #05720b;
 }
 
-
-
 .sld {
     color: #39c240;
 }
@@ -105,19 +105,29 @@ a {
     font-weight: 600 !important;
 }
 
-
-
 #impress {
     z-index: 25;
 }
 
 body {
     min-height: 740px;
-    background-color: #171e22;
-
+    background-image: linear-gradient(90deg, rgba(219, 219, 219, 0.01) 0%, rgba(219, 219, 219, 0.01) 15%, rgba(140, 140, 140, 0.01) 15%, rgba(140, 140, 140, 0.01) 100%), linear-gradient(135deg, rgba(138, 138, 138, 0.01) 0%, rgba(138, 138, 138, 0.01) 76%, rgba(22, 22, 22, 0.01) 76%, rgba(22, 22, 22, 0.01) 100%), linear-gradient(0deg, rgba(143, 143, 143, 0.08) 0%, rgba(143, 143, 143, 0.08) 41%, rgba(56, 56, 56, 0.08) 41%, rgba(56, 56, 56, 0.08) 100%), linear-gradient(90deg, rgba(16, 16, 16, 0.08) 0%, rgba(16, 16, 16, 0.08) 90%, rgba(201, 201, 201, 0.08) 90%, rgba(201, 201, 201, 0.08) 100%), linear-gradient(90deg, rgba(173, 173, 173, 0.05) 0%, rgba(173, 173, 173, 0.05) 92%, rgba(133, 133, 133, 0.05) 92%, rgba(133, 133, 133, 0.05) 100%), linear-gradient(45deg, rgba(49, 49, 49, 0.08) 0%, rgba(49, 49, 49, 0.08) 43%, rgba(207, 207, 207, 0.08) 43%, rgba(207, 207, 207, 0.08) 100%), linear-gradient(90deg, #4b1b42, rgb(25, 63, 185));
+    /* background-color: #171e22; */
     /* background-image: url('../img/7dDt.gif');
     background-position: bottom;
     background-size: contain; */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 50%;
+    height: 100%;
+    background: #e2e2e20c;
+    pointer-events: none;
+    z-index: -1;
 }
 
 /*
@@ -204,7 +214,6 @@ body.impress-mouse-timeout {
     padding-right: 1em;
 }
 
-
 /*
   ## Ahead will follow all the impress demo CSS. If there is anything left here by the time my presentation is finished, it probably because I forgot to remove it ##
 
@@ -237,87 +246,7 @@ body.impress-mouse-timeout {
 
 */
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -328,19 +257,7 @@ video {
 
 /* HTML5 display-role reset for older browsers */
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,b
-
-
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure, footer, header, hgroup, b menu, nav, section {
     display: block;
 }
 
@@ -348,20 +265,15 @@ body {
     line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
     list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
     quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none;
 }
@@ -383,13 +295,11 @@ table {
     Now let's bring some text styles back ...
 */
 
-b,
-strong {
+b, strong {
     font-weight: bold
 }
 
-i,
-em {
+i, em {
     font-style: italic
 }
 
@@ -480,11 +390,10 @@ em {
     height: 700px;
     padding: 40px 60px;
     /*  background-color: #000000; */
-    background-image: url('../img/fondo2.png');
-    background-position: center;
-    background-size: 135%;
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 10px;
+    /*  background-image: url('../img/fondo2.png'); */
+    background-image: linear-gradient(90deg, rgba(219, 219, 219, 0.01) 0%, rgba(219, 219, 219, 0.01) 15%, rgba(140, 140, 140, 0.01) 15%, rgba(140, 140, 140, 0.01) 100%), linear-gradient(135deg, rgba(138, 138, 138, 0.01) 0%, rgba(138, 138, 138, 0.01) 76%, rgba(22, 22, 22, 0.01) 76%, rgba(22, 22, 22, 0.01) 100%), linear-gradient(0deg, rgba(143, 143, 143, 0.08) 0%, rgba(143, 143, 143, 0.08) 41%, rgba(56, 56, 56, 0.08) 41%, rgba(56, 56, 56, 0.08) 100%), linear-gradient(90deg, rgba(16, 16, 16, 0.08) 0%, rgba(16, 16, 16, 0.08) 90%, rgba(201, 201, 201, 0.08) 90%, rgba(201, 201, 201, 0.08) 100%), linear-gradient(90deg, rgba(173, 173, 173, 0.05) 0%, rgba(173, 173, 173, 0.05) 92%, rgba(133, 133, 133, 0.05) 92%, rgba(133, 133, 133, 0.05) 100%), linear-gradient(45deg, rgba(49, 49, 49, 0.08) 0%, rgba(49, 49, 49, 0.08) 43%, rgba(207, 207, 207, 0.08) 43%, rgba(207, 207, 207, 0.08) 100%), linear-gradient(90deg, #330f2c, rgb(12, 44, 146));
+    /* border: 1px solid rgba(0, 0, 0, 0); */
+    border-radius: 20px 20px 20px 20px;
     box-shadow: 5px 10px 120px rgba(0, 0, 0, 0.548);
     color: rgb(216, 216, 216);
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
@@ -495,19 +404,32 @@ em {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-
-}
-.dos{
-    background-image: url('../img/fondo3.png');
+    text-align: center;
 }
 
+.slide::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: 0%;
+    width: 100%;
+    height: 15%;
+    /* background: #e2e2e20c; */
+    background-image: linear-gradient(35deg, #970b0b, #410202);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 20px 20px 0 0;
+}
+
+.dos {
+    /*  background-image: url('../img/fondo3.png'); */
+}
 
 .slide q {
     display: block;
     font-size: 50px;
     line-height: 72px;
     margin-top: 100px;
-
 }
 
 .slide q strong {
@@ -718,8 +640,7 @@ em {
     Quite a simple idea, but lot's of styles and prefixes.
 */
 
-#its-in-3d span,
-#its-in-3d b {
+#its-in-3d span, #its-in-3d b {
     display: inline-block;
     -webkit-transform: translateZ(40px);
     -moz-transform: translateZ(40px);
@@ -782,8 +703,7 @@ em {
     transform: translateZ(-10px);
 }
 
-#its-in-3d.present span,
-#its-in-3d.present b {
+#its-in-3d.present span, #its-in-3d.present b {
     -webkit-transform: translateZ(0px);
     -moz-transform: translateZ(0px);
     -ms-transform: translateZ(0px);
