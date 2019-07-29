@@ -9,52 +9,44 @@
 
 		var puzzleData = [
 			{
-				clue: "",
+				clue: "Al mismo tiempo",
 				answer: "sincrona",
 				position: 1,
 				orientation: "across",
-				startx: 1,
-				starty: 8
+				startx: 2,
+				starty: 5
 			},
 			{
-				clue: "Con el se le dan instrucciones a la computadora",
-				answer: "codigo",
+				clue: "Transmitir un mensaje",
+				answer: "comunicacion",
 				position: 2,
 				orientation: "down",
-				startx: 3,
-				starty: 7
-			},
-			{
-				clue: "Existen 3 tipos: maquina, bajo nivel y alto nivel",
-				answer: "lenguaje",
-				position: 3,
-				orientation: "down",
-				startx: 6,
-				starty: 3
-			},
-			{
-				clue: "Se evalúa una condición en su interior, y dependiendo del resultado, se selecciona uno de los caminos establecidos",
-				answer: "decision",
-				position: 4,
-				orientation: "across",
-				startx: 5,
-				starty: 4
-			},
-			{
-				clue: "Secuencia ordenada de pasos para solucionar un problema",
-				answer: "algoritmo",
-				position: 5,
-				orientation: "down",
-				startx: 11,
+				startx: 8,
 				starty: 1
 			},
 			{
-				clue: "Se repite",
-				answer: "bucle",
-				position: 6,
+				clue: "En distinto tiempo",
+				answer: "asincrona",
+				position: 3,
+				orientation: "down",
+				startx: 2,
+				starty: 4
+			},
+			{
+				clue: "Sirve para enviar y recibir mensajes de manera asíncrona",
+				answer: "correo",
+				position: 4,
 				orientation: "across",
-				startx: 8,
-				starty: 2
+				startx: 1,
+				starty: 10
+			},
+			{
+				clue: "Los participantes comparten su opinión, experiencias y dudas",
+				answer: "foro",
+				position: 5,
+				orientation: "down",
+				startx: 6,
+				starty: 3
 			} 
 		]
 
