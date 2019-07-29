@@ -27,11 +27,7 @@
     text-align: center;
 }
 
-h2,
-h3,
-h4,
-p,
-a {
+h2, h3, h4, p, a {
     font-family: 'Encode Sans', sans-serif !important;
     font-size: 25px !important;
     color: white;
@@ -47,20 +43,25 @@ a {
     text-align: center;
 }
 
-
 #color-bar {
     width: 100%;
     height: 20%;
-    background-color: #322959;
+    /* background-color: #322959; */
+    background: linear-gradient(90deg, rgb(102, 17, 117), rgb(106, 20, 213), rgb(104, 19, 165));
     position: absolute;
     z-index: -2;
     top: 0;
 }
-.flipH { 
--moz-transform: scaleX(-1); /* Firefox */
--o-transform: scaleX(-1); /* Opera */
--webkit-transform: scaleX(-1); /* Chrome y Safari */
-transform: scaleX(-1); /* w3org */
+
+.flipH {
+    -moz-transform: scaleX(-1);
+    /* Firefox */
+    -o-transform: scaleX(-1);
+    /* Opera */
+    -webkit-transform: scaleX(-1);
+    /* Chrome y Safari */
+    transform: scaleX(-1);
+    /* w3org */
 }
 
 .texto {
@@ -85,8 +86,6 @@ transform: scaleX(-1); /* w3org */
     text-shadow: 2px 2px #05720b;
 }
 
-
-
 .sld {
     color: #39c240;
 }
@@ -106,16 +105,14 @@ a {
     font-weight: 600 !important;
 }
 
-
-
 #impress {
     z-index: 25;
 }
 
 body {
     min-height: 740px;
-    background-color: #060211;
-
+    /* background-color: #060211; */
+    background: linear-gradient(0deg, rgba(120, 120, 120, 0.07) 0%, rgba(120, 120, 120, 0.07) 8%,rgba(73, 73, 73, 0.07) 8%, rgba(73, 73, 73, 0.07) 36%,rgba(252, 252, 252, 0.07) 36%, rgba(252, 252, 252, 0.07) 54%,rgba(158, 158, 158, 0.07) 54%, rgba(158, 158, 158, 0.07) 56%,rgba(142, 142, 142, 0.07) 56%, rgba(142, 142, 142, 0.07) 59%,rgba(92, 92, 92, 0.07) 59%, rgba(92, 92, 92, 0.07) 78%,rgba(29, 29, 29, 0.07) 78%, rgba(29, 29, 29, 0.07) 100%),linear-gradient(45deg, rgba(89, 89, 89, 0.08) 0%, rgba(89, 89, 89, 0.08) 5%,rgba(201, 201, 201, 0.08) 5%, rgba(201, 201, 201, 0.08) 17%,rgba(203, 203, 203, 0.08) 17%, rgba(203, 203, 203, 0.08) 28%,rgba(111, 111, 111, 0.08) 28%, rgba(111, 111, 111, 0.08) 59%,rgba(20, 20, 20, 0.08) 59%, rgba(20, 20, 20, 0.08) 60%,rgba(248, 248, 248, 0.08) 60%, rgba(248, 248, 248, 0.08) 67%,rgba(21, 21, 21, 0.08) 67%, rgba(21, 21, 21, 0.08) 100%),linear-gradient(90deg, rgba(130, 130, 130, 0.09) 0%, rgba(130, 130, 130, 0.09) 9%,rgba(133, 133, 133, 0.09) 9%, rgba(133, 133, 133, 0.09) 49%,rgba(151, 151, 151, 0.09) 49%, rgba(151, 151, 151, 0.09) 56%,rgba(194, 194, 194, 0.09) 56%, rgba(194, 194, 194, 0.09) 93%,rgba(126, 126, 126, 0.09) 93%, rgba(126, 126, 126, 0.09) 100%),linear-gradient(90deg, rgba(219, 219, 219, 0.03) 0%, rgba(219, 219, 219, 0.03) 7%,rgba(194, 194, 194, 0.03) 7%, rgba(194, 194, 194, 0.03) 37%,rgba(217, 217, 217, 0.03) 37%, rgba(217, 217, 217, 0.03) 39%,rgba(59, 59, 59, 0.03) 39%, rgba(59, 59, 59, 0.03) 50%,rgba(35, 35, 35, 0.03) 50%, rgba(35, 35, 35, 0.03) 61%,rgba(5, 5, 5, 0.03) 61%, rgba(5, 5, 5, 0.03) 85%,rgba(83, 83, 83, 0.03) 85%, rgba(83, 83, 83, 0.03) 93%,rgba(251, 251, 251, 0.03) 93%, rgba(251, 251, 251, 0.03) 100%),linear-gradient(0deg, rgba(110, 110, 110, 0.04) 0%, rgba(110, 110, 110, 0.04) 20%,rgba(21, 21, 21, 0.04) 20%, rgba(21, 21, 21, 0.04) 44%,rgba(134, 134, 134, 0.04) 44%, rgba(134, 134, 134, 0.04) 62%,rgba(217, 217, 217, 0.04) 62%, rgba(217, 217, 217, 0.04) 94%,rgba(191, 191, 191, 0.04) 94%, rgba(191, 191, 191, 0.04) 100%),linear-gradient(0deg, rgba(151, 151, 151, 0.04) 0%, rgba(151, 151, 151, 0.04) 23%,rgba(40, 40, 40, 0.04) 23%, rgba(40, 40, 40, 0.04) 41%,rgba(51, 51, 51, 0.04) 41%, rgba(51, 51, 51, 0.04) 47%,rgba(221, 221, 221, 0.04) 47%, rgba(221, 221, 221, 0.04) 65%,rgba(105, 105, 105, 0.04) 65%, rgba(105, 105, 105, 0.04) 67%,rgba(160, 160, 160, 0.04) 67%, rgba(160, 160, 160, 0.04) 86%,rgba(218, 218, 218, 0.04) 86%, rgba(218, 218, 218, 0.04) 100%),linear-gradient(90deg, rgba(148, 148, 148, 0.09) 0%, rgba(148, 148, 148, 0.09) 7%,rgba(159, 159, 159, 0.09) 7%, rgba(159, 159, 159, 0.09) 52%,rgba(18, 18, 18, 0.09) 52%, rgba(18, 18, 18, 0.09) 66%,rgba(126, 126, 126, 0.09) 66%, rgba(126, 126, 126, 0.09) 100%),linear-gradient(90deg, rgba(212, 212, 212, 0.06) 0%, rgba(212, 212, 212, 0.06) 12%,rgba(248, 248, 248, 0.06) 12%, rgba(248, 248, 248, 0.06) 17%,rgba(70, 70, 70, 0.06) 17%, rgba(70, 70, 70, 0.06) 33%,rgba(174, 174, 174, 0.06) 33%, rgba(174, 174, 174, 0.06) 36%,rgba(99, 99, 99, 0.06) 36%, rgba(99, 99, 99, 0.06) 37%,rgba(56, 56, 56, 0.06) 37%, rgba(56, 56, 56, 0.06) 73%,rgba(156, 156, 156, 0.06) 73%, rgba(156, 156, 156, 0.06) 84%,rgba(174, 174, 174, 0.06) 84%, rgba(174, 174, 174, 0.06) 100%),linear-gradient(90deg, #010742,#022f42);
     /* background-image: url('../img/7dDt.gif');
     background-position: bottom;
     background-size: contain; */
@@ -205,7 +202,6 @@ body.impress-mouse-timeout {
     padding-right: 1em;
 }
 
-
 /*
   ## Ahead will follow all the impress demo CSS. If there is anything left here by the time my presentation is finished, it probably because I forgot to remove it ##
 
@@ -238,87 +234,7 @@ body.impress-mouse-timeout {
 
 */
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -329,19 +245,7 @@ video {
 
 /* HTML5 display-role reset for older browsers */
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,b
-
-
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure, footer, header, hgroup, b menu, nav, section {
     display: block;
 }
 
@@ -349,20 +253,15 @@ body {
     line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
     list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
     quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none;
 }
@@ -384,13 +283,11 @@ table {
     Now let's bring some text styles back ...
 */
 
-b,
-strong {
+b, strong {
     font-weight: bold
 }
 
-i,
-em {
+i, em {
     font-style: italic
 }
 
@@ -474,19 +371,30 @@ em {
 
     They cover everything what you see on first three steps of the demo.
 */
-
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 50%;
+    height: 100%;
+    background: #e2e2e20c;
+    pointer-events: none;
+    z-index: -1;
+}
 .slide {
     display: block;
     width: 900px;
     height: 700px;
     padding: 40px 60px;
     /*  background-color: #000000; */
-    background-image: url('../img/fondo5.png');
+    /* background-image: url('../img/fondo5.png'); */
     background-position: center;
     background-size: 135%;
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    box-shadow: 5px 10px 120px rgba(0, 0, 0, 0.548);
+    background: linear-gradient(0deg, rgba(120, 120, 120, 0.07) 0%, rgba(120, 120, 120, 0.07) 8%,rgba(73, 73, 73, 0.07) 8%, rgba(73, 73, 73, 0.07) 36%,rgba(252, 252, 252, 0.07) 36%, rgba(252, 252, 252, 0.07) 54%,rgba(158, 158, 158, 0.07) 54%, rgba(158, 158, 158, 0.07) 56%,rgba(142, 142, 142, 0.07) 56%, rgba(142, 142, 142, 0.07) 59%,rgba(92, 92, 92, 0.07) 59%, rgba(92, 92, 92, 0.07) 78%,rgba(29, 29, 29, 0.07) 78%, rgba(29, 29, 29, 0.07) 100%),linear-gradient(45deg, rgba(89, 89, 89, 0.08) 0%, rgba(89, 89, 89, 0.08) 5%,rgba(201, 201, 201, 0.08) 5%, rgba(201, 201, 201, 0.08) 17%,rgba(203, 203, 203, 0.08) 17%, rgba(203, 203, 203, 0.08) 28%,rgba(111, 111, 111, 0.08) 28%, rgba(111, 111, 111, 0.08) 59%,rgba(20, 20, 20, 0.08) 59%, rgba(20, 20, 20, 0.08) 60%,rgba(248, 248, 248, 0.08) 60%, rgba(248, 248, 248, 0.08) 67%,rgba(21, 21, 21, 0.08) 67%, rgba(21, 21, 21, 0.08) 100%),linear-gradient(90deg, rgba(130, 130, 130, 0.09) 0%, rgba(130, 130, 130, 0.09) 9%,rgba(133, 133, 133, 0.09) 9%, rgba(133, 133, 133, 0.09) 49%,rgba(151, 151, 151, 0.09) 49%, rgba(151, 151, 151, 0.09) 56%,rgba(194, 194, 194, 0.09) 56%, rgba(194, 194, 194, 0.09) 93%,rgba(126, 126, 126, 0.09) 93%, rgba(126, 126, 126, 0.09) 100%),linear-gradient(90deg, rgba(219, 219, 219, 0.03) 0%, rgba(219, 219, 219, 0.03) 7%,rgba(194, 194, 194, 0.03) 7%, rgba(194, 194, 194, 0.03) 37%,rgba(217, 217, 217, 0.03) 37%, rgba(217, 217, 217, 0.03) 39%,rgba(59, 59, 59, 0.03) 39%, rgba(59, 59, 59, 0.03) 50%,rgba(35, 35, 35, 0.03) 50%, rgba(35, 35, 35, 0.03) 61%,rgba(5, 5, 5, 0.03) 61%, rgba(5, 5, 5, 0.03) 85%,rgba(83, 83, 83, 0.03) 85%, rgba(83, 83, 83, 0.03) 93%,rgba(251, 251, 251, 0.03) 93%, rgba(251, 251, 251, 0.03) 100%),linear-gradient(0deg, rgba(110, 110, 110, 0.04) 0%, rgba(110, 110, 110, 0.04) 20%,rgba(21, 21, 21, 0.04) 20%, rgba(21, 21, 21, 0.04) 44%,rgba(134, 134, 134, 0.04) 44%, rgba(134, 134, 134, 0.04) 62%,rgba(217, 217, 217, 0.04) 62%, rgba(217, 217, 217, 0.04) 94%,rgba(191, 191, 191, 0.04) 94%, rgba(191, 191, 191, 0.04) 100%),linear-gradient(0deg, rgba(151, 151, 151, 0.04) 0%, rgba(151, 151, 151, 0.04) 23%,rgba(40, 40, 40, 0.04) 23%, rgba(40, 40, 40, 0.04) 41%,rgba(51, 51, 51, 0.04) 41%, rgba(51, 51, 51, 0.04) 47%,rgba(221, 221, 221, 0.04) 47%, rgba(221, 221, 221, 0.04) 65%,rgba(105, 105, 105, 0.04) 65%, rgba(105, 105, 105, 0.04) 67%,rgba(160, 160, 160, 0.04) 67%, rgba(160, 160, 160, 0.04) 86%,rgba(218, 218, 218, 0.04) 86%, rgba(218, 218, 218, 0.04) 100%),linear-gradient(90deg, rgba(148, 148, 148, 0.09) 0%, rgba(148, 148, 148, 0.09) 7%,rgba(159, 159, 159, 0.09) 7%, rgba(159, 159, 159, 0.09) 52%,rgba(18, 18, 18, 0.09) 52%, rgba(18, 18, 18, 0.09) 66%,rgba(126, 126, 126, 0.09) 66%, rgba(126, 126, 126, 0.09) 100%),linear-gradient(90deg, rgba(212, 212, 212, 0.06) 0%, rgba(212, 212, 212, 0.06) 12%,rgba(248, 248, 248, 0.06) 12%, rgba(248, 248, 248, 0.06) 17%,rgba(70, 70, 70, 0.06) 17%, rgba(70, 70, 70, 0.06) 33%,rgba(174, 174, 174, 0.06) 33%, rgba(174, 174, 174, 0.06) 36%,rgba(99, 99, 99, 0.06) 36%, rgba(99, 99, 99, 0.06) 37%,rgba(56, 56, 56, 0.06) 37%, rgba(56, 56, 56, 0.06) 73%,rgba(156, 156, 156, 0.06) 73%, rgba(156, 156, 156, 0.06) 84%,rgba(174, 174, 174, 0.06) 84%, rgba(174, 174, 174, 0.06) 100%),linear-gradient(90deg, #000000,#020202);
+    border-radius: 20px;
+    /* box-shadow: 5px 10px 120px rgba(0, 0, 0, 0.548); */
+    box-shadow: 18px 18px 91px -17px rgba(0, 0, 0, 0.63);
     color: rgb(216, 216, 216);
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
     font-family: 'Open Sans', Arial, sans-serif;
@@ -496,17 +404,26 @@ em {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-
+    text-align: center;
 }
-
-
-
+.slide::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: 0%;
+    width: 100%;
+    height: 15%;
+    /* background: #e2e2e20c; */
+    background: linear-gradient(90deg, #5106ad, #470852, #5106ad);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 20px 20px 0 0;
+}
 .slide q {
     display: block;
     font-size: 50px;
     line-height: 72px;
     margin-top: 100px;
-
 }
 
 .slide q strong {
@@ -717,8 +634,7 @@ em {
     Quite a simple idea, but lot's of styles and prefixes.
 */
 
-#its-in-3d span,
-#its-in-3d b {
+#its-in-3d span, #its-in-3d b {
     display: inline-block;
     -webkit-transform: translateZ(40px);
     -moz-transform: translateZ(40px);
@@ -781,8 +697,7 @@ em {
     transform: translateZ(-10px);
 }
 
-#its-in-3d.present span,
-#its-in-3d.present b {
+#its-in-3d.present span, #its-in-3d.present b {
     -webkit-transform: translateZ(0px);
     -moz-transform: translateZ(0px);
     -ms-transform: translateZ(0px);
