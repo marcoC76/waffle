@@ -9,6 +9,7 @@
     <link href="css/algoritmo.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans|Share+Tech+Mono" rel="stylesheet">
     <!-- <link href="css/3D-rotations.css" rel="stylesheet" /> -->
+    <link rel="manifest" href="/manifest.json">
 
     <style>
 
@@ -424,6 +425,18 @@
 
     <script>
         impress().init();
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                })
+                .then(function (registration) {
+                    console.log('Service Worker Registered');
+                });
+
+            navigator.serviceWorker.ready.then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+        }
     </script>
 
 </body>
