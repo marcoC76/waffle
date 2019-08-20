@@ -1,12 +1,12 @@
 {
   "name": "Waffle",
   "short_name": "Waffle",
-  "theme_color": "#ec7357",
-  "background_color": "#ec7357",
+  "theme_color": "#152510",
+  "background_color": "#191919",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/waffle/?utm_source=homescreen",
+  "start_url": "/waffle/index.html?utm_source=homescreen",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
