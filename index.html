@@ -14,35 +14,68 @@
 </head>
 
 <style>
-    nav {
-        background-color: #EC7357;
+    @font-face {
+        font-family: "Waffle";
+        src: url("Welcome.woff");
     }
 
+    nav {
+        font-family: "Waffle";
+
+        background: linear-gradient(213deg, rgba(191, 191, 191, 0.02) 0%, rgba(191, 191, 191, 0.02) 16.667%, rgba(64, 64, 64, 0.02) 16.667%, rgba(64, 64, 64, 0.02) 33.334%, rgba(162, 162, 162, 0.02) 33.334%, rgba(162, 162, 162, 0.02) 50.001000000000005%, rgba(6, 6, 6, 0.02) 50.001%, rgba(6, 6, 6, 0.02) 66.668%, rgba(53, 53, 53, 0.02) 66.668%, rgba(53, 53, 53, 0.02) 83.33500000000001%, rgba(30, 30, 30, 0.02) 83.335%, rgba(30, 30, 30, 0.02) 100.002%), linear-gradient(245deg, rgba(187, 187, 187, 0.02) 0%, rgba(187, 187, 187, 0.02) 12.5%, rgba(231, 231, 231, 0.02) 12.5%, rgba(231, 231, 231, 0.02) 25%, rgba(123, 123, 123, 0.02) 25%, rgba(123, 123, 123, 0.02) 37.5%, rgba(229, 229, 229, 0.02) 37.5%, rgba(229, 229, 229, 0.02) 50%, rgba(205, 205, 205, 0.02) 50%, rgba(205, 205, 205, 0.02) 62.5%, rgba(21, 21, 21, 0.02) 62.5%, rgba(21, 21, 21, 0.02) 75%, rgba(222, 222, 222, 0.02) 75%, rgba(222, 222, 222, 0.02) 87.5%, rgba(19, 19, 19, 0.02) 87.5%, rgba(19, 19, 19, 0.02) 100%), linear-gradient(333deg, rgba(128, 128, 128, 0.02) 0%, rgba(128, 128, 128, 0.02) 25%, rgba(235, 235, 235, 0.02) 25%, rgba(235, 235, 235, 0.02) 50%, rgba(129, 129, 129, 0.02) 50%, rgba(129, 129, 129, 0.02) 75%, rgba(4, 4, 4, 0.02) 75%, rgba(4, 4, 4, 0.02) 100%), linear-gradient(154deg, rgba(241, 241, 241, 0.03) 0%, rgba(241, 241, 241, 0.03) 16.667%, rgba(248, 248, 248, 0.03) 16.667%, rgba(248, 248, 248, 0.03) 33.334%, rgba(21, 21, 21, 0.03) 33.334%, rgba(21, 21, 21, 0.03) 50.001000000000005%, rgba(94, 94, 94, 0.03) 50.001%, rgba(94, 94, 94, 0.03) 66.668%, rgba(250, 250, 250, 0.03) 66.668%, rgba(250, 250, 250, 0.03) 83.33500000000001%, rgba(5, 5, 5, 0.03) 83.335%, rgba(5, 5, 5, 0.03) 100.002%), linear-gradient(166deg, rgba(104, 104, 104, 0.01) 0%, rgba(104, 104, 104, 0.01) 12.5%, rgba(77, 77, 77, 0.01) 12.5%, rgba(77, 77, 77, 0.01) 25%, rgba(13, 13, 13, 0.01) 25%, rgba(13, 13, 13, 0.01) 37.5%, rgba(194, 194, 194, 0.01) 37.5%, rgba(194, 194, 194, 0.01) 50%, rgba(71, 71, 71, 0.01) 50%, rgba(71, 71, 71, 0.01) 62.5%, rgba(234, 234, 234, 0.01) 62.5%, rgba(234, 234, 234, 0.01) 75%, rgba(38, 38, 38, 0.01) 75%, rgba(38, 38, 38, 0.01) 87.5%, rgba(95, 95, 95, 0.01) 87.5%, rgba(95, 95, 95, 0.01) 100%), linear-gradient(98deg, rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 12.5%, rgba(126, 126, 126, 0.03) 12.5%, rgba(126, 126, 126, 0.03) 25%, rgba(145, 145, 145, 0.03) 25%, rgba(145, 145, 145, 0.03) 37.5%, rgba(70, 70, 70, 0.03) 37.5%, rgba(70, 70, 70, 0.03) 50%, rgba(174, 174, 174, 0.03) 50%, rgba(174, 174, 174, 0.03) 62.5%, rgba(77, 77, 77, 0.03) 62.5%, rgba(77, 77, 77, 0.03) 75%, rgba(123, 123, 123, 0.03) 75%, rgba(123, 123, 123, 0.03) 87.5%, rgba(36, 36, 36, 0.03) 87.5%, rgba(36, 36, 36, 0.03) 100%), linear-gradient(293deg, rgba(55, 55, 55, 0.03) 0%, rgba(55, 55, 55, 0.03) 20%, rgba(142, 142, 142, 0.03) 20%, rgba(142, 142, 142, 0.03) 40%, rgba(159, 159, 159, 0.03) 40%, rgba(159, 159, 159, 0.03) 60%, rgba(139, 139, 139, 0.03) 60%, rgba(139, 139, 139, 0.03) 80%, rgba(9, 9, 9, 0.03) 80%, rgba(9, 9, 9, 0.03) 100%), linear-gradient(26deg, rgba(116, 116, 116, 0.01) 0%, rgba(116, 116, 116, 0.01) 20%, rgba(179, 179, 179, 0.01) 20%, rgba(179, 179, 179, 0.01) 40%, rgba(5, 5, 5, 0.01) 40%, rgba(5, 5, 5, 0.01) 60%, rgba(212, 212, 212, 0.01) 60%, rgba(212, 212, 212, 0.01) 80%, rgba(246, 246, 246, 0.01) 80%, rgba(246, 246, 246, 0.01) 100%), linear-gradient(90deg, rgb(87, 178, 35), rgb(21, 37, 16));
+    }
+
+    nav .brand-logo {
+        top:30px;
+        font-size: 8em;
+        
+    }
+
+    .waffle{
+        font-family: "Waffle";
+        font-size: 3em;
+    }
 
 
     #navfondo {
-        filter: hue-rotate(180grad);
+        filter: hue-rotate(270grad);
 
+    }
+
+    body {
+        background-image: linear-gradient(292deg, rgba(150, 150, 150, 0.03) 0%, rgba(150, 150, 150, 0.03) 20%, rgba(151, 151, 151, 0.03) 20%, rgba(151, 151, 151, 0.03) 40%, rgba(215, 215, 215, 0.03) 40%, rgba(215, 215, 215, 0.03) 60%, rgba(254, 254, 254, 0.03) 60%, rgba(254, 254, 254, 0.03) 80%, rgba(112, 112, 112, 0.03) 80%, rgba(112, 112, 112, 0.03) 100%), linear-gradient(62deg, rgba(34, 34, 34, 0.03) 0%, rgba(34, 34, 34, 0.03) 20%, rgba(171, 171, 171, 0.03) 20%, rgba(171, 171, 171, 0.03) 40%, rgba(206, 206, 206, 0.03) 40%, rgba(206, 206, 206, 0.03) 60%, rgba(210, 210, 210, 0.03) 60%, rgba(210, 210, 210, 0.03) 80%, rgba(69, 69, 69, 0.03) 80%, rgba(69, 69, 69, 0.03) 100%), linear-gradient(314deg, rgba(235, 235, 235, 0.03) 0%, rgba(235, 235, 235, 0.03) 20%, rgba(254, 254, 254, 0.03) 20%, rgba(254, 254, 254, 0.03) 40%, rgba(178, 178, 178, 0.03) 40%, rgba(178, 178, 178, 0.03) 60%, rgba(211, 211, 211, 0.03) 60%, rgba(211, 211, 211, 0.03) 80%, rgba(73, 73, 73, 0.03) 80%, rgba(73, 73, 73, 0.03) 100%), linear-gradient(32deg, rgba(182, 182, 182, 0.01) 0%, rgba(182, 182, 182, 0.01) 12.5%, rgba(208, 208, 208, 0.01) 12.5%, rgba(208, 208, 208, 0.01) 25%, rgba(178, 178, 178, 0.01) 25%, rgba(178, 178, 178, 0.01) 37.5%, rgba(143, 143, 143, 0.01) 37.5%, rgba(143, 143, 143, 0.01) 50%, rgba(211, 211, 211, 0.01) 50%, rgba(211, 211, 211, 0.01) 62.5%, rgba(92, 92, 92, 0.01) 62.5%, rgba(92, 92, 92, 0.01) 75%, rgba(56, 56, 56, 0.01) 75%, rgba(56, 56, 56, 0.01) 87.5%, rgba(253, 253, 253, 0.01) 87.5%, rgba(253, 253, 253, 0.01) 100%), linear-gradient(247deg, rgba(103, 103, 103, 0.02) 0%, rgba(103, 103, 103, 0.02) 12.5%, rgba(240, 240, 240, 0.02) 12.5%, rgba(240, 240, 240, 0.02) 25%, rgba(18, 18, 18, 0.02) 25%, rgba(18, 18, 18, 0.02) 37.5%, rgba(38, 38, 38, 0.02) 37.5%, rgba(38, 38, 38, 0.02) 50%, rgba(246, 246, 246, 0.02) 50%, rgba(246, 246, 246, 0.02) 62.5%, rgba(9, 9, 9, 0.02) 62.5%, rgba(9, 9, 9, 0.02) 75%, rgba(167, 167, 167, 0.02) 75%, rgba(167, 167, 167, 0.02) 87.5%, rgba(86, 86, 86, 0.02) 87.5%, rgba(86, 86, 86, 0.02) 100%), linear-gradient(90deg, hsl(194, 0%, 10%), hsl(194, 0%, 10%));
+        color: white;
+    }
+
+    .sidenav {
+        background-image: linear-gradient(90deg, #FFF 0%, transparent 100%), linear-gradient(0deg, transparent 0%, #FFF 100%), linear-gradient(45deg, rgba(167, 167, 167, 0.07) 0%, rgba(167, 167, 167, 0.07) 64%, rgba(220, 220, 220, 0.07) 64%, rgba(220, 220, 220, 0.07) 100%), linear-gradient(0deg, rgba(7, 7, 7, 0.18) 0%, rgba(7, 7, 7, 0.18) 5%, rgba(7, 7, 7, 0.18) 5%, rgba(7, 7, 7, 0.18) 100%), linear-gradient(0deg, rgba(107, 107, 107, 0.15) 0%, rgba(107, 107, 107, 0.15) 49%, rgba(238, 238, 238, 0.15) 49%, rgba(238, 238, 238, 0.15) 100%), linear-gradient(45deg, rgba(177, 177, 177, 0.03) 0%, rgba(177, 177, 177, 0.03) 16%, rgba(196, 196, 196, 0.03) 16%, rgba(196, 196, 196, 0.03) 100%), linear-gradient(90deg, rgba(2, 2, 2, 0.2) 0%, rgba(2, 2, 2, 0.2) 80%, rgba(184, 184, 184, 0.2) 80%, rgba(184, 184, 184, 0.2) 100%), linear-gradient(45deg, rgba(49, 49, 49, 0.26) 0%, rgba(49, 49, 49, 0.26) 91%, rgba(47, 47, 47, 0.26) 91%, rgba(47, 47, 47, 0.26) 100%), linear-gradient(135deg, rgba(230, 230, 230, 0.27) 0%, rgba(230, 230, 230, 0.27) 85%, rgba(46, 46, 46, 0.27) 85%, rgba(46, 46, 46, 0.27) 100%), linear-gradient(90deg, rgba(41, 41, 41, 0.07) 0%, rgba(41, 41, 41, 0.07) 81%, rgba(16, 16, 16, 0.07) 81%, rgba(16, 16, 16, 0.07) 100%), linear-gradient(90deg, rgb(173, 173, 173), rgb(50, 50, 50));
+    }
+
+    .card {
+        background-image: linear-gradient(213deg, rgba(191, 191, 191, 0.02) 0%, rgba(191, 191, 191, 0.02) 16.667%, rgba(64, 64, 64, 0.02) 16.667%, rgba(64, 64, 64, 0.02) 33.334%, rgba(162, 162, 162, 0.02) 33.334%, rgba(162, 162, 162, 0.02) 50.001000000000005%, rgba(6, 6, 6, 0.02) 50.001%, rgba(6, 6, 6, 0.02) 66.668%, rgba(53, 53, 53, 0.02) 66.668%, rgba(53, 53, 53, 0.02) 83.33500000000001%, rgba(30, 30, 30, 0.02) 83.335%, rgba(30, 30, 30, 0.02) 100.002%), linear-gradient(245deg, rgba(187, 187, 187, 0.02) 0%, rgba(187, 187, 187, 0.02) 12.5%, rgba(231, 231, 231, 0.02) 12.5%, rgba(231, 231, 231, 0.02) 25%, rgba(123, 123, 123, 0.02) 25%, rgba(123, 123, 123, 0.02) 37.5%, rgba(229, 229, 229, 0.02) 37.5%, rgba(229, 229, 229, 0.02) 50%, rgba(205, 205, 205, 0.02) 50%, rgba(205, 205, 205, 0.02) 62.5%, rgba(21, 21, 21, 0.02) 62.5%, rgba(21, 21, 21, 0.02) 75%, rgba(222, 222, 222, 0.02) 75%, rgba(222, 222, 222, 0.02) 87.5%, rgba(19, 19, 19, 0.02) 87.5%, rgba(19, 19, 19, 0.02) 100%), linear-gradient(333deg, rgba(128, 128, 128, 0.02) 0%, rgba(128, 128, 128, 0.02) 25%, rgba(235, 235, 235, 0.02) 25%, rgba(235, 235, 235, 0.02) 50%, rgba(129, 129, 129, 0.02) 50%, rgba(129, 129, 129, 0.02) 75%, rgba(4, 4, 4, 0.02) 75%, rgba(4, 4, 4, 0.02) 100%), linear-gradient(154deg, rgba(241, 241, 241, 0.03) 0%, rgba(241, 241, 241, 0.03) 16.667%, rgba(248, 248, 248, 0.03) 16.667%, rgba(248, 248, 248, 0.03) 33.334%, rgba(21, 21, 21, 0.03) 33.334%, rgba(21, 21, 21, 0.03) 50.001000000000005%, rgba(94, 94, 94, 0.03) 50.001%, rgba(94, 94, 94, 0.03) 66.668%, rgba(250, 250, 250, 0.03) 66.668%, rgba(250, 250, 250, 0.03) 83.33500000000001%, rgba(5, 5, 5, 0.03) 83.335%, rgba(5, 5, 5, 0.03) 100.002%), linear-gradient(166deg, rgba(104, 104, 104, 0.01) 0%, rgba(104, 104, 104, 0.01) 12.5%, rgba(77, 77, 77, 0.01) 12.5%, rgba(77, 77, 77, 0.01) 25%, rgba(13, 13, 13, 0.01) 25%, rgba(13, 13, 13, 0.01) 37.5%, rgba(194, 194, 194, 0.01) 37.5%, rgba(194, 194, 194, 0.01) 50%, rgba(71, 71, 71, 0.01) 50%, rgba(71, 71, 71, 0.01) 62.5%, rgba(234, 234, 234, 0.01) 62.5%, rgba(234, 234, 234, 0.01) 75%, rgba(38, 38, 38, 0.01) 75%, rgba(38, 38, 38, 0.01) 87.5%, rgba(95, 95, 95, 0.01) 87.5%, rgba(95, 95, 95, 0.01) 100%), linear-gradient(98deg, rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 12.5%, rgba(126, 126, 126, 0.03) 12.5%, rgba(126, 126, 126, 0.03) 25%, rgba(145, 145, 145, 0.03) 25%, rgba(145, 145, 145, 0.03) 37.5%, rgba(70, 70, 70, 0.03) 37.5%, rgba(70, 70, 70, 0.03) 50%, rgba(174, 174, 174, 0.03) 50%, rgba(174, 174, 174, 0.03) 62.5%, rgba(77, 77, 77, 0.03) 62.5%, rgba(77, 77, 77, 0.03) 75%, rgba(123, 123, 123, 0.03) 75%, rgba(123, 123, 123, 0.03) 87.5%, rgba(36, 36, 36, 0.03) 87.5%, rgba(36, 36, 36, 0.03) 100%), linear-gradient(293deg, rgba(55, 55, 55, 0.03) 0%, rgba(55, 55, 55, 0.03) 20%, rgba(142, 142, 142, 0.03) 20%, rgba(142, 142, 142, 0.03) 40%, rgba(159, 159, 159, 0.03) 40%, rgba(159, 159, 159, 0.03) 60%, rgba(139, 139, 139, 0.03) 60%, rgba(139, 139, 139, 0.03) 80%, rgba(9, 9, 9, 0.03) 80%, rgba(9, 9, 9, 0.03) 100%), linear-gradient(26deg, rgba(116, 116, 116, 0.01) 0%, rgba(116, 116, 116, 0.01) 20%, rgba(179, 179, 179, 0.01) 20%, rgba(179, 179, 179, 0.01) 40%, rgba(5, 5, 5, 0.01) 40%, rgba(5, 5, 5, 0.01) 60%, rgba(212, 212, 212, 0.01) 60%, rgba(212, 212, 212, 0.01) 80%, rgba(246, 246, 246, 0.01) 80%, rgba(246, 246, 246, 0.01) 100%), linear-gradient(90deg, rgb(87, 178, 35), rgb(21, 37, 16));
     }
 </style>
 
-<body class="orange lighten-5">
-    <nav>
-        <div class="nav-wrapper center">
-            <a href="#" class="brand-logo " style="display: inline-block">Waffle</a>
-        </div>
-    </nav>
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper center">
+                <a href="#" class="brand-logo ">Waffle</a>
+            </div>
+        </nav>
+
+    </div>
     <div class="container">
 
         <ul id="slide-out" class="sidenav">
             <li>
                 <div class="user-view">
                     <div id="navfondo" class="background">
-                        <img style="filter: blur(2px)"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRkv5A_n5k8cvDJgMXmlEN-SX2YTxpc1rR5uB4XS4TCnch0FcqH">
+                        <img style="filter: blur(2px) contrast(200%) brightness(50%);"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjDlm90R32ThIkj97HsmkY3P6zzymiI6Pf7EJ6f7kEjMBRhudF">
                     </div>
                     <a><img src="waffle.png" width="25%"></a>
-                    <a> <span class="white-text name">Waffle | Presentaciones</span></a>
+                    <a> <span class="white-text name"><sapan class="waffle">Waffle</sapan> | Presentaciones</span></a>
                     <a><span class="white-text email">Tecnología de información y la
                             comunicación</span></a>
                 </div>
@@ -54,8 +87,38 @@
 
         </ul>
         <br>
-
-
+        <br>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card z-depth-3 hoverable">
+                    <div class="card-image">
+                        <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRsUZbZts0KJ8e8EHFUe4JpoZzPS6bIRPuBXpdRgcfm7tSGg28j">
+                        <span class="card-title">Introducción</span>
+                        <a href="introduccion.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                            <img src="waffle_2.png" alt="" srcset=""></a>
+                    </div>
+                    <div class="card-content">
+                        <p>Descripción de la clase</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card z-depth-3 hoverable">
+                    <div class="card-image">
+                        <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTa8Mt8JDzo_qESgMyW87XyGLxjCg1THFKq5yVVevAwHCiHWMdy">
+                        <span class="card-title">Como usar Classroom</span>
+                        <a href="http://marcoc76.github.io/guacamole/slides-classroom.html" target="_blank"
+                            class="btn-floating halfway-fab orange pulse">
+                            <img src="waffle_2.png" alt="" srcset=""></a>
+                    </div>
+                    <div class="card-content">
+                        <p>Uso del aula virtual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section id="Primer">
             <h3>Primer Periodo</h3>
@@ -67,9 +130,8 @@
                             <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRg_pY1ll_xUOIYejE98FyawqDn9FRMKWNDNrvpsIYp-9-YWmph">
                             <span class="card-title">Conceptos</span>
-                            <a href="conceptos.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                            <a href="conceptos.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset=""></a>
                         </div>
                         <div class="card-content">
                             <p>Información, datos y computación</p>
@@ -82,9 +144,8 @@
                             <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTWsdhyi7zpNcNLj6V7xX8R3D4AdvWeDtVrDrEbmnLsdWDDzx7B">
                             <span class="card-title">Internet</span>
-                            <a href="internet.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                            <a href="internet.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset=""></a>
                         </div>
                         <div class="card-content">
                             <p>Protocolos, redes y paquetes</p>
@@ -117,9 +178,8 @@
                             <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRW451JZc1YMtsb9I1awY7loiveAs4r75s9mkj-FsmEfri1cfpt">
                             <span class="card-title">Algoritmos</span>
-                            <a href="algoritmos.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                            <a href="algoritmos.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset=""></a>
                         </div>
                         <div class="card-content">
                             <p>Pasos, diagramas y pseudocodigo </p>
@@ -133,8 +193,8 @@
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSCIXedMuNlLVpNkUbAjEnRLyPTQyKWL676vnzDM2C2Z3gBqbiQ">
                             <span class="card-title">Fundamentos de programación</span>
                             <a href="fundamentosProg.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                                class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset=""></a>
                         </div>
                         <div class="card-content">
                             <p>Instrucciones, variables, condiciones y bucles</p>
@@ -155,9 +215,8 @@
                             <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPj5btLWwpazzSh6O6cdmJmKn-y-ppwrCs1eGgam9tOTUWHPYv">
                             <span class="card-title">Comunicación</span>
-                            <a href="comuicaOnline.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                            <a href="comuicaOnline.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset=""></a>
                         </div>
                         <div class="card-content">
                             <p>Uso de internet para comunicarnos</p>
@@ -170,9 +229,8 @@
                             <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSG72MAZaZmofTKV0wfVxgjTyd36yJ9hoBR4VV5WEZ6c7XG-jVw">
                             <span class="card-title">Redes Sociales</span>
-                            <a href="redesSociales.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                            <a href="redesSociales.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset=""></a>
                         </div>
                         <div class="card-content">
                             <p>Historia y uso</p>
@@ -185,9 +243,9 @@
                             <img style="filter: blur(2px) grayscale(50%) brightness(50%)"
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9yoJjzKZF-ktQTKGU8EFYOvZkRbYqfWA-AMX0PRwjngCWC9gV">
                             <span class="card-title">Seguridad Informatica</span>
-                            <a href="seguridad.html" target="_blank"
-                                class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i
-                                    class="material-icons">exit_to_app</i></a>
+                            <a href="seguridad.html" target="_blank" class="btn-floating halfway-fab orange pulse">
+                                <img src="waffle_2.png" alt="" srcset="">
+                            </a>
                         </div>
                         <div class="card-content">
                             <p>Prevención, protección y soluciones</p>
