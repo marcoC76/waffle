@@ -54,22 +54,24 @@
                 </center> -->
         </div>
         <!-- ------------------------3------------------------ -->
-        <div class="step " data-x="2288" data-y="337" data-rotate="13.333333333333334"  data-scale="1">
+        <div class="step " data-x="2288" data-y="337" data-rotate="13.333333333333334" data-scale="1">
             <h1 class="title">Programa</h1>
 
         </div>
         <!-- ------------------------4------------------------ -->
         <div class="step slide" data-x="2069" data-y="940" data-rotate="26.666666666666668" data-scale="1">
-            <span class="texto" style="font-size: 1.7em;">Instrucciones u órdenes que le indican a la computadora cómo se realiza una
+            <span class="texto" style="font-size: 1.7em;">Instrucciones u órdenes que le indican a la computadora cómo
+                se realiza una
                 tarea</span>
-                
+
             <center>
                 <img src="img/game-strategy.png" alt="" srcset="" width="35%">
             </center>
         </div>
         <!-- ------------------------5------------------------ -->
         <div id="problem" class="step slide" data-x="1716" data-y="1476" data-rotate="40" data-scale="1">
-            <span class="texto">Un programa es una descripción ejecutable de soluciones a problemas computacionales</span>
+            <span class="texto">Un programa es una descripción ejecutable de soluciones a problemas
+                computacionales</span>
             <br>
             <center>
                 <img src="img/web-design.png" alt="" srcset="" width="30%">
@@ -94,7 +96,7 @@
         <div class="step slide" data-x="79" data-y="2421" data-rotate="80" data-scale="1">
 
             <span class="texto">Indicar a la computadora qué es lo que tiene que hacer</span>
-           
+
             <center>
                 <img src="img/programar.gif" alt="" srcset="" width="75%">
             </center>
@@ -163,7 +165,8 @@
             </center>
         </div>
         <!-- ------------------------18------------------------ -->
-        <div id="const" class="step slide" data-x="-2708" data-y="-1818" data-rotate="213.33333333333334" data-scale="1">
+        <div id="const" class="step slide" data-x="-2708" data-y="-1818" data-rotate="213.33333333333334"
+            data-scale="1">
 
         </div>
         <!-- ------------------------19------------------------ -->
@@ -225,7 +228,8 @@
         </div>
         <!-- ------------------------27------------------------ -->
         <div class="step slide" data-x="6069" data-y="-8540" data-rotate="0" data-scale="1">
-                <a href="https://goo.gl/WZmeLo" target="_blank"><span class="texto" style="font-size:3em;">https://goo.gl/WZmeLo</span></a>
+            <a href="https://goo.gl/WZmeLo" target="_blank"><span class="texto"
+                    style="font-size:3em;">https://goo.gl/WZmeLo</span></a>
         </div>
         <!-- ------------------------27------------------------ -->
         <div class="step slide" data-x="6069" data-y="-8540" data-rotate-y="90" data-scale="1">
@@ -256,20 +260,25 @@
 
     <script>
         impress().init();
+    </script>
+    <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js', {
-                    scope: '/'
-                })
-                .then(function (registration) {
-                    console.log('Service Worker Registered');
-                });
+            console.log("El Navegador admite service workers");
+            window.addEventListener('load', function () {
+                //navigator.serviceWorker.register('sw_offlinepage.js')
+                //navigator.serviceWorker.register('sw_offlinesite.js')
+                navigator.serviceWorker.register('sw.js')
 
-            navigator.serviceWorker.ready.then(function (registration) {
-                console.log('Service Worker Ready');
+                    .then(function (registration) {
+                        console.log('Service worker registrado de modo correcto');
+                        console.log('Scope: ' + registration.scope)
+                    }, function (error) {
+                        console.log('El registro del Service worker ha fallado');
+                        console.log(error)
+                    });
             });
         }
     </script>
-
 
 </body>
 

@@ -39,7 +39,7 @@
         </div>
         <!-- ------------------------2------------------------ -->
         <div class="step press slide" data-x="-120000" data-y="-15000" data-scale="200" data-rotate="90">
-            <div class=" tech" style="font-size:2em; line-height: 1em;font-weight: bold; text-shadow: 2px 2px #ce0101;"> 
+            <div class=" tech" style="font-size:2em; line-height: 1em;font-weight: bold; text-shadow: 2px 2px #ce0101;">
                 La red de ordenadores más extensa que existe en la actualidad
             </div>
             <center>
@@ -193,8 +193,8 @@
             </center>
         </div>
         <!-- ------------------------11------------------------ -->
-        <div id="" style="text-align: center;" class="slide step press" data-x="1200000" data-y="-215000" data-scale="100"
-            data-rotate-y="-90" data-rotate="180">
+        <div id="" style="text-align: center;" class="slide step press" data-x="1200000" data-y="-215000"
+            data-scale="100" data-rotate-y="-90" data-rotate="180">
             <iframe src="quiz/internetQuiz.html" frameborder="0" width="100%" height="500vh"></iframe>
         </div>
         <!-- ------------------------12------------------------ -->
@@ -512,8 +512,7 @@
         </div>
         <!-- ------------------------50------------------------ -->
         <div class="step press slide" data-x="450000" data-y="500000" data-scale="100" data-rotate="90">
-            <span class="tech"
-                style="font-size:2em; line-height: 1em;font-weight: bold; text-shadow: 2px 2px #ce0101;">
+            <span class="tech" style="font-size:2em; line-height: 1em;font-weight: bold; text-shadow: 2px 2px #ce0101;">
                 Rastrean la Web catalogando, clasificando y organizando la información,
                 para después ofrecérsela
                 a los navegantes
@@ -720,20 +719,25 @@
 
     <script>
         impress().init();
+    </script>
+    <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js', {
-                    scope: '/'
-                })
-                .then(function (registration) {
-                    console.log('Service Worker Registered');
-                });
+            console.log("El Navegador admite service workers");
+            window.addEventListener('load', function () {
+                //navigator.serviceWorker.register('sw_offlinepage.js')
+                //navigator.serviceWorker.register('sw_offlinesite.js')
+                navigator.serviceWorker.register('sw.js')
 
-            navigator.serviceWorker.ready.then(function (registration) {
-                console.log('Service Worker Ready');
+                    .then(function (registration) {
+                        console.log('Service worker registrado de modo correcto');
+                        console.log('Scope: ' + registration.scope)
+                    }, function (error) {
+                        console.log('El registro del Service worker ha fallado');
+                        console.log(error)
+                    });
             });
         }
     </script>
-
 </body>
 
 </html>

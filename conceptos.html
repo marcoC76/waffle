@@ -390,7 +390,8 @@
         <!-- ------------------------43------------------------ -->
         <div class="step press" data-x="1150000" data-y="-1800000" data-scale="100" data-rotate="90">
             <div class="title tech">Hardware y Software</div>
-            <div class="subtitle tech" style="font-style: italic;">El hardware es el cuerpo de la computadora y el software el alma</div>
+            <div class="subtitle tech" style="font-style: italic;">El hardware es el cuerpo de la computadora y el
+                software el alma</div>
         </div>
         <!-- ------------------------44------------------------ -->
         <div id="hardware" class="step press slide" data-x="1150000" data-y="-1600000" data-scale="100" data-rotate="90"
@@ -421,7 +422,7 @@
         <div id="swyhw" class="step press " data-x="1300000" data-y="-2000000" data-scale="100" data-rotate="90"
             data-rotate-y="45">
 
-             <center>
+            <center>
                 <iframe src="https://h5p.org/h5p/embed/258266" width="1090" height="789" frameborder="0"
                     allowfullscreen="allowfullscreen"></iframe>
                 <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
@@ -447,7 +448,7 @@
                     <li>
                         Se conecta a todos los otros dispositivos de hardware
                     </li>
-                    
+
                 </ul>
             </span>
         </div>
@@ -556,7 +557,7 @@
             <span class="tech " style="line-height: 1em;font-weight: bold; text-shadow: 2px 2px #ce0101;">
                 <ul>
                     <li>
-                        Permiten la extracción o recuperación de información 
+                        Permiten la extracción o recuperación de información
                     </li>
                     <br>
                     <li>
@@ -642,11 +643,11 @@
                     </li>
                     <br>
                     <li style="text-align: left;">
-                        - Léxico: símbolos  
+                        - Léxico: símbolos
                     </li>
 
                     <li style="text-align: left;">
-                        - Sintaxis: reglas 
+                        - Sintaxis: reglas
                     </li>
                     </li>
                     <li style="text-align: left;">
@@ -704,7 +705,7 @@
         <!-- ------------------------68------------------------ -->
         <div id="" class="step press" data-x="3100000" data-y="-3200000" data-scale="100" data-rotate="70"
             data-rotate-y="45">
-              <center>
+            <center>
                 <iframe src="https://h5p.org/h5p/embed/256628" width="1090" height="691" frameborder="0"
                     allowfullscreen="allowfullscreen"></iframe>
                 <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
@@ -800,20 +801,25 @@
 
     <script>
         impress().init();
+    </script>
+    <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js', {
-                    scope: '/'
-                })
-                .then(function (registration) {
-                    console.log('Service Worker Registered');
-                });
+            console.log("El Navegador admite service workers");
+            window.addEventListener('load', function () {
+                //navigator.serviceWorker.register('sw_offlinepage.js')
+                //navigator.serviceWorker.register('sw_offlinesite.js')
+                navigator.serviceWorker.register('sw.js')
 
-            navigator.serviceWorker.ready.then(function (registration) {
-                console.log('Service Worker Ready');
+                    .then(function (registration) {
+                        console.log('Service worker registrado de modo correcto');
+                        console.log('Scope: ' + registration.scope)
+                    }, function (error) {
+                        console.log('El registro del Service worker ha fallado');
+                        console.log(error)
+                    });
             });
         }
     </script>
-
 </body>
 
 </html>

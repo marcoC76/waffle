@@ -213,20 +213,24 @@
             M.AutoInit();
 
         });
-
+    </script>
+    <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js', {
-                    scope: '/'
-                })
-                .then(function (registration) {
-                    console.log('Service Worker Registered');
-                });
+            console.log("El Navegador admite service workers");
+            window.addEventListener('load', function () {
+                //navigator.serviceWorker.register('sw_offlinepage.js')
+                //navigator.serviceWorker.register('sw_offlinesite.js')
+                navigator.serviceWorker.register('sw.js')
 
-            navigator.serviceWorker.ready.then(function (registration) {
-                console.log('Service Worker Ready');
+                    .then(function (registration) {
+                        console.log('Service worker registrado de modo correcto');
+                        console.log('Scope: ' + registration.scope)
+                    }, function (error) {
+                        console.log('El registro del Service worker ha fallado');
+                        console.log(error)
+                    });
             });
         }
-
     </script>
 </body>
 
