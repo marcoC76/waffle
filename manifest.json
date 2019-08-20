@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/waffle/index.html?utm_source=homescreen",
+  "start_url": "/waffle/?utm_source=homescreen",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
