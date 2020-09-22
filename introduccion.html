@@ -10,7 +10,34 @@
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans|Share+Tech+Mono" rel="stylesheet">
     <!-- <link href="css/3D-rotations.css" rel="stylesheet" /> -->
     <link rel="manifest" href="manifest.json">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
 
+    <style>
+        @font-face {
+            font-family: "Pixel";
+            src: url("/FreePixel.woff");
+        }
+
+        @font-face {
+            font-family: "Poke";
+            src: url("Pokemon-Classic.woff");
+        }
+        .tech{
+            font-family: "Pixel" !important;
+            color: white;
+        }
+        .nes-container{
+            background-color:rgba(27, 27, 27, 0.89);
+        }
+        body{
+            background-image: url(img/wallpapers.jpg);
+           
+        }
+        .link{
+            color:cadetblue !important;
+        }
+
+    </style>
 </head>
 
 <body class="impress-not-supported">
@@ -30,27 +57,29 @@
 
 
     <div id="impress">
-        <div id="Title" class="step press" data-x="-1000" data-y="-2000" data-scale="100">
+        <div id="Title" class="step press nes-container is-rounded" data-x="-1000" data-y="-2000" data-scale="100">
             <div class="title tech">Tecnologías de la información y la comunicación</div>
-            <div class="subtitle sans">
-                <strong>Estructura de la clase</strong>
+            <div class="subtitle sans" style=" color:white;">
+                Estructura de la clase
             </div>
         </div>
 
-        <div class="step press" data-x="-120000" data-y="-15000" data-scale="200" data-rotate="90">
+        <div class="step press nes-container is-rounded" data-x="-120000" data-y="-15000" data-scale="200"
+            data-rotate="90">
             <div class="title tech">Profesor</div>
-            <div class="subtitle tech" style="font-size: 1.5em">
-                <strong>Ing. Marco Antonio Pérez Fajardo</strong>
+            <div class="subtitle tech" style="font-size: 1.5em; color:white;">
+                Ing. Marco Antonio Pérez Fajardo
             </div>
         </div>
-        <div class="step press" data-x="90000" data-y="-15000" data-scale="1" data-rotate="90">
+        <div class="step press nes-container is-rounded" data-x="90000" data-y="-15000" data-scale="1" data-rotate="90">
             <div class="title tech">Blog</div>
             <br>
             <a class="subtitle" href="https://marcoc76.github.io">
                 <span class="tech" style="font-size: 2em;"> https://marcoc76.github.io</span>
             </a>
         </div>
-        <div class="step press" data-x="90000" data-y="-30000" data-z="-1000" data-scale="1" data-rotate="90">
+        <div class="step press nes-container is-rounded" data-x="90000" data-y="-30000" data-z="-1000" data-scale="1"
+            data-rotate="90">
             <div class="title tech">Objetivo</div>
             <div style="padding-top:50px"></div>
             <span class="tech" style="font-size: 1em;">Que el estudiante utilice las
@@ -58,47 +87,49 @@
                 <strong>información</strong> y generar aprendizajes en
                 <strong>red</strong>, sobre temas pertinentes con su realidad cotidiana.</span>
         </div>
-        <div class="step press" data-x="90000" data-y="-30000" data-z="-1000" data-scale="1" data-rotate-y="90"
-            data-rotate="90">
+        <div class="step press nes-container is-rounded" data-x="90000" data-y="-30000" data-z="-1000" data-scale="1"
+            data-rotate-y="90" data-rotate="90">
 
             <iframe src="quiz/introQuiz.html" frameborder="0" width="100%" height="500hv"></iframe>
 
         </div>
-        <div class="step press" data-x="90000" data-y="-35000" data-z="-100" data-scale="1" data-rotate="90">
+        <div class="step press nes-container is-rounded" data-x="90000" data-y="-35000" data-z="-100" data-scale="1"
+            data-rotate="90">
             <div class="title tech">Temario</div>
             <div style="padding-top:50px"></div>
             <ul class="tech" style="text-align:left;font-size: 1em;">
                 <li>
-                    <strong>Unidad 1</strong> - Datos e Información</li>
+                    Unidad 1 - Datos e Información</li>
                 <li>
-                    <strong>Unidad 2</strong> - Programación</li>
+                    Unidad 2 - Programación</li>
                 <li>
-                    <strong>Unidad 3</strong> - Comunicación</li>
+                    Unidad 3 - Comunicación</li>
                 <li>
-                    <strong>Unidad 4</strong> - Seguridad</li>
+                    Unidad 4 - Seguridad</li>
             </ul>
         </div>
-        <div class="step press" data-x="90000" data-y="-37500" data-z="-100" data-scale="1" data-rotate="90">
+        <div class="step press nes-container is-rounded" data-x="90000" data-y="-37500" data-z="-100" data-scale="1"
+            data-rotate="90">
             <div class="title tech">Evaluación</div>
             <div style="padding-top:50px"></div>
             <div class="subtitle tech" style="text-align:right;">Individual</div>
             <ul class="tech" style="text-align:right;font-size: 0.8em;">
                 <li>Cuestionarios previos y lecturas -
-                    <strong>20%</strong>
+                    20%
                 </li>
                 <li>Actividades -
-                    <strong>20%</strong> </li>
+                    20% </li>
             </ul>
             <div class="subtitle tech" style="text-align:left;">Clan</div>
             <ul class="tech" style="text-align:left;font-size: 0.8em;">
                 <li>
-                    <strong>20%</strong> - Bitácora</li>
+                    20% - Bitácora</li>
                 <li>
-                    <strong>40%</strong> - Proyecto</li>
-                
+                    40% - Proyecto</li>
+
             </ul>
         </div>
-        <div class="step press" data-x="180000" data-y="-1500" rotate="-90" data-scale="100">
+        <div class="step press nes-container is-rounded" data-x="180000" data-y="-1500" rotate="-90" data-scale="100">
             <div class="title tech">Cuestionarios previos</div>
             <br>
             <ul class="tech" style="font-size: 0.9em;">
@@ -107,7 +138,7 @@
                 <li>Respuestas parafraseadas o propias</li>
             </ul>
         </div>
-        <div class="step press" data-x="300000" data-y="-1500" rotate="-90" data-scale="100">
+        <div class="step press nes-container is-rounded" data-x="300000" data-y="-1500" rotate="-90" data-scale="100">
             <div class="title tech">Lecturas</div>
             <br>
             <ul class="tech" style="font-size: 1em;">
@@ -121,7 +152,8 @@
             <span class="tech" style="font-size: 1em;">Cursos en línea de apoyo para completar temas tratados en
                 clase</span>
         </div> -->
-        <div class="step press" data-x="250000" data-y="85000" rotate="-90" data-scale="100" data-rotate-y="120">
+        <div class="step press nes-container is-rounded" data-x="250000" data-y="85000" rotate="-90" data-scale="100"
+            data-rotate-y="120">
             <div class="title tech">Bitácora</div>
             <br>
             <ul class="tech" style="font-size: 0.9em;">
@@ -136,7 +168,8 @@
             </ul>
         </div>
 
-        <div class="step press" data-x="250000" data-y="185000" rotate="-90" data-scale="100" data-rotate-y="150">
+        <div class="step press nes-container is-rounded" data-x="250000" data-y="185000" rotate="-90" data-scale="100"
+            data-rotate-y="150">
             <div class="title tech">Proyecto</div>
             <br>
             <span class="tech" style="font-size: 1em;">Cada periodo se asigna un proyecto y el clan trabaja para
@@ -146,7 +179,7 @@
                 <strong>eduScrum</strong>
             </span> -->
         </div>
-        <div class="step press" data-x="400000" data-y="-1500" rotate="-90" data-scale="100">
+        <div class="step press nes-container is-rounded" data-x="400000" data-y="-1500" rotate="-90" data-scale="100">
             <div class="title tech">Actividades</div>
             <br>
             <ul class="tech" style="font-size: 0.9em;">
@@ -158,7 +191,8 @@
                     o síntesis de información</li>
             </ul>
         </div>
-        <div class="step press" data-x="400000" data-y="-1500" rotate="-90" data-rotate-y="90" data-scale="100">
+        <div class="step press " data-x="400000" data-y="-1500" rotate="-90" data-rotate-y="90"
+            data-scale="100">
             <!-- <iframe src="../cross/introCross.html" frameborder="0" width="100%" height="500hv"></iframe> -->
             <div class="wrapper">
                 <a class="cta" href="cross/introCross.html" target="_blank">
@@ -188,27 +222,46 @@
             <!-- <div class="subtitle tech">eduScrum</div> -->
             <br>
         </div>
-        <div class="step press" data-x="300000" data-y="-170000" data-rotate="180" data-scale="90">
+        <div class="step press nes-container is-rounded" data-x="300000" data-y="-170000" data-rotate="180"
+            data-scale="90">
             <div class="title tech">Apertura</div>
 
             <span class="tech" style="font-size: 0.7em;">Se realiza desde casa el cuestionario previo y la
                 lectura</span>
             <br>
             <span class="tech" style="font-size: 0.7em;">El clan se reúne, durante 5 minutos para
-                realizar un reporte sobre:</span> <br><br>
+                realizar un reporte sobre:</span>
+            <!--  <br><br>
             <ul class="tech" style="font-size: 0.8em;text-align: right">
                 <li>
-                    <strong>¿Qué trabajo he aportado al clan desde la última reunión?</strong>
+                    ¿Qué trabajo he aportado al clan desde la última reunión?
                 </li>
                 <li>
-                    <strong>¿Qué trabajo voy a hacer durante esta clase?</strong>
+                    ¿Qué trabajo voy a hacer durante esta clase?
                 </li>
                 <li>
-                    <strong>¿Qué impedimentos tengo para alcanzar mis objetivos?</strong>
+                    ¿Qué impedimentos tengo para alcanzar mis objetivos?
                 </li>
-            </ul>
+            </ul> -->
         </div>
-        <div class="step press" data-x="200000" data-y="-250000" data-rotate="60" data-scale="180">
+        <div class="step press nes-container is-rounded" data-x="300000" data-y="-270000" data-rotate="180"
+            data-scale="90">
+            <div class="title tech">Reunion</div>
+            <br>
+            <ul class="tech" style="font-size: 0.8em;text-align: right">
+                <li>
+                    ¿Qué trabajo he aportado al clan desde la última reunión?
+                </li>
+                <li>
+                    ¿Qué trabajo voy a hacer durante esta clase?
+                </li>
+                <li>
+                    ¿Qué impedimentos tengo para alcanzar mis objetivos?
+                </li>
+            </ul> 
+        </div>
+        <div class="step press nes-container is-rounded" data-x="200000" data-y="-250000" data-rotate="60"
+            data-scale="180">
             <div class="title tech">Desarrollo</div>
             <br>
             <ul class="tech" style="font-size: 0.9em;text-align: justify">
@@ -217,7 +270,8 @@
                 <li>El tiempo restante se utiliza para avanzar en el proyecto</li>
             </ul>
         </div>
-        <div class="step press" data-x="250000" data-y="-350000" data-rotate="-60" data-scale="90">
+        <div class="step press nes-container is-rounded" data-x="250000" data-y="-350000" data-rotate="-60"
+            data-scale="90">
             <div class="title tech">Cierre</div>
             <br>
             <ul class="tech" style="font-size: 1em;text-align: justify">
@@ -227,7 +281,8 @@
                 <li>Realizan una retrospectiva</li>
             </ul>
         </div>
-        <div class="step press" data-x="250000" data-y="-550000" data-rotate="90" data-scale="180">
+        <div class="step press nes-container is-rounded" data-x="250000" data-y="-550000" data-rotate="90"
+            data-scale="180">
             <div class="title tech">Organización en clanes</div>
             <br>
             <ul class="tech" style="font-size: 1em;text-align: justify">
@@ -236,7 +291,8 @@
                 <li>Cada integrante tiene un papel que cumplir</li>
             </ul>
         </div>
-        <div class="step press" data-x="350000" data-y="-550000" data-rotate="90" data-rotate-y="90" data-scale="180">
+        <div class="step press nes-container is-rounded" data-x="350000" data-y="-550000" data-rotate="90"
+            data-rotate-y="90" data-scale="180">
             <div class="title tech">Master</div>
             <br>
             <ul class="tech" style="font-size:1em;text-align: center">
@@ -244,7 +300,8 @@
                 <li>Se encarga de organizar las reuniones</li>
             </ul>
         </div>
-        <div class="step press" data-x="450000" data-y="-550000" data-rotate="90" data-rotate-y="180" data-scale="180">
+        <div class="step press nes-container is-rounded" data-x="450000" data-y="-550000" data-rotate="90"
+            data-rotate-y="180" data-scale="180">
             <div class="title tech">Cronista</div>
             <br>
             <ul class="tech" style="font-size: 1em;text-align: center">
@@ -262,46 +319,48 @@
                 <li>El clan cambia de fotógrafo cada semana</li>
             </ul>
         </div> -->
-        <div class="step press" data-x="750000" data-y="-550000" data-rotate="90" data-rotate-y="180" data-scale="180">
+        <div class="step press nes-container is-rounded" data-x="750000" data-y="-550000" data-rotate="90"
+            data-rotate-y="180" data-scale="180">
             <div class="title tech">Proveedor</div>
             <br>
             <ul class="tech" style="font-size:0.9em;text-align: center">
                 <li>Se encarga de avisar de plazos próximos a cumplirse</li>
                 <li>También avisa sobre publicaciones importantes en le aula virtual</li>
-              <!--   <li>Llevará las actividades impresas para desarrollarse en clase</li> -->
+                <!--   <li>Llevará las actividades impresas para desarrollarse en clase</li> -->
                 <li>El clan cambia de proveedor cada semana</li>
             </ul>
         </div>
-        <div class="step press" data-x="900000" data-y="-750000" data-rotate="90" data-rotate-y="180" data-scale="180">
+        <div class="step press nes-container is-rounded" data-x="900000" data-y="-750000" data-rotate="90"
+            data-rotate-y="180" data-scale="180">
             <div class="title tech">Plataformas</div>
             <br>
             <ul class="tech" style="font-size: 1em;text-align: left">
                 <li>Google ClassRoom</li>
-                <a class="tech">
+                <!-- <a class="tech">
                     <sapan style="font-size: 1.2em">https://classroom.google.com</span>
-                </a>
-                <li>Khan academy
+                </a> -->
+               <!--  <li>Khan academy
                     <a class="tech">
-                        <sapan style="font-size: 1.2em">https://www.khanacademy.org/</span>
+                        <span style="font-size: 1.2em">https://www.khanacademy.org/</span>
                     </a>
-                </li>
-                <li>GoConqr
-                    <a class="tech">
+                </li> -->
+                <li>GoConqr:
+                    <a class="tech" href="https://www.goconqr.com/es/">
                         <span style="font-size: 1.2em">https://www.goconqr.com/es/</span>
                     </a>
                 </li>
-                <li>PiktoChart
-                    <a class="tech">
-                        <span style="font-size: 1.2em">https://piktochart.com/</span>
+                <li>Canva:
+                    <a class="tech" href="https://www.canva.com/es_mx/">
+                        <span style="font-size: 1.2em">https://www.canva.com/es_mx/</span>
                     </a>
                 </li>
-                <li>CLipChamp
-                    <a class="tech">
+                <li>CLipChamp:
+                    <a class="tech" href="https://clipchamp.com/">
                         <span style="font-size: 1.2em">https://clipchamp.com/</span>
                     </a>
                 </li>
-                <li>code org
-                    <a class="tech">
+                <li>code.org:
+                    <a class="tech" href="https://code.org">
                         <span style="font-size: 1.2em">https://code.org</span>
                     </a>
                 </li>

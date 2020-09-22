@@ -1,3 +1,5 @@
+
+
 body {
     /* min-height: 740px; */
    /*  background-image: url("../img/p3.jpg");
@@ -73,7 +75,7 @@ strong{
     color:#2b2626;
 }
 a {
-    color: #020202 !important;
+   /*  color: #020202 !important; */
     font-weight: 600 !important;
 }
 
