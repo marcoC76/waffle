@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans|Share+Tech+Mono" rel="stylesheet">
     <!-- <link href="css/3D-rotations.css" rel="stylesheet" /> -->
     <link rel="manifest" href="manifest.json">
+    <link href="css/classic-slides.css" rel="stylesheet" />
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
-
     <style>
         @font-face {
             font-family: "Pixel";
@@ -56,7 +56,7 @@
     </div>
 
 
-    <div id="impress">
+    <div id="impress" data-transition-duration="1000" data-autoplay="">
         <div id="Title" class="step press nes-container is-rounded" data-x="-1000" data-y="-2000" data-scale="100">
             <div class="title tech">Tecnologías de la información y la comunicación</div>
             <div class="subtitle sans" style=" color:white;">
@@ -83,9 +83,9 @@
             <div class="title tech">Objetivo</div>
             <div style="padding-top:50px"></div>
             <span class="tech" style="font-size: 1em;">Que el estudiante utilice las
-                <strong>TICs</strong> como herramientas para obtener
-                <strong>información</strong> y generar aprendizajes en
-                <strong>red</strong>, sobre temas pertinentes con su realidad cotidiana.</span>
+                TICs como herramientas para obtener
+                información y generar aprendizajes en
+                red, sobre temas pertinentes con su realidad cotidiana.</span>
         </div>
         <div class="step press nes-container is-rounded" data-x="90000" data-y="-30000" data-z="-1000" data-scale="1"
             data-rotate-y="90" data-rotate="90">
@@ -416,7 +416,12 @@
             </center>
         </div> -->
     </div>
-
+    
+    <div id="impress-toolbar"></div>
+    <div class="impress-progressbar">
+        <div></div>
+    </div>
+    <div class="impress-progress"></div>
     <!-- aqui terminan los slides -->
     <!-- <div id="impress-toolbar"></div> -->
     <div id="impress-help"></div>
