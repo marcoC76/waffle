@@ -32,6 +32,7 @@ Introducción a la Inteligencia Artificial
 
 # Introducción
 
+<!--  diapositiva 1 -->
 
 
 ---
@@ -43,10 +44,45 @@ Capacidad mental de **adquirir**, **procesar**, **comprender**, **aplicar** y **
 
 ---
 
+![bg cover sepia:1.0 brightness:0.5 contrast:200%](img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg)
+# **La neurona**
+
+
+
+---
+
+![bg fit left:33%](img/ilustracion-que-muestra-los-4-tipos-de-neuronas-de-izquierda-a-derecha-unipolar-bipolar-multipolar-y-piramidal-g157be.jpg)
+
+
+Axón manda señales electricas a través de las dendritas a otras neuronas, creando sinapsis
+
+
+
+
+---
+
+![bg cover left:33%](img/neuronas-161445.jpg)
+
+
+El cerebro contiene 10 mil millones de neuronas
+Cada neurona envia 1000 impulsos por segundo
+Cada neurona esta conectada a miles de otras
+
+
+---
+
+![bg cover left:33%](img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg)
+
+
+## 1000 veces mas sinapsis que la mayor IA actual... por ahora
+
+
+---
+
 ![bg cover left:50%](img/3D_Animation_Style_Generate_an_image_representing_the_concept_0.jpg)
 #  ¿Qué es la Inteligencia Artificial?
 
-Algoritmos y modelos permiten máquinas **analizar** datos, **aprender** y **decidir**.
+Algoritmos y modelos permiten a la máquinas **analizar** datos, **aprender** y **decidir**.
 
 ---
 
@@ -57,6 +93,50 @@ Máquina que **aprende**, resuelve problemas y reconoce patrones en datos.
 
 ---
 
+![bg cover brightness:0.5 contrast:200%](img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg)
+# **Neurona artificial**
+
+
+
+---
+
+![bg fit ](img/neuroIA.png)
+
+
+
+
+
+---
+
+![bg fit right:35%](img/uniNeuroIA.png)
+# Cerebro artificial más sencillo
+
+
+
+---
+
+![bg fit right:35%](img/)
+# Cerebros artificiales 
+
+
+
+---
+
+![bg fit right:35%](img/)
+# Perdida 
+
+
+
+
+---
+
+![bg fit right:35%](img/)
+# Machine Learning 
+
+
+
+---
+
 ![bg cover left:35%](img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg)
 # Aplicaciones de la IA en la Industria
 
@@ -64,19 +144,63 @@ Automatización de procesos, la optimización de la cadena de suministro y la tr
 
 ---
 
+![bg cover right:35%](img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg)
 # Aplicaciones de la IA en la Educación
 
-Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
+Personaliza la enseñanza, adaptándola a las necesidades específicas de cada estudiante
 
 ---
 
+![bg cover left:35%](img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg)
 # Aplicaciones de la IA en la Medicina
 
+Asiste en el diagnóstico médico y mejora la precisión en el tratamiento de enfermedades
+
+---
+
+![bg cover left:50%](img/Absolute_Reality_v16_Applications_of_the_IA_in_the_actual_life_0.jpg)
+# Ejemplos de IA en la Vida Cotidiana
+
+
+
+
+---
+
+![bg cover left:50%](img/Absolute_Reality_v16_Create_an_image_illustrating_a_virtual_as_0.jpg)
+# Asistentes Virtuales
+
+Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
+
+
+---
+
+![bg cover left:30%](img/Absolute_Reality_v16_Generate_an_image_depicting_an_online_str_0.jpg)
+
+# Recomendaciones en Línea
+
 Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
 
 ---
 
-# Ejemplos de IA en la Vida Cotidiana
+# Motores de Búsqueda
+
+Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
+
+---
+
+# Traducción de Idiomas
+
+Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
+
+---
+
+# Detección de Fraudes
+
+Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
+
+---
+
+# Autos Autónomos
 
 Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
 
