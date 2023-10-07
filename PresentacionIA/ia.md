@@ -202,7 +202,7 @@ Asiste en el diagnóstico médico y mejora la precisión en el tratamiento de en
 
 ![bg cover left:50%](img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg)
 
-# Autos Autónomos
+# Veiculos Autónomos
 
 ---
 
@@ -233,7 +233,7 @@ Garantizar rendición de cuentas y protección
 # Ejemplos de Desafíos Éticos en IA
 
 ---
-![bg cover right:50%](img/desplazamiento%20labora.jpg)
+![bg cover right:40%](img/desplazamiento%20labora.jpg)
 ## Desplazamiento laboral
 
 ---
@@ -266,7 +266,7 @@ Garantizar rendición de cuentas y protección
 ## Transparencia
 
 ---
-![bg cover right:50%](img/discrim.jpg)
+![bg cover right:40%](img/discrim.jpg)
 
 ## Equidad y no discriminación
 
