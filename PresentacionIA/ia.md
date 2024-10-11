@@ -126,6 +126,129 @@ Máquina que **aprende**, resuelve problemas y reconoce patrones en datos.
 
 ---
 
+![bg cover right:40%](img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg)
+
+# Tipos de IA
+
+De la ficción a la realidad
+
+---
+
+![bg cover left:40%](img/agi.jpg)
+
+# Inteligencia Artificial General (AGI)
+
+IA capaz de aprender y realizar cualquier tarea intelectual humana
+
+---
+
+![bg cover right:40%](img/supint.jpg)
+
+# Superinteligencia
+
+Supera la inteligencia humana en todas las áreas
+
+---
+
+![bg cover left:40%](img/singu.jpg)
+
+# Singularidad
+
+Punto donde el desarrollo tecnológico escapa a nuestra comprensión
+
+---
+
+![bg cover right:40%](img/modeloslen.jpg)
+
+# Modelos de Lenguaje
+
+---
+
+![bg cover left:33%](img/llm.jpg)
+
+## LLM (Large Language Models)
+
+ChatGPT, Gemini, modelos masivos con capacidades complejas
+
+---
+
+![bg cover right:33%](img/sml.jpg)
+
+## SLM (Small Language Models)
+
+Gemini Nano, modelos compactos para dispositivos limitados
+
+---
+
+![bg cover brightness:0.5](img/herrami.jpg)
+
+# Herramientas de IA Actuales
+
+---
+
+![bg cover left:50%](img/chatbots.jpg)
+
+## Chatbots
+- ChatGPT
+- Bard
+- Gemini
+- Llama
+
+---
+
+![bg cover right:50%](img/gencont.jpg)
+
+## Generadores de Contenido
+- Midjourney
+- DALL-E 2
+- Adobe Firefly
+- Runway
+
+---
+
+![bg cover left:50%](img/DreamShaper_v7_AI_coding_assistants_helping_developers_0.jpg)
+
+## Asistentes de Desarrollo
+- GitHub Copilot
+- Tabnine
+- Amazon CodeWhisperer
+
+---
+
+![bg cover brightness:0.5](img/DreamShaper_v7_Best_practices_for_using_AI_tools_0.jpg)
+
+# Consejos para Usar IA
+
+---
+
+![bg cover right:40%](img/DreamShaper_v7_Being_precise_and_specific_with_AI_instructi_0.jpg)
+
+## Precisión
+Instrucciones claras y específicas
+
+---
+
+![bg cover left:40%](img/DreamShaper_v7_Providing_context_to_AI_systems_0.jpg)
+
+## Contexto
+Información de fondo relevante
+
+---
+
+![bg cover right:40%](img/DreamShaper_v7_Assigning_roles_to_AI_systems_0.jpg)
+
+## Roles
+Asignar roles específicos a la IA
+
+---
+
+![bg cover left:40%](img/DreamShaper_v7_Using_examples_with_AI_systems_0.jpg)
+
+## Ejemplos
+Mostrar el formato deseado
+
+---
+
 # Perdida 
 
 La medida de error en predicciones respecto a valores reales
