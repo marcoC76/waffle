@@ -206,7 +206,7 @@ Gemini Nano, modelos compactos para dispositivos limitados
 
 ---
 
-![bg cover left:50%](img/DreamShaper_v7_AI_coding_assistants_helping_developers_0.jpg)
+![bg cover left:50%](img/desarrollo.jpg)
 
 ## Asistentes de Desarrollo
 - GitHub Copilot
@@ -215,34 +215,34 @@ Gemini Nano, modelos compactos para dispositivos limitados
 
 ---
 
-![bg cover brightness:0.5](img/DreamShaper_v7_Best_practices_for_using_AI_tools_0.jpg)
+![bg cover brightness:0.5](img/consejos.jpg)
 
 # Consejos para Usar IA
 
 ---
 
-![bg cover right:40%](img/DreamShaper_v7_Being_precise_and_specific_with_AI_instructi_0.jpg)
+![bg cover right:40%](img/precision.jpg)
 
 ## Precisión
 Instrucciones claras y específicas
 
 ---
 
-![bg cover left:40%](img/DreamShaper_v7_Providing_context_to_AI_systems_0.jpg)
+![bg cover left:40%](img/contexto.jpg)
 
 ## Contexto
 Información de fondo relevante
 
 ---
 
-![bg cover right:40%](img/DreamShaper_v7_Assigning_roles_to_AI_systems_0.jpg)
+![bg cover right:40%](img/roles.jpg)
 
 ## Roles
 Asignar roles específicos a la IA
 
 ---
 
-![bg cover left:40%](img/DreamShaper_v7_Using_examples_with_AI_systems_0.jpg)
+![bg cover left:40%](img/ejemplo.jpg)
 
 ## Ejemplos
 Mostrar el formato deseado
