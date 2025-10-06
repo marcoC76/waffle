@@ -139,11 +139,11 @@ style: |
 
 ---
 
-# Comunicación sincróna y asincróna
+Comunicación sincróna y asincróna
 
 ---
 
-# Sincróna
+## Sincróna
 
 ---
 
@@ -153,7 +153,7 @@ Los usuarios coinciden en el tiempo y se comunican entre sí
 
 ---
 
-# Asincróna
+## Asincróna
 
 ---
 
@@ -403,7 +403,7 @@ Es habitual acortar las palabras, suprimir ciertas vocales o cambiar algunas let
 
 ---
 
-![](img/orto.jpeg)
+![bg h:100%](img/orto.jpeg)
 
 ---
 
@@ -448,7 +448,7 @@ Se utilizan emoticonos, emojis o stikers para expresar sentimientos
 
 ---
 
-![bg](img/juegos-online-2.gif)
+![bg h:100%](img/juegos-online-2.gif)
 
 ---
 
@@ -456,11 +456,15 @@ Se utilizan emoticonos, emojis o stikers para expresar sentimientos
 
 ---
 
-![bg](img/streming.jpg)
+![bg h:100%](img/streming.jpg)
 
 ---
 
 # Los emoticones
+
+---
+
+![bg h:100%](img/emoji-17-visual-layout-sheet-september-2025.jpg)
 
 ---
 
