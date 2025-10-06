@@ -149,7 +149,7 @@ style: |
 
 Los usuarios coinciden en el tiempo y se comunican entre sí
 
-![width:100%](img/sincrona.jpg)
+![width:700px](img/sincrona.jpg)
 
 ---
 
@@ -159,7 +159,7 @@ Los usuarios coinciden en el tiempo y se comunican entre sí
 
 Los participantes utilizan el sistema de comunicación en tiempos diferentes
 
-![width:90%](img/asincrona.png)
+![width:700px](img/asincrona.png)
 
 ---
 
@@ -183,19 +183,19 @@ email, del inglés, "electronic mail"
 
 ### Archivos de video
 
-![width:80%](img/video.png)
+![width:500px](img/video.png)
 
 ---
 
 ### Archivos de audio
 
-![width:80%](img/audio-file.png)
+![width:500px](img/audio-file.png)
 
 ---
 
 ### Imágenes y fotografías
 
-![width:80%](img/pictures.png)
+![width:500px](img/pictures.png)
 
 ---
 
@@ -205,13 +205,13 @@ email, del inglés, "electronic mail"
 
 ## Rápido
 
-![width:65%](img/fast.gif)
+![width:700px](img/fast.gif)
 
 ---
 
 ## Fiable
 
-![width:65%](img/lost.gif)
+![width:700px](img/lost.gif)
 
 ---
 
@@ -225,7 +225,7 @@ email, del inglés, "electronic mail"
 
 <br>
 
-![width:100%](img/tenor.gif)
+![width:700px](img/tenor.gif)
 
 ---
 
@@ -285,7 +285,7 @@ email, del inglés, "electronic mail"
 ---
 
 # Yopmail
-![width:40%](img/yopmail-logo.png)
+![width:400px](img/yopmail-logo.png)
 <br>
 [http://www.yopmail.com/es/](http://www.yopmail.com/es/)
 
@@ -297,15 +297,7 @@ email, del inglés, "electronic mail"
 
 La gente comparte su opinión, experiencias y dudas sobre cualquier tema
 
-![original](img/foro.png)
-
----
-
-<div class="wrapper">
-    <a class="cta" href="cross/comunicaCross.html" target="_blank">
-        <span class="span" style="color:black; font-size: 1.5em;">Crusigrama</span>
-    </a>
-</div>
+![width:300px](img/foro.png)
 
 ---
 
@@ -408,7 +400,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-![width:100%](img/orto.jpeg)
+![](img/orto.jpeg)
 
 ---
 
@@ -418,13 +410,13 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ### Emoticonos animados
 
-![width:60%](img/surprise.gif)
+![width:500px](img/surprise.gif)
 
 ---
 
 ### Stickers
 
-![width:60%](img/stiker.png)
+![width:500px](img/stiker.png)
 
 ---
 
@@ -443,7 +435,8 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 # Descarga de archivos
 <br>
-![width:40%](img/DEXhaI2XcAA7Pyq.jpg)
+
+![width:300px](img/DEXhaI2XcAA7Pyq.jpg)
 
 ---
 
@@ -451,7 +444,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-![width:80%](img/juegos-online-2.gif)
+![bg](img/juegos-online-2.gif)
 
 ---
 
@@ -459,7 +452,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-![width:90%](img/streming.jpg)
+![bg](img/streming.jpg)
 
 ---
 
@@ -487,10 +480,25 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ## Los emojis pueden representar eso y muchas cosas más: objetos, animales, deportes…
 
+---
+
+## Maniculas medievales
+
 ![width:70%](img/1531231560_703470_1531239910_sumario_normal.jpg)
 
 ---
 
-<iframe src="quiz/comunicaQuiz.html" frameborder="0" width="100%" height="500vh"></iframe>
+![width:70%](https://medievalbooks.nl/wp-content/uploads/2015/03/paris_bnf_fr_12584.jpg)
+
 
 ---
+
+![width:900px](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf59Sm3ATSC7UT-rbM8u26nBbMSRioyYcLtw&s)
+
+---
+
+![width:70%](https://travelbetweenthepages.com/wp-content/uploads/2022/08/manicule.jpg)
+
+---
+
+![width:70%](https://img.atlasobscura.com/lf0hmot2ks89UE3Yh3_XhvviUp2tEW329ZWZXWfteuk/rs:fill:12000:12000/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL2Fzc2V0/cy9iMDY5ZTkyZmMw/ZTcxNGRlZTBfaW1n/XzU5NTguanBn.jpg)
