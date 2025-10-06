@@ -73,7 +73,7 @@ style: |
   
   h3 {
     font-size: 2em;
-    color: #81c784;
+    color:#81c5c7;
     margin-top: 1em;
     margin-bottom: 0.8em;
     font-weight: 500;
@@ -199,7 +199,7 @@ email, del inglés, "electronic mail"
 
 ---
 
-## Caracteristicas
+# Caracteristicas
 
 ---
 
@@ -233,60 +233,63 @@ email, del inglés, "electronic mail"
 
 ---
 
-# Lectura del correo
+### Lectura del correo
 
 ---
 
-# Identificar el asunto
+### Identificar el asunto
 
 ---
 
-# Identificarse como emisor
+### Identificarse como emisor
 
 ---
 
-# Cuidar la expresión
+### Cuidar la expresión
 
 ---
 
-# Concisión
+### Concisión
 
 ---
 
-# Evitar los envíos masivos de mensajes
+### Evitar los envíos masivos de mensajes
 
 ---
 
-# Controlar el tamaño de los mensajes
+### Controlar el tamaño de los mensajes
 
 ---
 
-# Usar en la respuesta parte del texto recibido
+### Usar en la respuesta parte del texto recibido
 
 ---
 
-# Mas usados:
+## Mas usados:
 
 ---
 
-# Gmail
+### Gmail
 ![width:60%](img/2000px-New_Logo_Gmail.svg_.png)
 
 ---
 
-# Outlook
+### Outlook
 ![width:40%](img/outlook.svg)
 
 ---
 
-# Yahoo! Mail
+### Yahoo! Mail
 ![width:40%](img/yahoo.svg)
 
 ---
 
-# Yopmail
+### Yopmail
+
 ![width:400px](img/yopmail-logo.png)
+
 <br>
+
 [http://www.yopmail.com/es/](http://www.yopmail.com/es/)
 
 ---
@@ -350,43 +353,43 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-# Mensajes instantáneos
+### Mensajes instantáneos
 
 ![width:30%](img/customer-review.svg)
 
 ---
 
-# Salón de Chat
+### Salón de Chat
 
 ![width:40%](img/group.svg)
 
 ---
 
-# Enlaces Web
+### Enlaces Web
 
 ![width:40%](img/link.svg)
 
 ---
 
-# Video
+### Video
 
 ![width:40%](img/video-play.svg)
 
 ---
 
-# Imágenes
+### Imágenes
 
 ![width:40%](img/image.svg)
 
 ---
 
-# Audio
+### Audio
 
 ![width:40%](img/speaker.svg)
 
 ---
 
-# Archivos
+### Archivos
 
 ![width:40%](img/attach.svg)
 
@@ -396,7 +399,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-## Es habitual acortar las palabras, suprimir ciertas vocales o cambiar algunas letras por otras
+Es habitual acortar las palabras, suprimir ciertas vocales o cambiar algunas letras por otras
 
 ---
 
@@ -404,7 +407,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-## Se utilizan emoticonos, emojis o stikers para expresar sentimientos
+Se utilizan emoticonos, emojis o stikers para expresar sentimientos
 
 ---
 
@@ -420,7 +423,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-## Esto supone una merma evidente en la calidad del lenguaje
+**Esto supone una merma evidente en la calidad del lenguaje**
 
 ---
 
@@ -428,19 +431,20 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-# Videoconferencia
+### Videoconferencia
+
 ![width:60%](img/d6dd2aa34079b582abd2819d2a0b3dd4.png)
 
 ---
 
-# Descarga de archivos
+### Descarga de archivos
 <br>
 
 ![width:300px](img/DEXhaI2XcAA7Pyq.jpg)
 
 ---
 
-# Juegos Online
+### Juegos Online
 
 ---
 
@@ -448,7 +452,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-# Streaming
+### Streaming
 
 ---
 
@@ -456,13 +460,14 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-## Los emoticones
+# Los emoticones
 
 ---
 
-## Formados por caracteres del teclado de la computadora
+## :-)
 
-<div style="font-size: 8em; text-align: center; margin: 0.5em 0;">:-)</div>
+Formados por caracteres del teclado de la computadora
+
 
 ---
 
@@ -478,7 +483,7 @@ Acceso a los mensajes enviados sin ningún tipo de retardo
 
 ---
 
-## Los emojis pueden representar eso y muchas cosas más: objetos, animales, deportes…
+Los emojis pueden representar eso y muchas cosas más: objetos, animales, deportes…
 
 ---
 
