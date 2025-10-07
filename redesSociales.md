@@ -317,6 +317,13 @@ El costo de las conversaciones aplica solo para los hombres.
 
 ![width:700px](img/shut_up_and_take_my_money_by_lolikips-d34yx16.png)
 
+
+---
+
+Bots femeninos.
+
+![width:90%](img/bot.jpg)
+
 ---
 
 ![width:1200px](img/ashleyhacked.jpg)
