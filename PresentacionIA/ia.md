@@ -24,7 +24,7 @@ backgroundImage: url('')
 
 ![bg cover left](img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg)
 
-# **La Magia de la IA**
+# La Magia de la IA
 
 Introducción a la Inteligencia Artificial
 
@@ -126,6 +126,67 @@ Máquina que **aprende**, resuelve problemas y reconoce patrones en datos.
 
 ---
 
+# Perdida 
+
+La medida de error en predicciones respecto a valores reales
+
+---
+
+![bg cover right:35%](img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg)
+
+# Machine Learning 
+
+Crea sistemas que reconocen patrones, toman decisiones y mejoran con datos
+
+---
+
+# Historia y Evolución de la IA
+
+---
+
+![bg cover right:40%](img/pioneros.png)
+
+De los primeros conceptos a la revolución actual
+
+<!-- El Inicio de la Teoría (1950s)
+- Alan Turing (1950): Publica una propuesta sugiriendo que las computadoras podrían alcanzar el pensamiento a nivel humano.
+- El Test de Turing: Propuesto por Turing (originalmente llamado "Juego de la Imitación"), establece que una máquina es inteligente si una persona que conversa con ella a través de texto no puede distinguir si habla con un humano o con la máquina.
+- John McCarthy (1956): Crea el término "Inteligencia Artificial" y promueve su investigación científica, creando también el lenguaje de programación LISP. -->
+
+---
+
+# Los Inviernos de la IA
+
+---
+
+![bg cover left:40%](img/invierno.png)
+
+1970 - 2000: Altibajos en la investigación
+
+<!-- - Periodos en los que los gobiernos retiraron el financiamiento a la IA tras el informe Light Hill, que concluyó que la IA era "más promesa que realidad".
+- La teoría existía, pero el hardware (poder de cómputo) era limitado.
+- Redes Neuronales Profundas (1980s): Jeffrey Hinton introduce el concepto de redes neuronales multicapa.
+- Problema del desvanecimiento de gradiente (pérdida de información) que se resolvería alrededor de 2006. -->
+
+---
+
+
+
+# La Revolución de la IA Generativa
+
+---
+
+![bg cover right:40%](img/atencion.png)
+
+2017 - 2022: La nueva era de la IA
+
+<!-- - Arquitectura Transformer (2017): Investigadores de Google publican "Attention Is All You Need".
+- Mecanismo de atención: Asigna un peso o importancia a cada palabra en el contexto.
+- OpenAI: Fundada por Elon Musk y Sam Altman, crea GPT-1, GPT-2 y GPT-3.
+- Lanzamiento de ChatGPT (Noviembre 2022): Basado en GPT 3.5, alcanzó 1 millón de usuarios en 5 días y 100 millones en menos de un mes. -->
+
+---
+
 ![bg cover right:40%](img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg)
 
 # Tipos de IA
@@ -190,9 +251,10 @@ Gemini Nano, modelos compactos para dispositivos limitados
 
 ## Chatbots
 - ChatGPT
-- Bard
 - Gemini
-- Llama
+- Meta
+- Qwen
+- Claude
 
 ---
 
@@ -203,6 +265,14 @@ Gemini Nano, modelos compactos para dispositivos limitados
 - DALL-E 2
 - Adobe Firefly
 - Runway
+- Nanobanana
+- Sora2
+
+---
+
+## Generadores de musica
+
+- Suno
 
 ---
 
@@ -211,13 +281,79 @@ Gemini Nano, modelos compactos para dispositivos limitados
 ## Asistentes de Desarrollo
 - GitHub Copilot
 - Tabnine
-- Amazon CodeWhisperer
+- Windsurf
+- Cursor
+
+---
+
+## Investigación
+
+- Perplexity
+- NotebookLM
+
+---
+
+# Prompt Engineering
+
+---
+
+![bg cover right:40%](img/prompt.png)
+
+## La Habilidad del Siglo XXI
+
+<!-- - La IA es como un "adolescente rebelde": a veces hace caso, a veces no, y es impredecible.
+- El reto no es usar la IA, sino dominarla para que haga exactamente lo que el usuario quiere.
+- El Prompt Engineering es el conjunto de técnicas para escribir instrucciones correctas. -->
+
+---
+
+![bg cover left:40%](img/impredecible.png)
+
+# La IA es Impredecible
+
+<!-- - La IA es como un "adolescente rebelde": a veces hace caso, a veces no, y es impredecible.
+- El reto no es usar la IA, sino dominarla para que haga exactamente lo que el usuario quiere.
+- El Prompt Engineering es el conjunto de técnicas para escribir instrucciones correctas. -->
+
+---
+
+![bg cover right:40%](img/estructura.png)
+
+# Un Buen Prompt
+
+1. **Tarea**: Lo que se le pide a la IA
+2. **Contexto**: Información de fondo necesaria
+3. **Formato**: Cómo debe entregar la respuesta
+
+<!-- - La estructura básica de un prompt consta de tres partes fundamentales: Tarea, Contexto y Formato.
+- Tarea: Lo que se le pide a la IA.
+- Contexto: Toda la información de fondo necesaria para que la IA entienda el objetivo.
+- Formato: Cómo debe entregar la respuesta (ej. en una tabla, en 100 palabras). -->
+
+---
+
+![bg cover left:40%](img/efectiva.png)
+
+# Comunicación Efectiva
+
+- Claridad y Precisión
+- Sin relleno innecesario
+- Asignación de roles
+- Técnica "Pregúntame"
+
+<!-- - Claridad y Precisión: Ser claro y evitar ambigüedades.
+- No Añadir Relleno: Ir directo al grano.
+- Asignar un Rol: Dar contexto específico a la IA.
+- Técnica "Pregúntame": Pedir a la IA que haga preguntas para clarificar. -->
 
 ---
 
 ![bg cover brightness:0.5](img/consejos.jpg)
 
 # Consejos para Usar IA
+
+---
+## Todo lo que tú no le especifiques a la IA, la IA lo decidirá por ti.
 
 ---
 
@@ -245,23 +381,10 @@ Asignar roles específicos a la IA
 ![bg cover left:40%](img/ejemplo.jpg)
 
 ## Ejemplos
-Mostrar el formato deseado
+
 
 ---
 
-# Perdida 
-
-La medida de error en predicciones respecto a valores reales
-
----
-
-![bg cover right:35%](img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg)
-
-# Machine Learning 
-
-Crea sistemas que reconocen patrones, toman decisiones y mejoran con datos
-
----
 
 ![bg cover left:35%](img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg)
 
@@ -329,6 +452,19 @@ Asiste en el diagnóstico médico y mejora la precisión en el tratamiento de en
 
 ---
 
+
+# Regulaciones y Normativas
+
+Decisiones de IA impactan nuestras vidas
+
+Garantizar rendición de cuentas y protección
+
+---
+
+# Ejemplos de Desafíos Éticos en IA
+
+---
+
 ![bg cover right:50%](img/Absolute_Reality_v16_Illustrate_the_concept_of_Algorithmic_Bia_0.jpg)
 
 # Sesgo Algorítmico
@@ -345,17 +481,6 @@ IA recopila datos personales, la privacidad y transparencia son críticas
 
 ---
 
-# Regulaciones y Normativas
-
-Decisiones de IA impactan nuestras vidas
-
-Garantizar rendición de cuentas y protección
-
----
-
-# Ejemplos de Desafíos Éticos en IA
-
----
 ![bg cover right:40%](img/desplazamiento%20labora.jpg)
 ## Desplazamiento laboral
 
@@ -422,3 +547,62 @@ Garantizar rendición de cuentas y protección
 ![bg cover right:40%](img/edu.jpg)
 
 ## Educación y concienciación
+
+---
+
+![bg cover left:50%](img/aprendizaje.png)
+
+# ¿Nos esta haciendo tontos?
+
+<!-- - Estudio del MIT: Muestra menor actividad cerebral al usar IA para escribir ensayos
+- La IA como herramienta: Similar a cómo la escritura y la calculadora generaron temores
+- Importancia del pensamiento estratégico y la alfabetización crítica -->
+
+---
+
+
+# La IA y el Futuro del Trabajo
+
+---
+
+![bg cover right:50%](img/surf.png)
+
+## Adaptación en la Era de la IA
+
+<!-- - La IA podría destruir más puestos de los que crea
+- Impacto diferente según el tipo de trabajo (cuello azul, rosa y blanco)
+- Importancia de adaptarse y usar la IA como aliada -->
+
+---
+
+![bg cover left:50%](img/estrategias.png)
+
+# Estrategias de Adaptación
+
+---
+
+1. Aprender a usar la IA efectivamente
+2. Desarrollar habilidades de pensamiento crítico
+3. Enfocarse en lo humano: creatividad y empatía
+4. Dominar el prompt engineering
+
+<!-- - Subirse a la ola de la IA
+- Usar la IA como socio, no como reemplazo
+- Desarrollar habilidades complementarias a la IA -->
+
+---
+
+
+# Reflexión Final
+
+---
+
+
+![bg cover brightness:0.3](img/futuro.png)
+
+## La IA no es el fin del trabajo humano,
+## es el comienzo de una nueva forma de crear valor
+
+<!-- - La IA es una herramienta poderosa que puede potenciar nuestras capacidades
+- El verdadero valor está en cómo la usamos y en lo que hacemos con ella
+- El futuro pertenece a quienes sepan combinar inteligencia humana e artificial -->
