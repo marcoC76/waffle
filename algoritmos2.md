@@ -164,6 +164,14 @@ style: |
 
 ---
 
+## Comprar boletos para el cine
+
+---
+
+![bg width:100%](img/pelicula.PNG)
+
+---
+
 # Diagramas de flujo
 
 ---
@@ -255,6 +263,15 @@ style: |
 ---
 
 ![width:40%](img/pareja.png)
+
+---
+
+![width:100%](img/algoNetflix.jpg)
+
+---
+
+
+![height:100%](img/algoHacer.jpg)
 
 ---
 
