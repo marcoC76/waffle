@@ -120,17 +120,20 @@
 
     /* Guión del orador */
     .speaker-notes-drawer {
-      margin-top: 20px;
-      padding: 14px 16px;
-      background: rgba(241, 245, 249, 0.95);
+      margin-top: 18px;
+      padding: 14px 18px;
+      background: rgba(241, 245, 249, 0.96);
       border-left: 4px solid #00bbf9;
       border-radius: 8px;
       font-size: 14px;
-      color: #475569;
-      line-height: 1.45;
+      color: #1e293b;
+      line-height: 1.5;
       display: none;
+      max-height: 180px;
+      overflow-y: auto;
     }
     .speaker-notes-drawer.visible { display: block; }
+    .speaker-notes-drawer strong { color: #0284c7; }
 
     /* Controles */
     .controls {
@@ -178,7 +181,6 @@
 
     .slide-counter { font-size: 14px; font-weight: 700; color: #0f172a; min-width: 65px; text-align: center; }
 
-    /* Responsividad */
     @media (max-width: 850px) {
       body { justify-content: flex-start; padding: 16px 12px 85px 12px; overflow-y: auto; }
       .slide-wrapper { height: auto; min-height: auto; max-height: none; flex-direction: column !important; }
@@ -205,7 +207,7 @@
       <h1 id="slideTitle">La Magia de la IA</h1>
       <p class="description" id="slideDesc">De Teoría a Agentes</p>
       <div class="speaker-notes-drawer" id="speakerNotes">
-        <strong>Guión del orador:</strong> <span id="notesText"></span>
+        <strong>Notas de Cátedra:</strong> <span id="notesText"></span>
       </div>
     </div>
     <div class="image-box">
@@ -226,91 +228,256 @@
   </div>
 
   <script>
-    // 83 DIAPOSITIVAS DE LA NUEVA PRESENTACIÓN CON LAS RUTAS LOCALES IMG/
+    // 83 DIAPOSITIVAS CON NOTAS DE CÁTEDRA BASADAS EN EL MANUAL TEÓRICO (EDICIÓN 2026)
     const slides = [
-      { t: "La Magia de la IA", d: "De Teoría a Agentes", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg", n: "Bienvenidos. Hoy realizaremos un viaje fascinante por el presente y futuro de la Inteligencia Artificial: desde sus fundamentos teóricos hasta la revolución de los agentes autónomos." },
-      { t: "Introducción", d: "Conceptos clave para comprender la revolución inteligente actual", img: "img/3D_Animation_Style_Create_an_image_illustrating_the_concept_of_0.jpg", n: "Para entender hacia dónde vamos, primero debemos desmitificar qué es realmente esta tecnología y cómo ha cambiado nuestra forma de procesar el conocimiento." },
-      { t: "¿Qué es la Inteligencia?", d: "Capacidad mental de procesar, comprender, aplicar y adaptar conocimiento", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_Generat_0.jpg", n: "La inteligencia humana no es solo acumular datos; es la capacidad de razonar, aprender de los errores y adaptarse a entornos cambiantes." },
-      { t: "Neurona Biológica", d: "El cerebro humano procesa información mediante 86 mil millones de neuronas", img: "img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg", n: "Nuestra biología es extraordinaria. El cerebro humano alberga aproximadamente 86 mil millones de neuronas interconectadas en una red eléctrica altamente eficiente." },
-      { t: "Biología vs. Computación", d: "Billones de sinapsis biológicas superan la complejidad actual sintética", img: "img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg", n: "Aunque la computación moderna es extremadamente rápida, la densidad de conexiones de nuestro cerebro sigue superando a los supercomputadores más avanzados." },
-      { t: "¿Qué es la IA?", d: "Algoritmos que permiten a máquinas analizar datos y decidir", img: "img/3D_Animation_Style_Generate_an_image_representing_the_concept_0.jpg", n: "La Inteligencia Artificial busca emular estas capacidades mediante ecuaciones y algoritmos capaces de analizar información y tomar decisiones." },
-      { t: "Funcionamiento de la IA", d: "Sistemas que reconocen patrones complejos y aprenden de datos", img: "img/DreamShaper_v7_Illustrate_the_process_of_How_AI_Works_showing_0.jpg", n: "A diferencia del software tradicional, la IA no se programa regla por regla, sino que detecta patrones ocultos en grandes volúmenes de datos." },
-      { t: "La Neurona Artificial", d: "Unidad básica matemática que procesa y pondera entradas numéricas", img: "img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg", n: "El bloque fundamental es la neurona artificial: una fórmula matemática que recibe datos, les asigna un peso de importancia y genera una salida." },
-      { t: "Redes Neuronales", d: "Capas interconectadas de nodos procesando información en paralelo", img: "img/neuroIA.png", n: "Al agrupar miles de estas neuronas en capas, creamos redes neuronales capaces de realizar cálculos masivos en paralelo." },
-      { t: "Función de Pérdida / Loss", d: "Medida matemática del error entre predicción y valor real", img: "img/perdida.jpg", n: "¿Cómo aprende la IA? Mediante la función de pérdida, un indicador matemático que calcula qué tan lejos estuvo la máquina de la respuesta correcta." },
-      { t: "Machine Learning", d: "Algoritmos que optimizan parámetros automáticamente a partir de datos", img: "img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg", n: "El Machine Learning es el proceso por el cual el algoritmo ajusta sus propios parámetros automáticamente para reducir ese error con cada intento." },
-      { t: "Deep Learning", d: "Aprendizaje profundo mediante múltiples capas ocultas de abstracción", img: "img/cerebros8NeuroIA.png", n: "El Deep Learning lleva esto más lejos, usando múltiples capas ocultas para entender conceptos abstractos, como reconocer un rostro o traducir un idioma." },
-      { t: "Historia de la IA", d: "Orígenes teóricos y grandes hitos de la computación inteligente", img: "img/historia_ia.jpg", n: "Repasemos ahora la historia: un camino de más de siete décadas marcado por grandes avances y momentos de estancamiento." },
-      { t: "Los Inicios - 1950s", d: "Alan Turing propone computadoras capaces de pensamiento humano", img: "img/pioneros.png", n: "En los años 50, Alan Turing planteó una pregunta visionaria: ¿pueden las máquinas pensar como los seres humanos?" },
-      { t: "El Test de Turing", d: "Evaluación de imitación conversacional entre humano y máquina", img: "img/pioneros.png", n: "Para responderlo creó el Test de Turing, una prueba diseñada para evaluar si una máquina puede imitar la conversación humana de forma indistinguible." },
-      { t: "Nacimiento del Término", d: "John McCarthy define Inteligencia Artificial en Dartmouth (1956)", img: "img/pioneros.png", n: "El término 'Inteligencia Artificial' nació oficialmente en la conferencia de Dartmouth de 1956, liderada por John McCarthy." },
-      { t: "Inviernos de la IA", d: "Recortes de financiamiento por expectativas infladas y hardware limitado", img: "img/invierno.png", n: "Sin embargo, vinieron los 'Inviernos de la IA': periodos de escepticismo y retiro de fondos porque la tecnología de la época no alcanzaba las expectativas." },
-      { t: "El Renacimiento - 1980s", d: "Redes multicapa e introducción del algoritmo de retropropagación", img: "img/uniNeuroIA.png", n: "En los años 80, la retropropagación permitió entrenar redes de múltiples capas, reactivando el interés científico." },
-      { t: "Desvanecimiento del Gradiente", d: "Pérdida de información en capas profundas solucionada en 2006", img: "img/cerebros81NeuroIA.png", n: "En 2006 se superaron las barreras matemáticas del desvanecimiento del gradiente, dando inicio a la era moderna del Deep Learning." },
-      { t: "Arquitectura Transformer", d: "Publicación de 'Attention Is All You Need' en 2017", img: "img/atencion.png", n: "El gran salto cualitativo ocurrió en 2017 con la arquitectura Transformer, desarrollada por investigadores de Google." },
-      { t: "Mecanismo de Atención", d: "Asignación de importancia contextual a cada palabra simultáneamente", img: "img/atencion.png", n: "Los Transformers introdujeron el mecanismo de atención, permitiendo procesar frases enteras y entender el contexto global de inmediato." },
-      { t: "Modelos Generativos GPT", d: "OpenAI desarrolla la arquitectura GPT impulsando la IA generativa", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", n: "Esta arquitectura impulsó los modelos GPT, capaces de generar texto coherente y creativo a escala humana." },
-      { t: "El Hito ChatGPT - 2022", d: "Cien millones de usuarios alcanzados en menos de dos meses", img: "img/chatbots.jpg", n: "El lanzamiento de ChatGPT en 2022 democratizó el acceso a la IA, convirtiéndose en la aplicación de más rápido crecimiento en la historia." },
-      { t: "Evolución Agéntica", d: "Transición actual de respuestas conversacionales a acciones autónomas", img: "img/revolucion_generativa.jpg", n: "Hoy vivimos una nueva fase: estamos pasando de modelos que solo responden preguntas a sistemas agénticos que ejecutan tareas por sí mismos." },
-      { t: "Modelos de Lenguaje", d: "Clasificación de arquitecturas según escala, potencia y despliegue", img: "img/modeloslen.jpg", n: "Analicemos la arquitectura actual y cómo se clasifican los modelos según sus dimensiones y propósitos." },
-      { t: "LLM - Large Language Models", d: "Modelos masivos orientados a razonamiento complejo en la nube", img: "img/llm.jpg", n: "Los LLM o Grandes Modelos de Lenguaje cuentan con cientos de miles de millones de parámetros y residen en grandes centros de datos." },
-      { t: "SLM - Small Language Models", d: "Modelos compactos eficientes para ejecución en dispositivos locales", img: "img/sml.jpg", n: "Por otro lado, los SLM o Modelos Pequeños están diseñados para ser ágiles y ejecutarse directamente en teléfonos o computadoras locales." },
-      { t: "Comparativa LLM vs. SLM", d: "LLM ofrece razonamiento profundo; SLM prioriza latencia y privacidad", img: "img/sml.jpg", n: "Los LLM destacan en análisis complejos; los SLM ganan en velocidad, menor costo y máxima privacidad de los datos." },
-      { t: "Arquitecturas Híbridas", d: "Combinación de procesamiento local SLM con potencia LLM nube", img: "img/modeloslen.jpg", n: "El futuro es híbrido: tareas cotidianas resueltas localmente por un SLM y consultas complejas derivadas a un LLM en la nube." },
-      { t: "Agentes de IA", d: "Sistemas autónomos impulsados por metas sin supervisión constante", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", n: "Entramos de lleno en la era de los Agentes de IA: programas que reciben un objetivo y planifican los pasos para cumplirlo de forma autónoma." },
-      { t: "Módulo de Percepción", d: "Procesamiento e interpretación de datos multimodales en tiempo real", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", n: "Todo agente comienza con un módulo de percepción, capaz de procesar e interpretar imágenes, texto, audio y código." },
-      { t: "Motor de Decisión", d: "Razonamiento lógico, planificación paso a paso y priorización de metas", img: "img/estrategias.png", n: "El motor de decisión es su cerebro: desglosa problemas complejos en sub-tareas lógicas y evalúa cuál es el mejor camino." },
-      { t: "Sistema de Memoria", d: "Bancos contextuales a corto y largo plazo para aprendizaje continuo", img: "img/data.jpg", n: "Cuentan con sistemas de memoria que les permiten recordar interacciones pasadas y adaptar sus decisiones según la experiencia previa." },
-      { t: "Uso de Herramientas", d: "Ejecución autónoma de APIs, código y sistemas externos", img: "img/herrami.jpg", n: "Su gran diferencial es la capacidad de usar herramientas: conectar con APIs, consultar bases de datos y ejecutar código informático." },
-      { t: "Sistemas Multi-Agente", d: "Colaboración y coordinación entre múltiples agentes especializados", img: "img/desarrollo.jpg", n: "Además, los sistemas multi-agente permiten que varios agentes especializados colaboren entre sí para resolver proyectos complejos." },
-      { t: "Adopción Empresarial", d: "Cuarenta por ciento de aplicaciones incorporan agentes de tareas", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", n: "La adopción es masiva: casi la mitad de las aplicaciones empresariales ya integran agentes para automatizar flujos de trabajo." },
-      { t: "Ecosistema Generativo", d: "Herramientas avanzadas para texto, imagen, video, código y audio", img: "img/gencont.jpg", n: "Exploremos el ecosistema de herramientas generativas que están transformando la producción creativa y profesional." },
-      { t: "Chatbots Avanzados", d: "ChatGPT, Gemini 3.8 Flash, Claude y Qwen liderando razonamiento avanzado", img: "img/chatbots.jpg", n: "En el ámbito del texto y razonamiento, plataformas como ChatGPT, Gemini y Claude lideran el análisis conversacional." },
-      { t: "Generación de Imágenes", d: "Midjourney, DALL-E y Firefly para creación visual fotorrealista", img: "img/gencont.jpg", n: "Para generación visual, modelos como Midjourney y DALL-E permiten convertir descripciones de texto en imágenes fotorrealistas." },
-      { t: "Generación de Video", d: "Sora2, Kling y Runway transformando la producción audiovisual profesional", img: "img/media.jpg", n: "En video, herramientas como Sora2 y Runway generan secuencias cinemáticas de alta fidelidad con física realista." },
-      { t: "Generación de Música", d: "Suno creando composiciones musicales completas mediante texto", img: "img/suno_musica.jpg", n: "La música también se ha democratizado: plataformas como Suno componen canciones completas con instrumentación y voz a partir de una instrucción." },
-      { t: "Asistentes de Código", d: "Cursor, Windsurf y Copilot automatizando desarrollo de software", img: "img/desarrollo.jpg", n: "En el desarrollo de software, editores como Cursor y GitHub Copilot actúan como compañeros de programación en tiempo real." },
-      { t: "Investigación y Síntesis", d: "Perplexity y NotebookLM para búsqueda y análisis documentado", img: "img/investigacion.jpg", n: "Para investigación y síntesis, Perplexity y NotebookLM permiten examinar documentos complejos citando fuentes verificables." },
-      { t: "Multimodalidad Integrada", d: "Procesamiento unificado de texto, voz, imágenes y video", img: "img/Absolute_Reality_v16_Create_an_image_showing_how_a_person_tran_0.jpg", n: "La tendencia actual es la multimodalidad nativa: modelos que entienden simultáneamente texto, voz, imágenes y video." },
-      { t: "Automatización de Flujos", d: "Integración directa de IA en procesos de trabajo diarios", img: "img/Absolute_Reality_v16_Generate_an_image_depicting_an_online_str_0.jpg", n: "El objetivo final no es usar herramientas aisladas, sino integrar la IA de forma invisible en nuestros procesos cotidianos." },
-      { t: "Prompt Engineering", d: "La habilidad clave para comunicarse eficazmente con la IA", img: "img/prompt.png", n: "Para obtener los mejores resultados, debemos dominar el Prompt Engineering: la ciencia y arte de dar instrucciones a la máquina." },
-      { t: "Naturaleza Probabilística", d: "Modelos probabilísticos requieren instrucciones precisas para evitar errores", img: "img/impredecible.png", n: "Dado que los modelos son probabilísticos, un mensaje ambiguo genera respuestas impredecibles o imprecisas." },
-      { t: "Regla de Especificación", d: "Lo que no especifiques será decidido por la IA", img: "img/regla_especificacion.jpg", n: "Recuerda esta regla de oro: todo detalle que omitas en tu instrucción será asumido al azar por el modelo." },
-      { t: "Estructura del Prompt", d: "Tres pilares fundamentales: Tarea, Contexto y Formato deseado", img: "img/estructura.png", n: "Un prompt profesional se sostiene sobre tres pilares claros: la Tarea, el Contexto y el Formato de entrega." },
-      { t: "Pilar: Tarea", d: "Definición clara de la acción concreta requerida al modelo", img: "img/estructura.png", n: "Primero, define la Tarea usando verbos de acción precisos: 'resume', 'analiza', 'compara' o 'redacta'." },
-      { t: "Pilar: Contexto", d: "Información de fondo indispensable para guiar la respuesta", img: "img/contexto.jpg", n: "Segundo, aporta el Contexto: explica la audiencia, los antecedentes y el objetivo de la información." },
-      { t: "Pilar: Formato", d: "Especificación del diseño, estructura y longitud de entrega", img: "img/precision.jpg", n: "Tercero, indica el Formato: exige tablas, listas con viñetas, tono profesional o un número exacto de palabras." },
-      { t: "Comunicación Efectiva", d: "Claridad, precisión y eliminación estricta de palabras innecesarias", img: "img/efectiva.png", n: "Busca la máxima claridad y elimina rodeos innecesarios. Sé directo y específico en tus requerimientos." },
-      { t: "Asignación de Roles", d: "Definición de la perspectiva experta que debe asumir la IA", img: "img/roles.jpg", n: "Asigna un rol experto al modelo, por ejemplo: 'Actúa como un analista financiero senior con 10 años de experiencia'." },
-      { t: "Técnica 'Pregúntame'", d: "Solicitar a la IA preguntas aclaratorias antes de responder", img: "img/consejos.jpg", n: "Usa la técnica 'Pregúntame': pide al modelo que te haga preguntas antes de responder para asegurar que tiene toda la información necesaria." },
-      { t: "Fronteras Tecnológicas", d: "Conceptos teóricos hacia la inteligencia de nivel humano", img: "img/singu.jpg", n: "Miremos hacia el futuro y exploremos los conceptos teóricos sobre la evolución de la inteligencia sintética." },
-      { t: "Inteligencia General / AGI", d: "Sistema capaz de aprender cualquier tarea intelectual humana", img: "img/agi.jpg", n: "La AGI o Inteligencia General Artificial se define como un sistema capaz de realizar cualquier trabajo intelectual con la misma solvencia que un humano." },
-      { t: "Superinteligencia / ASI", d: "Inteligencia sintética que supera ampliamente la capacidad humana global", img: "img/supint.jpg", n: "Un paso más allá está la ASI o Superinteligencia, un nivel donde la IA superaría la capacidad combinada de las mejores mentes humanas." },
-      { t: "La Singularidad", d: "Punto donde el avance tecnológico supera la comprensión humana", img: "img/singu.jpg", n: "Teóricos como Ray Kurzweil llaman 'Singularidad' al momento en que el progreso tecnológico sea tan veloz que resulte impredecible." },
-      { t: "Niveles AGI DeepMind", d: "Clasificación de cinco niveles basada en capacidad y generalidad", img: "img/agi.jpg", n: "Para medir este avance con rigor, Google DeepMind propuso una taxonomía clara de cinco niveles de AGI." },
-      { t: "AGI Nivel 1 y 2", d: "De nivel emergente actual hacia rendimiento de adulto capacitado", img: "img/agi.jpg", n: "Actualmente nos encontramos en el Nivel 1 o Emergente, y avanzamos hacia el Nivel 2, donde la IA igualará a un adulto calificado en múltiples tareas." },
-      { t: "AGI Nivel 3 a 5", d: "Evolución proyectada hacia niveles experto, excepcional y superhumano", img: "img/supint.jpg", n: "Los niveles superiores contemplan capacidad de nivel experto, desempeño excepcional y, finalmente, capacidad superhumana." },
-      { t: "Aplicaciones Industriales", d: "Transformación de la manufactura y optimización logística global", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", n: "Analicemos el impacto real de estas tecnologías en los sectores clave de la economía global." },
-      { t: "IA en Salud", d: "Cuarenta y siete por ciento despliega agentes médicos clínicos", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", n: "En medicina, casi la mitad de las instituciones de salud están implementando agentes para optimizar el diagnóstico y la gestión médica." },
-      { t: "Diagnóstico e Imágenes", d: "Asistencia en decisiones clínicas y análisis fotorrealista de imágenes", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", n: "La IA asiste en la detección precoz de patologías analizando imágenes médicas con una precisión sin precedentes." },
-      { t: "IA en Educación", d: "Personalización de contenidos y tutoría adaptativa para estudiantes", img: "img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg", n: "En educación, la IA habilita el aprendizaje personalizado, adaptando el ritmo y los explicativos al nivel de cada estudiante." },
-      { t: "Eficiencia Docente", d: "Automatización de tareas administrativas y diseño de actividades", img: "img/edu.jpg", n: "Para los docentes, representa una herramienta que automatiza la corrección y libera tiempo para la mentoría humana directa." },
-      { t: "Vida Cotidiana", d: "Integración en asistentes virtuales y recomendaciones en línea", img: "img/Absolute_Reality_v16_Applications_of_the_IA_in_the_actual_life_0.jpg", n: "En nuestra vida cotidiana, la IA impulsa desde recomendaciones de entretenimiento hasta asistentes de voz inteligentes." },
-      { t: "Servicios Inteligentes", d: "Búsqueda semántica, traducción instantánea y detección de fraudes", img: "img/Absolute_Reality_v16_Illustrate_a_search_engine_like_Google_pr_0.jpg", n: "En los servicios financieros y digitales, la IA trabaja en segundo plano detectando fraudes y realizando traducciones en tiempo real." },
-      { t: "Vehículos Autónomos", d: "Procesamiento sensorial en tiempo real para navegación segura", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", n: "En transporte, los vehículos autónomos combinan visión por computadora y sensores para navegar de forma segura." },
-      { t: "Retorno de Inversión / ROI", d: "Ochenta y cinco por ciento reporta crecimiento en ingresos", img: "img/Absolute_Reality_v16_Generate_an_image_representing_AIbased_fr_0.jpg", n: "Los datos de mercado confirman que el 85% de las empresas que adoptan IA reportan retornos de inversión positivos." },
-      { t: "Desafíos Éticos", d: "Normativas globales para garantizar la seguridad y responsabilidad", img: "img/desafios_eticos.jpg", n: "El avance acelerado exige abordar los desafíos éticos, legales y de gobernanza a nivel internacional." },
-      { t: "Sesgo Algorítmico", d: "Prevención de errores discriminatorios heredados de datos históricos", img: "img/Absolute_Reality_v16_Illustrate_the_concept_of_Algorithmic_Bia_0.jpg", n: "Uno de los mayores riesgos es el sesgo algorítmico: si los datos de entrenamiento contienen prejuicios, el modelo los replicará." },
-      { t: "Privacidad y Datos", d: "Protección de información personal y gobernanza de transparencia", img: "img/privacidad.jpg", n: "La privacidad de los datos es prioritaria. Las empresas deben garantizar que la información confidencial no sea expuesta." },
-      { t: "Ley de IA de la UE", d: "Marco regulatorio pionero basado en niveles de riesgo", img: "img/regulaciones.jpg", n: "La Unión Europea ha marcado el rumbo global con la Ley de IA (EU AI Act), la primera regulación integral del sector." },
-      { t: "Niveles de Riesgo EU", d: "Prohibición de riesgos inaceptables y exigencias a alto riesgo", img: "img/armas.jpg", n: "Esta norma clasifica los sistemas según su nivel de riesgo, prohibiendo aplicaciones peligrosas y regulando las de alto impacto." },
-      { t: "Propiedad Intelectual", d: "Debate legal entre doctrina Fair Use y excepciones TDM", img: "img/derechos.jpg", n: "En materia de propiedad intelectual, existe un intenso debate sobre si usar contenido protegido para entrenar IA es un uso legítimo o una infracción." },
-      { t: "Principios Éticos Clave", d: "Transparencia, equidad, seguridad, privacidad y beneficio social global", img: "img/principios_eticos.jpg", n: "El desarrollo responsable debe guiarse por principios claros: equidad, transparencia, seguridad y beneficio común." },
-      { t: "Impacto en el Empleo", d: "Cincuenta y nueve por ciento con exposición laboral moderada", img: "img/desplazamiento%20labora.jpg", n: "Hablemos del mercado laboral: casi el 60% de los empleos experimentará una exposición significativa a estas tecnologías." },
-      { t: "Aumento de Capacidad", d: "La IA automatiza tareas repetitivas potenciando capacidades humanas", img: "img/surf.png", n: "Lejos de una destrucción masiva de empleo, el fenómeno principal es el aumento de capacidades: la IA asume lo repetitivo para potenciar al profesional." },
-      { t: "Estrategias de Adaptación", d: "Dominio de herramientas, pensamiento crítico y alfabetización digital", img: "img/estrategias.png", n: "La clave de la empleabilidad futura estará en la alfabetización digital, la agilidad de aprendizaje y el dominio de estas herramientas." },
-      { t: "Diferenciadores Humanos", d: "Creatividad, empatía y juicio estratégico como diferenciadores clave", img: "img/aprendizaje.png", n: "Nuestros mayores activos seguirán siendo insustituibles: la empatía humana, la ética, el liderazgo y el juicio estratégico." },
-      { t: "Reflexión Final", d: "La IA es el comienzo de nueva creación de valor", img: "img/futuro.png", n: "En conclusión, la IA no viene a reemplazar el talento humano, sino a inaugurar una era sin precedentes de creatividad y colaboración. Muchas gracias." }
+      { t: "La Magia de la IA", d: "De Teoría a Agentes", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg", 
+        n: "Bienvenidos a la cátedra. Hoy desmitificaremos la Inteligencia Artificial: combinaremos rigor científico de neurociencia y matemáticas con anécdotas históricas, desde cómo aprende una neurona hasta los agentes autónomos y la regulación de 2026." },
+      
+      { t: "Introducción", d: "Conceptos clave para comprender la revolución inteligente actual", img: "img/3D_Animation_Style_Create_an_image_illustrating_the_concept_of_0.jpg", 
+        n: "Para entender la IA sin caer en ciencia ficción, primero debemos hacer una comparativa honesta entre el 'hardware biológico' que llevamos entre las orejas y el 'hardware de silicio' de los servidores y GPUs." },
+      
+      { t: "¿Qué es la Inteligencia?", d: "Capacidad mental de procesar, comprender, aplicar y adaptar conocimiento", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_Generat_0.jpg", 
+        n: "La inteligencia no es solo almacenar datos como un disco duro; es la capacidad activa de adquirir, procesar, comprender, aplicar y adaptar ese conocimiento ante entornos imprevistos." },
+      
+      { t: "Neurona Biológica", d: "El cerebro humano procesa información mediante 86 mil millones de neuronas", img: "img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg", 
+        n: "El cerebro humano cuenta con 86 mil millones de neuronas conectadas por más de 100 billones de sinapsis electroquímicas masivamente paralelas. Su arquitectura es pura maravilla evolutiva." },
+      
+      { t: "Biología vs. Computación", d: "Billones de sinapsis biológicas superan la complejidad actual sintética", img: "img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg", 
+        n: "¡Dato brutal del manual!: Tu cerebro gasta apenas 20 Watts (lo que consume un foco de cocina). En cambio, entrenar y correr redes sintéticas requiere megavatios enteros de centros de datos en la nube. La biología sigue siendo el pináculo de la eficiencia." },
+      
+      { t: "¿Qué es la IA?", d: "Algoritmos que permiten a máquinas analizar datos y decidir", img: "img/3D_Animation_Style_Generate_an_image_representing_the_concept_0.jpg", 
+        n: "La IA consiste en algoritmos y matrices matemáticas ejecutadas en chips que emulan esta capacidad biológica: analizan datos, aprenden patrones y toman decisiones sin requerir reglas fijas programadas a mano." },
+      
+      { t: "Funcionamiento de la IA", d: "Sistemas que reconocen patrones complejos y aprenden de datos", img: "img/DreamShaper_v7_Illustrate_the_process_of_How_AI_Works_showing_0.jpg", 
+        n: "A diferencia del software clásico (donde un programador escribe cada 'si pasa esto, haz aquello'), la IA aprende inductivamente: le das millones de ejemplos y ella sola deduce los patrones ocultos." },
+      
+      { t: "La Neurona Artificial", d: "Unidad básica matemática que procesa y pondera entradas numéricas", img: "img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg", 
+        n: "La neurona artificial (perceptrón) es simplemente una ecuación lineal vestida de gala: multiplica entradas (x) por 'pesos' (w), suma un sesgo o bias (b) y pasa el resultado por una función de activación (ReLU, Sigmoide) que decide si 'dispara' o se queda callada." },
+      
+      { t: "Redes Neuronales", d: "Capas interconectadas de nodos procesando información en paralelo", img: "img/neuroIA.png", 
+        n: "Al conectar miles de estas ecuaciones en capas secuenciales, creamos una red neuronal capaz de realizar multiplicaciones masivas de matrices en paralelo sobre tarjetas gráficas (GPUs)." },
+      
+      { t: "Función de Pérdida / Loss", d: "Medida matemática del error entre predicción y valor real", img: "img/perdida.jpg", 
+        n: "Analogía de la salsa (del manual): Los pesos (w) son cucharadas de condimento. La Función de Pérdida (Loss) es el grito de tu abuelita al probar la salsa diciendo: '¡Le falta sal y pica como el demonio!'. Mide matemáticamente qué tan lejos estás de la receta perfecta." },
+      
+      { t: "Machine Learning", d: "Algoritmos que optimizan parámetros automáticamente a partir de datos", img: "img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg", 
+        n: "El Descenso de Gradiente es ir ajustando la receta paso a pasito; Backpropagation es la regla de la cadena que calcula exactamente cuántas pizcas de sal mover hasta que la abuelita diga: 'Quedó perfecta'." },
+      
+      { t: "Deep Learning", d: "Aprendizaje profundo mediante múltiples capas ocultas de abstracción", img: "img/cerebros8NeuroIA.png", 
+        n: "El Deep Learning añade decenas de capas ocultas. Cuidado con las dos tragedias del entrenamiento: Overfitting (el alumno que memoriza exámenes viejos de pe a pa y reprueba si cambias una coma) y Underfitting (el que ni entendió la clase)." },
+      
+      { t: "Historia de la IA", d: "Orígenes teóricos y grandes hitos de la computación inteligente", img: "img/historia_ia.jpg", 
+        n: "Como dice el manual: La historia de la IA no es una línea recta de triunfos; es una telenovela dramática llena de promesas exageradas, presupuestos cancelados y avances inesperados." },
+      
+      { t: "Los Inicios - 1950s", d: "Alan Turing propone computadoras capaces de pensamiento humano", img: "img/pioneros.png", 
+        n: "Chisme histórico #1: En 1950 Alan Turing estaba harto de que los filósofos discutieran qué demonios significaba 'pensar'. Decidió saltarse la metafísica y propuso el 'Juego de la Imitación'." },
+      
+      { t: "El Test de Turing", d: "Evaluación de imitación conversacional entre humano y máquina", img: "img/pioneros.png", 
+        n: "La premisa de Turing fue tajante: Si una persona conversa a través de un teletipo con una máquina y no logra distinguir si habla con un humano o un programa, la máquina es inteligente y punto." },
+      
+      { t: "Nacimiento del Término", d: "John McCarthy define Inteligencia Artificial en Dartmouth (1956)", img: "img/pioneros.png", 
+        n: "Verano de 1956: McCarthy, Marvin Minsky, Claude Shannon y Rochester se reúnen en Dartmouth College. Eufóricos, juraron que en un solo verano con 10 hombres lograrían que una máquina usara lenguaje. Pecaron de optimistas." },
+      
+      { t: "Inviernos de la IA", d: "Recortes de financiamiento por expectativas infladas y hardware limitado", img: "img/invierno.png", 
+        n: "El optimismo sin freno trajo los 'Inviernos de la IA' (los 70 y late 80). Tras el devastador Informe Lighthill de 1973 en Reino Unido y recortes de DARPA, se retiraron fondos porque la IA era 'más promesa que realidad'." },
+      
+      { t: "El Renacimiento - 1980s", d: "Redes multicapa e introducción del algoritmo de retropropagación", img: "img/uniNeuroIA.png", 
+        n: "En los 80, Rumelhart, Geoffrey Hinton y Williams resucitaron el campo al popularizar la retropropagación para entrenar redes de varias capas, demostrando que podían aprender representaciones no lineales." },
+      
+      { t: "Desvanecimiento del Gradiente", d: "Pérdida de información en capas profundas solucionada en 2006", img: "img/cerebros81NeuroIA.png", 
+        n: "Al apilar muchas capas, la señal matemática se desvanecía (Gradient Vanishing). En 2006, Geoffrey Hinton demostró cómo pre-entrenar redes profundas capa por capa, inaugurando oficialmente la era moderna del Deep Learning." },
+      
+      { t: "Arquitectura Transformer", d: "Publicación de 'Attention Is All You Need' en 2017", img: "img/atencion.png", 
+        n: "El terremoto definitivo ocurrió en junio de 2017 con investigadores de Google. Tiraron a la basura las redes recurrentes (RNNs) que leían palabra por palabra de forma lenta, e introdujeron el Transformer." },
+      
+      { t: "Mecanismo de Atención", d: "Asignación de importancia contextual a cada palabra simultáneamente", img: "img/atencion.png", 
+        n: "El mecanismo de atención calcula la relación matemática de cada palabra con todas las demás dentro de una oración en paralelo sobre GPUs. Esto permitió procesar bibliotecas enteras en lugar de frases sueltas." },
+      
+      { t: "Modelos Generativos GPT", d: "OpenAI desarrolla la arquitectura GPT impulsando la IA generativa", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", 
+        n: "OpenAI tomó los Transformers y escaló el pre-entrenamiento autoregresivo: predecir el siguiente token a escala masiva, dando vida a GPT-1, GPT-2 y GPT-3." },
+      
+      { t: "El Hito ChatGPT - 2022", d: "Cien millones de usuarios alcanzados en menos de dos meses", img: "img/chatbots.jpg", 
+        n: "Chisme histórico #2: El 30 de noviembre de 2022 OpenAI lanzó ChatGPT casi como un 'experimento de bajo perfil' con GPT-3.5. Ni ellos previeron el bombazo: 100 millones de usuarios en menos de 2 meses, desatando la carrera tecnológica actual." },
+      
+      { t: "Evolución Agéntica", d: "Transición actual de respuestas conversacionales a acciones autónomas", img: "img/revolucion_generativa.jpg", 
+        n: "Un chatbot tradicional es pasivo: le preguntas algo y te devuelve texto. Un Agente de IA es activo y orientado a metas: le das un objetivo y él solo planifica, usa herramientas, ejecuta código y corrige sus propios errores." },
+      
+      { t: "Modelos de Lenguaje", d: "Clasificación de arquitecturas según escala, potencia y despliegue", img: "img/modeloslen.jpg", 
+        n: "En 2026, el mercado se ha dividido estratégicamente entre dos filosofías complementarias: los modelos masivos de frontera en la nube (LLMs) y los modelos compactos y ultra eficientes (SLMs)." },
+      
+      { t: "LLM - Large Language Models", d: "Modelos masivos orientados a razonamiento complejo en la nube", img: "img/llm.jpg", 
+        n: "Tienen desde 70B hasta más de 1 trillón de parámetros. Viven en clústeres masivos de GPUs (A100/H100). Destacan en razonamiento jurídico, científico denso y arquitectura de software compleja, pero con costo por token elevado." },
+      
+      { t: "SLM - Small Language Models", d: "Modelos compactos eficientes para ejecución en dispositivos locales", img: "img/sml.jpg", 
+        n: "Tienen entre 1B y 10B parámetros. Corren directo en tu laptop, celular o auto. Ofrecen latencia casi nula, costo marginal cero y garantía absoluta de privacidad: los datos nunca salen de tu dispositivo." },
+      
+      { t: "Comparativa LLM vs. SLM", d: "LLM ofrece razonamiento profundo; SLM prioriza latencia y privacidad", img: "img/sml.jpg", 
+        n: "La batalla no es excluyente: el LLM gana en profundidad de razonamiento abstracto; el SLM gana en velocidad instantánea, ahorro energético y confidencialidad estricta." },
+      
+      { t: "Arquitecturas Híbridas", d: "Combinación de procesamiento local SLM con potencia LLM nube", img: "img/modeloslen.jpg", 
+        n: "Estrategia real de las empresas en 2026: Usan un SLM local como 'recepcionista inteligente' que responde dudas sencillas y filtra spam gratis; solo si la consulta es un problema espeso de razonamiento, la redirigen al LLM en la nube." },
+      
+      { t: "Agentes de IA", d: "Sistemas autónomos impulsados por metas sin supervisión constante", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", 
+        n: "Para que un modelo sea un agente requiere 4 pilares: Percepción (ver y escuchar), Motor de Decisión (pensar), Memoria (recordar) y Herramientas/APIs (actuar en el mundo real)." },
+      
+      { t: "Módulo de Percepción", d: "Procesamiento e interpretación de datos multimodales en tiempo real", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", 
+        n: "La percepción permite al agente capturar entradas multimodales del entorno digital o físico: visión computacional, reconocimiento de voz, lecturas de pantalla en tiempo real y telemetría de sensores." },
+      
+      { t: "Motor de Decisión", d: "Razonamiento lógico, planificación paso a paso y priorización de metas", img: "img/estrategias.png", 
+        n: "El motor de decisión es su cerebro analítico: utiliza marcos como Chain-of-Thought (pensamiento encadenado) y ReAct (razonar + actuar) para desglosar una meta compleja en tareas lógicas antes de ejecutar." },
+      
+      { t: "Sistema de Memoria", d: "Bancos contextuales a corto y largo plazo para aprendizaje continuo", img: "img/data.jpg", 
+        n: "Combina contexto inmediato con bases de datos vectoriales (como Pinecone o Chroma) mediante RAG y memoria episódica, permitiendo al agente recordar interacciones de semanas pasadas sin olvidar quién es el usuario." },
+      
+      { t: "Uso de Herramientas", d: "Ejecución autónoma de APIs, código y sistemas externos", img: "img/herrami.jpg", 
+        n: "Aquí ocurre la magia práctica: el agente tiene brazos digitales. Puede abrir una terminal de código, consultar bases de datos con SQL, disparar llamadas REST API y enviar correos de confirmación." },
+      
+      { t: "Sistemas Multi-Agente", d: "Colaboración y coordinación entre múltiples agentes especializados", img: "img/desarrollo.jpg", 
+        n: "Ya no se contrata un solo software. Se configura un equipo multi-agente: un agente investigador recopila datos, un agente programador redacta el código y un agente crítico revisa que no haya errores antes de publicar." },
+      
+      { t: "Adopción Empresarial", d: "Cuarenta por ciento de aplicaciones incorporan agentes de tareas", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", 
+        n: "Dato clave de la industria en 2026: El 40% de las aplicaciones empresariales ya integran agentes especializados. El software dejó de ser una herramienta pasiva para convertirse en un colega de trabajo digital." },
+      
+      { t: "Ecosistema Generativo", d: "Herramientas avanzadas para texto, imagen, video, código y audio", img: "img/gencont.jpg", 
+        n: "El mercado se ha hiperespecializado. No existe una sola IA para todo; existen plataformas líderes diseñadas específicamente para cada dominio de producción intelectual y creativa." },
+      
+      { t: "Chatbots Avanzados", d: "ChatGPT, Gemini 3.8 Flash, Claude y Qwen liderando razonamiento avanzado", img: "img/chatbots.jpg", 
+        n: "En texto y razonamiento: GPT-4o, Gemini 3.8 Flash, Claude 3.5 y Qwen lideran con ventanas de contexto de millones de tokens y capacidades de deducción matemática y lógica de nivel universitario." },
+      
+      { t: "Generación de Imágenes", d: "Midjourney, DALL-E y Firefly para creación visual fotorrealista", img: "img/gencont.jpg", 
+        n: "En el terreno visual: Midjourney v6, DALL-E 3 y Adobe Firefly han conquistado el fotorrealismo, el control preciso de tipografía integrada y la consistencia de personajes a través de múltiples escenas." },
+      
+      { t: "Generación de Video", d: "Sora2, Kling y Runway transformando la producción audiovisual profesional", img: "img/media.jpg", 
+        n: "En video generativo: Sora2, Runway Gen-3 y Kling simulan leyes de física de fluidos, gravedad y coherencia temporal en alta definición, transformando la preproducción cinematográfica y publicitaria." },
+      
+      { t: "Generación de Música", d: "Suno creando composiciones musicales completas mediante texto", img: "img/suno_musica.jpg", 
+        n: "En audio: Suno v4, Udio y ElevenLabs componen canciones completas con instrumentación profesional, lírica y voces con modulación emocional realista a partir de una simple frase de texto." },
+      
+      { t: "Asistentes de Código", d: "Cursor, Windsurf y Copilot automatizando desarrollo de software", img: "img/desarrollo.jpg", 
+        n: "En desarrollo: Editores agénticos como Cursor y Windsurf ya no solo autocompletan líneas; leen repositorios enteros, crean pull requests, depuran bugs y coordinan refactorizaciones completas." },
+      
+      { t: "Investigación y Síntesis", d: "Perplexity y NotebookLM para búsqueda y análisis documentado", img: "img/investigacion.jpg", 
+        n: "Investigación Grounded: Herramientas como NotebookLM y Perplexity realizan síntesis estricta basada exclusivamente en documentos fuente y web indexada, erradicando alucinaciones mediante citas rastreables." },
+      
+      { t: "Multimodalidad Integrada", d: "Procesamiento unificado de texto, voz, imágenes y video", img: "img/Absolute_Reality_v16_Create_an_image_showing_how_a_person_tran_0.jpg", 
+        n: "Los modelos modernos no traducen imagen a texto para entenderla; operan de forma nativa en un espacio latente común donde texto, audio, imagen y video se entienden de forma simultánea." },
+      
+      { t: "Automatización de Flujos", d: "Integración directa de IA en procesos de trabajo diarios", img: "img/Absolute_Reality_v16_Generate_an_image_depicting_an_online_str_0.jpg", 
+        n: "El verdadero valor no está en abrir una pestaña para chatear con una IA, sino en incrustarla dentro de los sistemas ERP, CRM y bases de datos para que los procesos rutinarios corran en piloto automático." },
+      
+      { t: "Prompt Engineering", d: "La habilidad clave para comunicarse eficazmente con la IA", img: "img/prompt.png", 
+        n: "Manual del 'Prompt Whisperer': Interactuar con un LLM no es hablar con un ser humano; es programar en lenguaje natural a un motor probabilístico completador de patrones." },
+      
+      { t: "Naturaleza Probabilística", d: "Modelos probabilísticos requieren instrucciones precisas para evitar errores", img: "img/impredecible.png", 
+        n: "Un modelo no 'sabe' la verdad en sentido humano; predice qué palabras tienen mayor probabilidad matemática de seguir a tu instrucción. Si tu instrucción es vaga, su respuesta será errática." },
+      
+      { t: "Regla de Especificación", d: "Lo que no especifiques será decidido por la IA", img: "img/regla_especificacion.jpg", 
+        n: "La Regla Sagrada del Prompting: 'Todo lo que tú no especifiques explícitamente, la IA lo inventará al azar'. Si pides 'un artículo de economía', ella elige el tono, país y nivel técnico que se le antoje." },
+      
+      { t: "Estructura del Prompt", d: "Tres pilares fundamentales: Tarea, Contexto y Formato deseado", img: "img/estructura.png", 
+        n: "Los 3 Pilares Indestructibles: Para tener control profesional absoluto de cualquier modelo necesitas dominar la tríada: Tarea (verbo), Contexto (antecedentes) y Formato (estructura de entrega)." },
+      
+      { t: "Pilar: Tarea", d: "Definición clara de la acción concreta requerida al modelo", img: "img/estructura.png", 
+        n: "Pilar 1 - Tarea: Define la acción concreta con verbos imperativos inequívocos. Usa 'Sintetiza', 'Audita', 'Redacta', 'Compara'. Evita peticiones difusas como 'ayúdame con esto'." },
+      
+      { t: "Pilar: Contexto", d: "Información de fondo indispensable para guiar la respuesta", img: "img/contexto.jpg", 
+        n: "Pilar 2 - Contexto: Explica quién es la audiencia final, el marco del problema de negocio, los antecedentes del caso y las fuentes documentales en las que debe respaldarse." },
+      
+      { t: "Pilar: Formato", d: "Especificación del diseño, estructura y longitud de entrega", img: "img/precision.jpg", 
+        n: "Pilar 3 - Formato: Exige la presentación exacta: 'Tabla comparativa de 3 columnas', 'Código en bloque Markdown', 'Lista con viñetas de máximo 15 palabras por punto'." },
+      
+      { t: "Comunicación Efectiva", d: "Claridad, precisión y eliminación estricta de palabras innecesarias", img: "img/efectiva.png", 
+        n: "Técnica avanzada: Restricciones Negativas. Define explícitamente lo que NO debe incluir. Prohíbe clichés corporativos de IA como 'delve', 'tapestry' o 'desbloquear potencial' para sonar humano y profesional." },
+      
+      { t: "Asignación de Roles", d: "Definición de la perspectiva experta que debe asumir la IA", img: "img/roles.jpg", 
+        n: "Persona Prompting: 'Actúa como un abogado especialista en propiedad intelectual con 15 años de experiencia en la UE'. Esto restringe el espacio probabilístico a vocabulario y marcos analíticos de élite." },
+      
+      { t: "Técnica 'Pregúntame'", d: "Solicitar a la IA preguntas aclaratorias antes de responder", img: "img/consejos.jpg", 
+        n: "Técnica 'Pregúntame Antes de Responder': Agrega al final: 'Si antes de redactar necesitas información adicional o identificar ambigüedades en mi solicitud, hazme hasta 3 preguntas aclaratorias'. Evita que asuma disparates." },
+      
+      { t: "Fronteras Tecnológicas", d: "Conceptos teóricos hacia la inteligencia de nivel humano", img: "img/singu.jpg", 
+        n: "En el debate público se confunde constantemente la IA actual con AGI o Superinteligencia. Para poner orden científico, revisemos la taxonomía oficial de Google DeepMind de 5 niveles." },
+      
+      { t: "Inteligencia General / AGI", d: "Sistema capaz de aprender cualquier tarea intelectual humana", img: "img/agi.jpg", 
+        n: "La AGI es un sistema capaz de igualar o superar el rendimiento cognitivo de un ser humano en cualquier tarea intelectual económicamente valiosa con generalidad flexible." },
+      
+      { t: "Superinteligencia / ASI", d: "Inteligencia sintética que supera ampliamente la capacidad humana global", img: "img/supint.jpg", 
+        n: "La Superinteligencia (ASI) es el estadio teórico donde la capacidad analítica sintética superaría al 100% de las mentes humanas combinadas en creatividad, ciencia y toma de decisiones." },
+      
+      { t: "La Singularidad", d: "Punto donde el avance tecnológico supera la comprensión humana", img: "img/singu.jpg", 
+        n: "Punto de inflexión hipotético teorizado por Ray Kurzweil: el momento en que una máquina pueda auto-mejorarse recursivamente a tal velocidad que el progreso escape a toda previsión humana." },
+      
+      { t: "Niveles AGI DeepMind", d: "Clasificación de cinco niveles basada en capacidad y generalidad", img: "img/agi.jpg", 
+        n: "La taxonomía de DeepMind clasifica los modelos según su rendimiento respecto a percentiles humanos: desde Nivel 0 (calculadoras sin IA) hasta Nivel 5 (Superhumana)." },
+      
+      { t: "AGI Nivel 1 y 2", d: "De nivel emergente actual hacia rendimiento de adulto capacitado", img: "img/agi.jpg", 
+        n: "Reflexión docente del manual: Hoy estamos sólidamente en Nivel 1 (Emergente: GPT-4o, Claude, Gemini). Aprueban exámenes de medicina o leyes, pero carecen de sentido común biológico, memoria continua duradera y comprensión causal física." },
+      
+      { t: "AGI Nivel 3 a 5", d: "Evolución proyectada hacia niveles experto, excepcional y superhumano", img: "img/supint.jpg", 
+        n: "Nivel 3 es Experto (percentil 90 de adultos calificados); Nivel 4 es Excepcional (percentil 99 de élite mundial); Nivel 5 es Superhumano (supera a toda la humanidad). Es la frontera de investigación de los próximos años." },
+      
+      { t: "Aplicaciones Industriales", d: "Transformación de la manufactura y optimización logística global", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", 
+        n: "En la industria, el impacto no es teórico: optimización en tiempo real de cadenas de suministro, gemelos digitales en plantas automotrices y mantenimiento predictivo de turbinas." },
+      
+      { t: "IA en Salud", d: "Cuarenta y siete por ciento despliega agentes médicos clínicos", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", 
+        n: "Dato del Reporte NVIDIA 2026: El 47% de las organizaciones de salud están evaluando o desplegando agentes de IA en flujos clínicos: aceleración de fármacos con AlphaFold y diagnóstico imagenológico." },
+      
+      { t: "Diagnóstico e Imágenes", d: "Asistencia en decisiones clínicas y análisis fotorrealista de imágenes", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", 
+        n: "La IA no reemplaza al radiólogo; actúa como un segundo par de ojos infatigable que detecta micro-patologías milimétricas en resonancias y tomografías con precisión superior al ojo humano cansado." },
+      
+      { t: "IA en Educación", d: "Personalización de contenidos y tutoría adaptativa para estudiantes", img: "img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg", 
+        n: "Permite tutores virtuales 24/7 que adaptan explicaciones al ritmo del alumno. Pero advertencia del manual: riesgo severo de atrofia del pensamiento crítico si el alumno depende de resúmenes sin lectura profunda." },
+      
+      { t: "Eficiencia Docente", d: "Automatización de tareas administrativas y diseño de actividades", img: "img/edu.jpg", 
+        n: "Para el profesor, la IA asume la pesada carga administrativa y corrección repetitiva, liberando tiempo valioso para lo insustituible: el debate socrático presencial, la evaluación oral y la mentoría humana." },
+      
+      { t: "Vida Cotidiana", d: "Integración en asistentes virtuales y recomendaciones en línea", img: "img/Absolute_Reality_v16_Applications_of_the_IA_in_the_actual_life_0.jpg", 
+        n: "En el día a día interactuamos con IA de forma invisible: desde algoritmos de optimización de rutas de tráfico hasta recomendaciones de streaming que predicen gustos antes que nosotros mismos." },
+      
+      { t: "Servicios Inteligentes", d: "Búsqueda semántica, traducción instantánea y detección de fraudes", img: "img/Absolute_Reality_v16_Illustrate_a_search_engine_like_Google_pr_0.jpg", 
+        n: "Los motores de búsqueda ya no hacen 'coincidencia de palabras'; entienden intenciones semánticas y sintetizan respuestas en milisegundos analizando terabytes de datos." },
+      
+      { t: "Vehículos Autónomos", d: "Procesamiento sensorial en tiempo real para navegación segura", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", 
+        n: "Un auto autónomo combina cámaras, radares y LiDAR con modelos SLM en el borde para tomar decisiones de frenado y cambio de carril a la velocidad de la luz, sin depender de conexión a la nube." },
+      
+      { t: "Retorno de Inversión / ROI", d: "Ochenta y cinco por ciento reporta crecimiento en ingresos", img: "img/Absolute_Reality_v16_Generate_an_image_representing_AIbased_fr_0.jpg", 
+        n: "El análisis financiero demuestra que la IA solo genera retorno de inversión positivo cuando se integra en los procesos clave de negocio y no como un experimento aislado de marketing." },
+      
+      { t: "Desafíos Éticos", d: "Normativas globales para garantizar la seguridad y responsabilidad", img: "img/desafios_eticos.jpg", 
+        n: "Módulo del Drama Ético y Regulatorio: Cuando un sistema algorítmico toma decisiones que impactan la libertad, el crédito o la salud de las personas, la rendición de cuentas ya no es negociable." },
+      
+      { t: "Sesgo Algorítmico", d: "Prevención de errores discriminatorios heredados de datos históricos", img: "img/Absolute_Reality_v16_Illustrate_the_concept_of_Algorithmic_Bia_0.jpg", 
+        n: "Principio ético clave: Si entrenas un modelo con datos de contratación de los últimos 30 años con prejuicios humanos, la IA aprenderá a discriminar a escala industrial. Auditar los datos es mandatorio." },
+      
+      { t: "Privacidad y Datos", d: "Protección de información personal y gobernanza de transparencia", img: "img/privacidad.jpg", 
+        n: "La ingesta de datos confidenciales por LLMs en la nube ha provocado filtraciones corporativas severas. Por esto, 2026 es el año de oro de los SLMs y el procesamiento local con cero fuga de datos." },
+      
+      { t: "Ley de IA de la UE", d: "Marco regulatorio pionero basado en niveles de riesgo", img: "img/regulaciones.jpg", 
+        n: "El AI Act de la Unión Europea es la primera ley integral del planeta. Clasifica la IA con un enfoque piramidal de 4 niveles de riesgo para garantizar que el desarrollo sea seguro y auditable." },
+      
+      { t: "Niveles de Riesgo EU", d: "Prohibición de riesgos inaceptables y exigencias a alto riesgo", img: "img/armas.jpg", 
+        n: "Pirámide del AI Act: 1. Riesgo Inaceptable (PROHIBIDO: puntuación social, manipulación subliminal), 2. Alto Riesgo (auditorías y supervisión severa en salud y empleo), 3. Limitado (transparencia obligatoria) y 4. Mínimo (sin restricciones)." },
+      
+      { t: "Propiedad Intelectual", d: "Debate legal entre doctrina Fair Use y excepciones TDM", img: "img/derechos.jpg", 
+        n: "El enredo legal transatlántico: EE.UU. ampara el entrenamiento masivo en 'Fair Use' (uso transformativo). La UE establece excepciones de Minería de Textos y Datos (TDM), pero exige mecanismos de 'opt-out' para que creadores puedan excluir sus obras." },
+      
+      { t: "Principios Éticos Clave", d: "Transparencia, equidad, seguridad, privacidad y beneficio social global", img: "img/principios_eticos.jpg", 
+        n: "Tres reglas de oro para cerrar: 1. Transparencia (no cajas negras inauditables), 2. Mitigación de sesgos, y 3. Supervisión Humana (Human-in-the-Loop): la decisión final en salud, justicia y armas NUNCA debe delegarse al 100% a un algoritmo." },
+      
+      { t: "Impacto en el Empleo", d: "Cincuenta y nueve por ciento con exposición laboral moderada", img: "img/desplazamiento%20labora.jpg", 
+        n: "Dato del Estudio EY 2026: El 59% de los empleos globales tienen una exposición moderada a alta a la IA generativa. La tecnología no está destruyendo profesiones enteras de golpe, sino descomponiendo tareas." },
+      
+      { t: "Aumento de Capacidad", d: "La IA automatiza tareas repetitivas potenciando capacidades humanas", img: "img/surf.png", 
+        n: "Sustitución vs Aumento: La IA sustituye el procesamiento tedioso de datos, borradores estándar y código repetitivo, pero multiplica la capacidad del profesional que aporta pensamiento estratégico y empatía." },
+      
+      { t: "Estrategias de Adaptación", d: "Dominio de herramientas, pensamiento crítico y alfabetización digital", img: "img/estrategias.png", 
+        n: "Subirse a la ola: El profesional exitoso no compite en velocidad contra la máquina; aprende a orquestar copilotos y agentes para elevar la calidad de sus entregables." },
+      
+      { t: "Diferenciadores Humanos", d: "Creatividad, empatía y juicio estratégico como diferenciadores clave", img: "img/aprendizaje.png", 
+        n: "Los 4 Pilares del Estudiante: 1. Aprender a usar la IA en flujos reales, 2. Forjar un pensamiento crítico riguroso, 3. Cultivar lo puramente humano (ética, empatía y liderazgo) y 4. Dominar el Prompt Engineering." },
+      
+      { t: "Reflexión Final", d: "La IA es el comienzo de nueva creación de valor", img: "img/futuro.png", 
+        n: "Frase para concluir la cátedra: 'La IA no te va a quitar tu trabajo. Una persona que sepa utilizar herramientas de IA mejor que tú, esa sí te va a quitar el trabajo'. El futuro pertenece a quienes sepan combinar inteligencia biológica y sintética. ¡Muchas gracias!" }
     ];
 
     let currentIndex = 0;
@@ -337,7 +504,6 @@
     function renderSlide(index) {
       const data = slides[index];
 
-      // Alternancia de diseño: par derecha, impar izquierda
       cardEl.className = "slide-wrapper " + (index % 2 === 0 ? "layout-right" : "layout-left");
 
       titleEl.innerText = data.t;
