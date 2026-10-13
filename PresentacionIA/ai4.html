@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="referrer" content="no-referrer">
-  <title>La Magia de la IA</title>
+  <title>La Magia de la IA: De Teoría a Agentes</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: #0b0f19;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fee440;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       width: 100vw;
       display: flex;
@@ -19,57 +19,56 @@
       position: relative;
       overflow-x: hidden;
       padding: 20px 15px 90px 15px;
-      color: #f1f5f9;
     }
 
-    /* Fondo animado tecnológico */
+    /* Fondo animado SVG */
     svg.bg-blobs {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.35;
     }
     @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .out-top { animation: rotate 24s linear infinite; transform-origin: 13px 25px; }
-    .in-top { animation: rotate 12s linear infinite; transform-origin: 13px 25px; }
-    .out-bottom { animation: rotate 28s linear infinite; transform-origin: 84px 93px; }
-    .in-bottom { animation: rotate 16s linear infinite; transform-origin: 84px 93px; }
+    .out-top { animation: rotate 20s linear infinite; transform-origin: 13px 25px; }
+    .in-top { animation: rotate 10s linear infinite; transform-origin: 13px 25px; }
+    .out-bottom { animation: rotate 25s linear infinite; transform-origin: 84px 93px; }
+    .in-bottom { animation: rotate 15s linear infinite; transform-origin: 84px 93px; }
 
     /* Barra de progreso */
     .progress-bar-container {
-      position: fixed; top: 0; left: 0; width: 100%; height: 5px;
-      background: rgba(255, 255, 255, 0.08); z-index: 50;
+      position: fixed; top: 0; left: 0; width: 100%; height: 6px;
+      background: rgba(0, 0, 0, 0.12); z-index: 50;
     }
-    .progress-bar { height: 100%; background: #38bdf8; width: 0%; transition: width 0.3s ease; }
+    .progress-bar { height: 100%; background: #9b5de5; width: 0%; transition: width 0.3s ease; }
 
-    /* Contenedor de la Diapositiva */
+    /* Tarjeta principal */
     .slide-wrapper {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 1200px;
-      height: 82vh;
-      max-height: 750px;
+      max-width: 1150px;
       min-height: 520px;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      height: 80vh;
+      max-height: 750px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-radius: 24px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+      border: 2px solid rgba(255, 255, 255, 0.65);
       display: flex;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     .layout-right { flex-direction: row; }
     .layout-left { flex-direction: row-reverse; }
 
+    /* Bloque de texto */
     .content-box {
       flex: 1.15;
-      padding: clamp(24px, 4vw, 55px);
+      padding: clamp(24px, 4vw, 50px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -78,45 +77,35 @@
 
     .topic-tag {
       font-size: 13px;
-      font-weight: 700;
-      color: #38bdf8;
+      font-weight: 800;
+      color: #9b5de5;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     h1 {
-      font-size: clamp(26px, 3.4vw, 42px);
-      color: #ffffff;
-      line-height: 1.25;
+      font-size: clamp(24px, 3.2vw, 42px);
+      color: #0f172a;
+      line-height: 1.22;
       margin-bottom: 18px;
       font-weight: 800;
     }
 
-    h2 {
-      font-size: clamp(22px, 2.6vw, 32px);
-      color: #e2e8f0;
-      line-height: 1.3;
-      margin-bottom: 16px;
-      font-weight: 700;
+    p.description {
+      font-size: clamp(16px, 1.8vw, 24px);
+      color: #334155;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
-    p.description, ul, ol {
-      font-size: clamp(16px, 1.8vw, 22px);
-      color: #94a3b8;
-      line-height: 1.55;
-      font-weight: 400;
-    }
-
-    ul, ol { padding-left: 24px; margin-top: 10px; }
-    li { margin-bottom: 8px; color: #cbd5e1; }
-
+    /* Bloque de imagen */
     .image-box {
       flex: 1;
       width: 50%;
       min-width: 40%;
       height: 100%;
-      background: #020617;
+      background: #0f172a;
       position: relative;
       overflow: hidden;
     }
@@ -129,54 +118,55 @@
       transition: opacity 0.3s ease;
     }
 
+    /* Guión del orador */
     .speaker-notes-drawer {
       margin-top: 20px;
       padding: 14px 16px;
-      background: rgba(30, 41, 59, 0.85);
-      border-left: 4px solid #38bdf8;
+      background: rgba(241, 245, 249, 0.95);
+      border-left: 4px solid #00bbf9;
       border-radius: 8px;
       font-size: 14px;
-      color: #cbd5e1;
+      color: #475569;
       line-height: 1.45;
       display: none;
     }
     .speaker-notes-drawer.visible { display: block; }
 
-    /* Barra de controles */
+    /* Controles */
     .controls {
       position: fixed;
-      bottom: 18px;
+      bottom: 16px;
       z-index: 50;
       display: flex;
       align-items: center;
       gap: 12px;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       padding: 8px 18px;
       border-radius: 50px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     button.nav-btn {
-      background: #1e293b;
+      background: #0f172a;
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: none;
       width: 40px; height: 40px;
       border-radius: 50%;
       font-size: 17px;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: all 0.2s ease;
+      touch-action: manipulation;
     }
-    button.nav-btn:hover { background: #38bdf8; color: #020617; transform: scale(1.08); }
+    button.nav-btn:hover { background: #9b5de5; transform: scale(1.08); }
 
     .btn-action {
-      background: #1e293b;
-      color: #f8fafc;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 7px 15px;
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      padding: 7px 14px;
       border-radius: 20px;
       font-size: 13px;
       font-weight: 700;
@@ -184,9 +174,9 @@
       display: flex; align-items: center; gap: 6px;
       transition: all 0.2s ease;
     }
-    .btn-action:hover { background: #334155; }
+    .btn-action:hover { background: #e2e8f0; }
 
-    .slide-counter { font-size: 14px; font-weight: 700; color: #94a3b8; min-width: 65px; text-align: center; }
+    .slide-counter { font-size: 14px; font-weight: 700; color: #0f172a; min-width: 65px; text-align: center; }
 
     /* Responsividad */
     @media (max-width: 850px) {
@@ -211,11 +201,11 @@
 
   <div class="slide-wrapper layout-right" id="slideCard">
     <div class="content-box">
-      <div class="topic-tag" id="slideTag">DIAPOSITIVA 01</div>
-      <div id="slideContent"></div>
+      <div class="topic-tag" id="slideTag">SECCIÓN 01</div>
+      <h1 id="slideTitle">La Magia de la IA</h1>
+      <p class="description" id="slideDesc">De Teoría a Agentes</p>
       <div class="speaker-notes-drawer" id="speakerNotes">
-        <strong>Guión del orador:</strong>
-        <div id="notesText" style="margin-top: 6px;"></div>
+        <strong>Guión del orador:</strong> <span id="notesText"></span>
       </div>
     </div>
     <div class="image-box">
@@ -236,136 +226,99 @@
   </div>
 
   <script>
+    // 83 DIAPOSITIVAS DE LA NUEVA PRESENTACIÓN CON LAS RUTAS LOCALES IMG/
     const slides = [
-      { html: `<h1>La Magia de la IA</h1><p class="description">Introducción a la Inteligencia Artificial</p>`, img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg", n: "Bienvenidos a la presentación sobre La Magia de la IA." },
-      { html: `<h1>Introducción</h1><p class="description">Conceptos clave para comprender la revolución inteligente actual</p>`, img: "img/3D_Animation_Style_Create_an_image_illustrating_the_concept_of_0.jpg", n: "Desmitifiquemos qué es realmente la tecnología de inteligencia artificial." },
-      { html: `<h1>¿Qué es la Inteligencia?</h1><p class="description">Capacidad mental de <strong>adquirir</strong>, <strong>procesar</strong>, <strong>comprender</strong>, <strong>aplicar</strong> y <strong>adaptar</strong> el <strong>conocimiento</strong></p>`, img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_Generat_0.jpg", n: "" },
-      { html: `<h1>La neurona</h1><p class="description">Unidad fundamental del sistema nervioso biológico</p>`, img: "img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg", n: "" },
-      { html: `<h2>Estructura Neuronal</h2><p class="description">El axón manda señales eléctricas a través de las dendritas a otras neuronas, creando sinapsis</p>`, img: "img/ilustracion-que-muestra-los-4-tipos-de-neuronas-de-izquierda-a-derecha-unipolar-bipolar-multipolar-y-piramidal-g157be.jpg", n: "" },
-      { html: `<h2>El Cerebro Humano</h2><p class="description">El cerebro contiene 86 mil millones de neuronas.<br>Cada neurona envía hasta 1000 impulsos por segundo y se conecta a miles de otras.</p>`, img: "img/neuronas-161445.jpg", n: "" },
-      { html: `<h2>Densidad Sináptica</h2><p class="description">1000 veces más sinapsis biológicas que la mayor IA actual... por ahora.</p>`, img: "img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg", n: "" },
-      { html: `<h1>¿Qué es la Inteligencia Artificial?</h1><p class="description">Algoritmos y modelos que permiten a las máquinas <strong>analizar</strong> datos, <strong>aprender</strong> y <strong>decidir</strong>.</p>`, img: "img/3D_Animation_Style_Generate_an_image_representing_the_concept_0.jpg", n: "" },
-      { html: `<h1>Funcionamiento de la IA</h1><p class="description">Sistemas que <strong>aprenden</strong> de la experiencia, resuelven problemas y reconocen patrones ocultos en grandes volúmenes de datos.</p>`, img: "img/DreamShaper_v7_Illustrate_the_process_of_How_AI_Works_showing_0.jpg", n: "" },
-      { html: `<h1>Neurona artificial</h1><p class="description">La unidad matemática que procesa y pondera entradas numéricas</p>`, img: "img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg", n: "" },
-      { html: `<h1>Redes Neuronales Artificiales</h1><p class="description">Múltiples capas de neuronas artificiales interconectadas trabajando en paralelo.</p>`, img: "img/neuroIA.png", n: "" },
-      { html: `<h1>Cerebro artificial más sencillo</h1><p class="description">El perceptrón simple: la unidad computacional elemental.</p>`, img: "img/uniNeuroIA.png", n: "" },
-      { html: `<h1>Cerebros artificiales</h1><p class="description">Conexiones multicapa complejas para resolver tareas de clasificación.</p>`, img: "img/cerebros35NeuroIA.png", n: "" },
-      { html: `<h1>Capas Ocultas Profundas</h1><p class="description">Extracción jerárquica de características en Deep Learning.</p>`, img: "img/cerebros66NeuroIA.png", n: "" },
-      { html: `<h1>Redes Densas</h1><p class="description">Propagación de información a través de nodos de alta densidad.</p>`, img: "img/cerebros8NeuroIA.png", n: "" },
-      { html: `<h1>Arquitectura Conectiva</h1><p class="description">Evolución de modelos de redes neuronales a gran escala.</p>`, img: "img/cerebros81NeuroIA.png", n: "" },
-      
-      /* FALTANTE 1: Diapositiva 17 */
-      { html: `<h1>Pérdida / Loss</h1><p class="description">La medida matemática del error entre las predicciones del modelo y los valores reales.</p>`, img: "img/perdida.jpg", n: "¿Cómo aprende la IA? Optimizando la función de pérdida mediante descenso de gradiente." },
-      
-      { html: `<h1>Machine Learning</h1><p class="description">Crea sistemas que reconocen patrones, toman decisiones y mejoran continuamente con datos.</p>`, img: "img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg", n: "" },
-      
-      /* FALTANTE 2: Diapositiva 19 */
-      { html: `<h1>Historia y Evolución de la IA</h1><p class="description">De los fundamentos teóricos pioneros de la computación a los modelos agénticos modernos.</p>`, img: "img/historia_ia.jpg", n: "" },
-      
-      { html: `<h1>Pioneros de la IA</h1><p class="description">De Alan Turing y John McCarthy a la revolución contemporánea.</p>`, img: "img/pioneros.png", n: "Alan Turing planteó el test de imitación en 1950. McCarthy acuñó el término en Dartmouth en 1956." },
-      
-      /* FALTANTE 3: Diapositiva 21 */
-      { html: `<h1>Los Inviernos de la IA</h1><p class="description">Periodos de escepticismo y recorte de financiamiento donde las expectativas superaron al hardware de la época.</p>`, img: "img/invierno_intro.jpg", n: "Tras el informe Lighthill los fondos públicos cayeron drásticamente." },
-      
-      { html: `<h1>El Ciclo de Investigación</h1><p class="description">1970 - 2000: Altibajos en el desarrollo de la computación inteligente.</p>`, img: "img/invierno.png", n: "" },
-      
-      /* FALTANTE 4: Diapositiva 23 */
-      { html: `<h1>La Revolución de la IA Generativa</h1><p class="description">El salto de sistemas predictivos a modelos con capacidades de síntesis y creación multimodal.</p>`, img: "img/revolucion_generativa.jpg", n: "" },
-      
-      { html: `<h1>La Era de la Atención</h1><p class="description">2017 - 2022: La invención de la arquitectura Transformer impulsa un salto de escala cualitativo.</p>`, img: "img/atencion.png", n: "El paper 'Attention Is All You Need' de Google cambió para siempre la historia del PLN." },
-      { html: `<h1>Tipos de IA</h1><p class="description">De la ciencia ficción a las capacidades de despliegue real en la industria.</p>`, img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", n: "" },
-      { html: `<h1>Inteligencia Artificial General (AGI)</h1><p class="description">Sistemas hipotéticos con la facultad de aprender y ejecutar cualquier tarea intelectual al nivel de un humano.</p>`, img: "img/agi.jpg", n: "" },
-      { html: `<h1>Superinteligencia (ASI)</h1><p class="description">Capacidad cognitiva sintética que superaría ampliamente a las mejores mentes humanas combinadas.</p>`, img: "img/supint.jpg", n: "" },
-      { html: `<h1>Singularidad Tecnológica</h1><p class="description">Punto teórico donde el progreso técnico y la auto-mejora recursiva de la IA escapan a la previsión humana.</p>`, img: "img/singu.jpg", n: "" },
-      { html: `<h1>Modelos de Lenguaje</h1><p class="description">Taxonomía y arquitecturas que impulsan la comprensión y generación de texto.</p>`, img: "img/modeloslen.jpg", n: "" },
-      { html: `<h2>LLM (Large Language Models)</h2><p class="description">Modelos masivos de escala frontera como Gemini 3.8 Flash, GPT-4o y Claude para razonamiento complejo.</p>`, img: "img/llm.jpg", n: "" },
-      { html: `<h2>SLM (Small Language Models)</h2><p class="description">Modelos compactos de alta eficiencia orientados a ejecución local en terminales móviles y PCs.</p>`, img: "img/sml.jpg", n: "" },
-      { html: `<h1>Herramientas de IA Actuales</h1><p class="description">El ecosistema de producción que está transformando todas las áreas profesionales.</p>`, img: "img/herrami.jpg", n: "" },
-      { html: `<h2>Chatbots de Razonamiento</h2><ul><li>ChatGPT</li><li>Gemini 3.8 Flash</li><li>Claude</li><li>Qwen</li><li>Meta Llama</li></ul>`, img: "img/chatbots.jpg", n: "" },
-      { html: `<h2>Generadores de Contenido Visual y Video</h2><ul><li>Midjourney</li><li>Adobe Firefly</li><li>Runway</li><li>Kling AI</li><li>Sora</li></ul>`, img: "img/gencont.jpg", n: "" },
-      
-      /* FALTANTE 5: Diapositiva 35 */
-      { html: `<h2>Generación de Música y Audio</h2><p class="description">Composición de piezas musicales completas y voces sintéticas mediante instrucciones.</p><ul><li>Suno</li><li>Udio</li><li>Lyria</li></ul>`, img: "img/suno_musica.jpg", n: "Plataformas como Suno han democratizado la producción orquestal y vocal con texto." },
-      
-      { html: `<h2>Asistentes de Desarrollo</h2><ul><li>Cursor</li><li>Windsurf</li><li>GitHub Copilot</li><li>Tabnine</li></ul>`, img: "img/desarrollo.jpg", n: "" },
-      
-      /* FALTANTE 6: Diapositiva 37 */
-      { html: `<h2>Investigación y Síntesis</h2><p class="description">Motores de búsqueda semántica con cita de fuentes y análisis de documentos extensos.</p><ul><li>Perplexity</li><li>NotebookLM</li></ul>`, img: "img/investigacion.jpg", n: "" },
-      
-      /* FALTANTE 7: Diapositiva 38 */
-      { html: `<h1>Prompt Engineering</h1><p class="description">La ciencia y el arte de formular instrucciones precisas para gobernar modelos probabilísticos.</p>`, img: "img/prompt_engineering.jpg", n: "" },
-      
-      { html: `<h2>La Habilidad del Siglo XXI</h2><p class="description">Comunicarse efectivamente con inteligencias artificiales para obtener respuestas exactas.</p>`, img: "img/prompt.png", n: "" },
-      { html: `<h1>La IA es Impredecible</h1><p class="description">Al ser modelos probabilísticos, una instrucción difusa produce respuestas ambiguas o alucinaciones.</p>`, img: "img/impredecible.png", n: "" },
-      { html: `<h1>Estructura de un Buen Prompt</h1><ol><li><strong>Tarea:</strong> Acción concreta que se le solicita al modelo.</li><li><strong>Contexto:</strong> Datos de fondo y audiencia objetivo.</li><li><strong>Formato:</strong> Estilo de salida requerido (tabla, lista, código).</li></ol>`, img: "img/estructura.png", n: "" },
-      { html: `<h1>Comunicación Efectiva</h1><ul><li>Claridad y concisión.</li><li>Eliminación estricta de ambigüedades.</li><li>Asignación de roles profesionales.</li><li>Técnica de aclaración previa ('Pregúntame').</li></ul>`, img: "img/efectiva.png", n: "" },
-      { html: `<h1>Consejos para Usar IA</h1><p class="description">Mejores prácticas para optimizar el flujo de trabajo diario.</p>`, img: "img/consejos.jpg", n: "" },
-      
-      /* FALTANTE 8: Diapositiva 44 */
-      { html: `<h2>La Regla de Oro</h2><p class="description" style="font-size: 28px; line-height: 1.6; color: #38bdf8;">"Todo lo que tú no le especifiques explícitamente a la IA, la IA lo decidirá al azar por ti."</p>`, img: "img/regla_especificacion.jpg", n: "" },
-      
-      { html: `<h2>Precisión</h2><p class="description">Instrucciones directas, usando verbos de acción bien delimitados.</p>`, img: "img/precision.jpg", n: "" },
-      { html: `<h2>Contexto</h2><p class="description">Proveer antecedentes suficientes para guiar el marco conceptual de la respuesta.</p>`, img: "img/contexto.jpg", n: "" },
-      { html: `<h2>Roles</h2><p class="description">Instruir al modelo para que adopte la postura de un especialista con experiencia probada.</p>`, img: "img/roles.jpg", n: "" },
-      { html: `<h2>Ejemplos (Few-Shot)</h2><p class="description">Brindar pares de entrada y salida modelo para estandarizar el patrón de entrega.</p>`, img: "img/ejemplo.jpg", n: "" },
-      { html: `<h1>Aplicaciones de la IA en la Industria</h1><p class="description">Automatización de flujos de trabajo, optimización de logística y analítica predictiva en manufactura.</p>`, img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", n: "" },
-      { html: `<h1>Aplicaciones en la Educación</h1><p class="description">Tutoría personalizada adaptada a las necesidades, ritmo y estilo cognitivo de cada alumno.</p>`, img: "img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg", n: "" },
-      { html: `<h1>Aplicaciones en la Medicina</h1><p class="description">Detección temprana mediante diagnóstico por imágenes y asistencia en decisiones clínicas de precisión.</p>`, img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", n: "" },
-      { html: `<h1>IA en la Vida Cotidiana</h1><p class="description">Integración invisible en las tecnologías que usamos cotidianamente.</p>`, img: "img/Absolute_Reality_v16_Applications_of_the_IA_in_the_actual_life_0.jpg", n: "" },
-      { html: `<h1>Asistentes Virtuales</h1><p class="description">Interacción por voz y automatización doméstica inteligente.</p>`, img: "img/Absolute_Reality_v16_Create_an_image_illustrating_a_virtual_as_0.jpg", n: "" },
-      { html: `<h1>Recomendaciones en Línea</h1><p class="description">Filtrado colaborativo y personalización en plataformas de streaming y comercio electrónico.</p>`, img: "img/Absolute_Reality_v16_Generate_an_image_depicting_an_online_str_0.jpg", n: "" },
-      { html: `<h1>Motores de Búsqueda Semántica</h1><p class="description">Recuperación de información basada en intenciones y contexto más allá de palabras clave.</p>`, img: "img/Absolute_Reality_v16_Illustrate_a_search_engine_like_Google_pr_0.jpg", n: "" },
-      { html: `<h1>Traducción de Idiomas</h1><p class="description">Sistemas neuronales de traducción instantánea preservando matices contextuales.</p>`, img: "img/Absolute_Reality_v16_Create_an_image_showing_how_a_person_tran_0.jpg", n: "" },
-      { html: `<h1>Detección de Fraudes</h1><p class="description">Análisis en milisegundos de millones de transacciones bancarias para identificar anomalías.</p>`, img: "img/Absolute_Reality_v16_Generate_an_image_representing_AIbased_fr_0.jpg", n: "" },
-      { html: `<h1>Vehículos Autónomos</h1><p class="description">Visión por computadora y fusión de sensores para navegación espacial segura en tiempo real.</p>`, img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", n: "" },
-      
-      /* FALTANTE 9: Diapositiva 59 */
-      { html: `<h1>Regulaciones y Normativas</h1><p class="description">Las decisiones algorítmicas impactan en derechos fundamentales; la rendición de cuentas es indispensable.</p>`, img: "img/regulaciones.jpg", n: "" },
-      
-      /* FALTANTE 10: Diapositiva 60 */
-      { html: `<h1>Desafíos Éticos en IA</h1><p class="description">Riesgos sistémicos derivados del despliegue masivo y la dependencia algorítmica.</p>`, img: "img/desafios_eticos.jpg", n: "" },
-      
-      { html: `<h1>Sesgo Algorítmico</h1><p class="description">La perpetuación involuntaria de discriminaciones históricas presentes en los datos de entrenamiento.</p>`, img: "img/Absolute_Reality_v16_Illustrate_the_concept_of_Algorithmic_Bia_0.jpg", n: "" },
-      { html: `<h1>Privacidad y Datos Personales</h1><p class="description">Protección de información confidencial y derechos de los usuarios en la era de los grandes modelos.</p>`, img: "img/privacidad.jpg", n: "" },
-      { html: `<h2>Desplazamiento Laboral</h2><p class="description">La transformación de perfiles ocupacionales y la necesidad de reconversión profesional.</p>`, img: "img/desplazamiento%20labora.jpg", n: "" },
-      { html: `<h2>Armas Autónomas</h2><p class="description">El dilema ético internacional sobre sistemas letales sin control humano directo.</p>`, img: "img/armas.jpg", n: "" },
-      { html: `<h2>Derechos de Autor y Propiedad Intelectual</h2><p class="description">El debate sobre el uso legítimo de contenidos protegidos para el entrenamiento de IA generativa.</p>`, img: "img/derechos.jpg", n: "" },
-      { html: `<h2>Dependencia y Adicción a la Tecnología</h2><p class="description">Impacto en la cognición y las relaciones interpersonales mediadas por algoritmos persuasivos.</p>`, img: "img/adiction.jpg", n: "" },
-      { html: `<h2>Autenticidad de los Medios (Deepfakes)</h2><p class="description">El reto de verificar la procedencia de contenidos sintéticos en la era de la desinformación.</p>`, img: "img/media.jpg", n: "" },
-      
-      /* FALTANTE 11: Diapositiva 68 */
-      { html: `<h1>Principios Éticos en el Uso de la IA</h1><p class="description">El marco axiológico que debe regir el diseño e implementación de sistemas inteligentes.</p>`, img: "img/principios_eticos.jpg", n: "" },
-      
-      { html: `<h2>Transparencia</h2><p class="description">Explicabilidad algorítmica y divulgación clara cuando un contenido ha sido sintetizado.</p>`, img: "img/transpa.jpg", n: "" },
-      { html: `<h2>Equidad y No Discriminación</h2><p class="description">Auditorías rigurosas para garantizar la imparcialidad en decisiones de alto impacto social.</p>`, img: "img/discrim.jpg", n: "" },
-      { html: `<h2>Gobernanza de Datos</h2><p class="description">Cumplimiento de estándares de custodia, anonimización y consentimiento informado.</p>`, img: "img/data.jpg", n: "" },
-      { html: `<h2>Beneficio Social y Bien Común</h2><p class="description">Alinear el avance técnico con la sostenibilidad humana y el desarrollo equitativo.</p>`, img: "img/social.jpg", n: "" },
-      { html: `<h2>Seguridad y Robustez</h2><p class="description">Resistencia ante ataques de inyección, envenenamiento de datos y fallos en cascada.</p>`, img: "img/security.jpg", n: "" },
-      { html: `<h2>Diseño Ético Desde el Origen</h2><p class="description">Incorporación de salvaguardas morales desde la conceptualización de los modelos.</p>`, img: "img/etical.jpg", n: "" },
-      { html: `<h2>Colaboración Internacional</h2><p class="description">Tratados y estándares globales interoperables entre organismos reguladores.</p>`, img: "img/internal.jpg", n: "" },
-      { html: `<h2>Educación y Concienciación</h2><p class="description">Alfabetización digital para capacitar a la ciudadanía en el uso crítico y seguro de la IA.</p>`, img: "img/edu.jpg", n: "" },
-      { html: `<h1>¿Nos está haciendo tontos?</h1><p class="description">El debate cognitivo: ¿delegación intelectual o amplificación del pensamiento humano?</p>`, img: "img/aprendizaje.png", n: "Estudios muestran cambios en patrones de atención; la clave es el uso complementario." },
-      
-      /* FALTANTE 12: Diapositiva 78 */
-      { html: `<h1>La IA y el Futuro del Trabajo</h1><p class="description">La evolución del empleo: de la sustitución de tareas repetitivas a la colaboración humano-máquina.</p>`, img: "img/futuro_trabajo.jpg", n: "" },
-      
-      { html: `<h2>Adaptación en la Era de la IA</h2><p class="description">Subirse a la ola: cómo convertir la automatización en un multiplicador del talento.</p>`, img: "img/surf.png", n: "" },
-      { html: `<h1>Estrategias de Adaptación</h1><p class="description">Directrices prácticas para prosperar en un mercado laboral transformado.</p>`, img: "img/estrategias.png", n: "" },
-      
-      /* FALTANTE 13: Diapositiva 81 */
-      { html: `<h2>Los 4 Pilares de la Adaptación</h2><ol><li>Aprender a usar la IA efectivamente en tus flujos diarios.</li><li>Desarrollar un pensamiento crítico inquebrantable.</li><li>Enfocarse en lo exclusivamente humano: creatividad y empatía.</li><li>Dominar el Prompt Engineering y el diseño de instrucciones.</li></ol>`, img: "img/estrategias_pilares.jpg", n: "" },
-      
-      /* FALTANTE 14: Diapositiva 82 */
-      { html: `<h1>Reflexión Final</h1><p class="description">La gran síntesis de la revolución inteligente.</p>`, img: "img/reflexion_final.jpg", n: "" },
-      
-      { html: `<h2>"La IA no es el fin del trabajo humano,</h2><h2>es el comienzo de una nueva forma de crear valor."</h2>`, img: "img/futuro.png", n: "El futuro pertenece a quienes sepan combinar inteligencia biológica y sintética." }
+      { t: "La Magia de la IA", d: "De Teoría a Agentes", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg", n: "Bienvenidos. Hoy realizaremos un viaje fascinante por el presente y futuro de la Inteligencia Artificial: desde sus fundamentos teóricos hasta la revolución de los agentes autónomos." },
+      { t: "Introducción", d: "Conceptos clave para comprender la revolución inteligente actual", img: "img/3D_Animation_Style_Create_an_image_illustrating_the_concept_of_0.jpg", n: "Para entender hacia dónde vamos, primero debemos desmitificar qué es realmente esta tecnología y cómo ha cambiado nuestra forma de procesar el conocimiento." },
+      { t: "¿Qué es la Inteligencia?", d: "Capacidad mental de procesar, comprender, aplicar y adaptar conocimiento", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_Generat_0.jpg", n: "La inteligencia humana no es solo acumular datos; es la capacidad de razonar, aprender de los errores y adaptarse a entornos cambiantes." },
+      { t: "Neurona Biológica", d: "El cerebro humano procesa información mediante 86 mil millones de neuronas", img: "img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg", n: "Nuestra biología es extraordinaria. El cerebro humano alberga aproximadamente 86 mil millones de neuronas interconectadas en una red eléctrica altamente eficiente." },
+      { t: "Biología vs. Computación", d: "Billones de sinapsis biológicas superan la complejidad actual sintética", img: "img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg", n: "Aunque la computación moderna es extremadamente rápida, la densidad de conexiones de nuestro cerebro sigue superando a los supercomputadores más avanzados." },
+      { t: "¿Qué es la IA?", d: "Algoritmos que permiten a máquinas analizar datos y decidir", img: "img/3D_Animation_Style_Generate_an_image_representing_the_concept_0.jpg", n: "La Inteligencia Artificial busca emular estas capacidades mediante ecuaciones y algoritmos capaces de analizar información y tomar decisiones." },
+      { t: "Funcionamiento de la IA", d: "Sistemas que reconocen patrones complejos y aprenden de datos", img: "img/DreamShaper_v7_Illustrate_the_process_of_How_AI_Works_showing_0.jpg", n: "A diferencia del software tradicional, la IA no se programa regla por regla, sino que detecta patrones ocultos en grandes volúmenes de datos." },
+      { t: "La Neurona Artificial", d: "Unidad básica matemática que procesa y pondera entradas numéricas", img: "img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg", n: "El bloque fundamental es la neurona artificial: una fórmula matemática que recibe datos, les asigna un peso de importancia y genera una salida." },
+      { t: "Redes Neuronales", d: "Capas interconectadas de nodos procesando información en paralelo", img: "img/neuroIA.png", n: "Al agrupar miles de estas neuronas en capas, creamos redes neuronales capaces de realizar cálculos masivos en paralelo." },
+      { t: "Función de Pérdida / Loss", d: "Medida matemática del error entre predicción y valor real", img: "img/perdida.jpg", n: "¿Cómo aprende la IA? Mediante la función de pérdida, un indicador matemático que calcula qué tan lejos estuvo la máquina de la respuesta correcta." },
+      { t: "Machine Learning", d: "Algoritmos que optimizan parámetros automáticamente a partir de datos", img: "img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg", n: "El Machine Learning es el proceso por el cual el algoritmo ajusta sus propios parámetros automáticamente para reducir ese error con cada intento." },
+      { t: "Deep Learning", d: "Aprendizaje profundo mediante múltiples capas ocultas de abstracción", img: "img/cerebros8NeuroIA.png", n: "El Deep Learning lleva esto más lejos, usando múltiples capas ocultas para entender conceptos abstractos, como reconocer un rostro o traducir un idioma." },
+      { t: "Historia de la IA", d: "Orígenes teóricos y grandes hitos de la computación inteligente", img: "img/historia_ia.jpg", n: "Repasemos ahora la historia: un camino de más de siete décadas marcado por grandes avances y momentos de estancamiento." },
+      { t: "Los Inicios - 1950s", d: "Alan Turing propone computadoras capaces de pensamiento humano", img: "img/pioneros.png", n: "En los años 50, Alan Turing planteó una pregunta visionaria: ¿pueden las máquinas pensar como los seres humanos?" },
+      { t: "El Test de Turing", d: "Evaluación de imitación conversacional entre humano y máquina", img: "img/pioneros.png", n: "Para responderlo creó el Test de Turing, una prueba diseñada para evaluar si una máquina puede imitar la conversación humana de forma indistinguible." },
+      { t: "Nacimiento del Término", d: "John McCarthy define Inteligencia Artificial en Dartmouth (1956)", img: "img/pioneros.png", n: "El término 'Inteligencia Artificial' nació oficialmente en la conferencia de Dartmouth de 1956, liderada por John McCarthy." },
+      { t: "Inviernos de la IA", d: "Recortes de financiamiento por expectativas infladas y hardware limitado", img: "img/invierno.png", n: "Sin embargo, vinieron los 'Inviernos de la IA': periodos de escepticismo y retiro de fondos porque la tecnología de la época no alcanzaba las expectativas." },
+      { t: "El Renacimiento - 1980s", d: "Redes multicapa e introducción del algoritmo de retropropagación", img: "img/uniNeuroIA.png", n: "En los años 80, la retropropagación permitió entrenar redes de múltiples capas, reactivando el interés científico." },
+      { t: "Desvanecimiento del Gradiente", d: "Pérdida de información en capas profundas solucionada en 2006", img: "img/cerebros81NeuroIA.png", n: "En 2006 se superaron las barreras matemáticas del desvanecimiento del gradiente, dando inicio a la era moderna del Deep Learning." },
+      { t: "Arquitectura Transformer", d: "Publicación de 'Attention Is All You Need' en 2017", img: "img/atencion.png", n: "El gran salto cualitativo ocurrió en 2017 con la arquitectura Transformer, desarrollada por investigadores de Google." },
+      { t: "Mecanismo de Atención", d: "Asignación de importancia contextual a cada palabra simultáneamente", img: "img/atencion.png", n: "Los Transformers introdujeron el mecanismo de atención, permitiendo procesar frases enteras y entender el contexto global de inmediato." },
+      { t: "Modelos Generativos GPT", d: "OpenAI desarrolla la arquitectura GPT impulsando la IA generativa", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", n: "Esta arquitectura impulsó los modelos GPT, capaces de generar texto coherente y creativo a escala humana." },
+      { t: "El Hito ChatGPT - 2022", d: "Cien millones de usuarios alcanzados en menos de dos meses", img: "img/chatbots.jpg", n: "El lanzamiento de ChatGPT en 2022 democratizó el acceso a la IA, convirtiéndose en la aplicación de más rápido crecimiento en la historia." },
+      { t: "Evolución Agéntica", d: "Transición actual de respuestas conversacionales a acciones autónomas", img: "img/revolucion_generativa.jpg", n: "Hoy vivimos una nueva fase: estamos pasando de modelos que solo responden preguntas a sistemas agénticos que ejecutan tareas por sí mismos." },
+      { t: "Modelos de Lenguaje", d: "Clasificación de arquitecturas según escala, potencia y despliegue", img: "img/modeloslen.jpg", n: "Analicemos la arquitectura actual y cómo se clasifican los modelos según sus dimensiones y propósitos." },
+      { t: "LLM - Large Language Models", d: "Modelos masivos orientados a razonamiento complejo en la nube", img: "img/llm.jpg", n: "Los LLM o Grandes Modelos de Lenguaje cuentan con cientos de miles de millones de parámetros y residen en grandes centros de datos." },
+      { t: "SLM - Small Language Models", d: "Modelos compactos eficientes para ejecución en dispositivos locales", img: "img/sml.jpg", n: "Por otro lado, los SLM o Modelos Pequeños están diseñados para ser ágiles y ejecutarse directamente en teléfonos o computadoras locales." },
+      { t: "Comparativa LLM vs. SLM", d: "LLM ofrece razonamiento profundo; SLM prioriza latencia y privacidad", img: "img/sml.jpg", n: "Los LLM destacan en análisis complejos; los SLM ganan en velocidad, menor costo y máxima privacidad de los datos." },
+      { t: "Arquitecturas Híbridas", d: "Combinación de procesamiento local SLM con potencia LLM nube", img: "img/modeloslen.jpg", n: "El futuro es híbrido: tareas cotidianas resueltas localmente por un SLM y consultas complejas derivadas a un LLM en la nube." },
+      { t: "Agentes de IA", d: "Sistemas autónomos impulsados por metas sin supervisión constante", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", n: "Entramos de lleno en la era de los Agentes de IA: programas que reciben un objetivo y planifican los pasos para cumplirlo de forma autónoma." },
+      { t: "Módulo de Percepción", d: "Procesamiento e interpretación de datos multimodales en tiempo real", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", n: "Todo agente comienza con un módulo de percepción, capaz de procesar e interpretar imágenes, texto, audio y código." },
+      { t: "Motor de Decisión", d: "Razonamiento lógico, planificación paso a paso y priorización de metas", img: "img/estrategias.png", n: "El motor de decisión es su cerebro: desglosa problemas complejos en sub-tareas lógicas y evalúa cuál es el mejor camino." },
+      { t: "Sistema de Memoria", d: "Bancos contextuales a corto y largo plazo para aprendizaje continuo", img: "img/data.jpg", n: "Cuentan con sistemas de memoria que les permiten recordar interacciones pasadas y adaptar sus decisiones según la experiencia previa." },
+      { t: "Uso de Herramientas", d: "Ejecución autónoma de APIs, código y sistemas externos", img: "img/herrami.jpg", n: "Su gran diferencial es la capacidad de usar herramientas: conectar con APIs, consultar bases de datos y ejecutar código informático." },
+      { t: "Sistemas Multi-Agente", d: "Colaboración y coordinación entre múltiples agentes especializados", img: "img/desarrollo.jpg", n: "Además, los sistemas multi-agente permiten que varios agentes especializados colaboren entre sí para resolver proyectos complejos." },
+      { t: "Adopción Empresarial", d: "Cuarenta por ciento de aplicaciones incorporan agentes de tareas", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", n: "La adopción es masiva: casi la mitad de las aplicaciones empresariales ya integran agentes para automatizar flujos de trabajo." },
+      { t: "Ecosistema Generativo", d: "Herramientas avanzadas para texto, imagen, video, código y audio", img: "img/gencont.jpg", n: "Exploremos el ecosistema de herramientas generativas que están transformando la producción creativa y profesional." },
+      { t: "Chatbots Avanzados", d: "ChatGPT, Gemini 3.8 Flash, Claude y Qwen liderando razonamiento avanzado", img: "img/chatbots.jpg", n: "En el ámbito del texto y razonamiento, plataformas como ChatGPT, Gemini y Claude lideran el análisis conversacional." },
+      { t: "Generación de Imágenes", d: "Midjourney, DALL-E y Firefly para creación visual fotorrealista", img: "img/gencont.jpg", n: "Para generación visual, modelos como Midjourney y DALL-E permiten convertir descripciones de texto en imágenes fotorrealistas." },
+      { t: "Generación de Video", d: "Sora2, Kling y Runway transformando la producción audiovisual profesional", img: "img/media.jpg", n: "En video, herramientas como Sora2 y Runway generan secuencias cinemáticas de alta fidelidad con física realista." },
+      { t: "Generación de Música", d: "Suno creando composiciones musicales completas mediante texto", img: "img/suno_musica.jpg", n: "La música también se ha democratizado: plataformas como Suno componen canciones completas con instrumentación y voz a partir de una instrucción." },
+      { t: "Asistentes de Código", d: "Cursor, Windsurf y Copilot automatizando desarrollo de software", img: "img/desarrollo.jpg", n: "En el desarrollo de software, editores como Cursor y GitHub Copilot actúan como compañeros de programación en tiempo real." },
+      { t: "Investigación y Síntesis", d: "Perplexity y NotebookLM para búsqueda y análisis documentado", img: "img/investigacion.jpg", n: "Para investigación y síntesis, Perplexity y NotebookLM permiten examinar documentos complejos citando fuentes verificables." },
+      { t: "Multimodalidad Integrada", d: "Procesamiento unificado de texto, voz, imágenes y video", img: "img/Absolute_Reality_v16_Create_an_image_showing_how_a_person_tran_0.jpg", n: "La tendencia actual es la multimodalidad nativa: modelos que entienden simultáneamente texto, voz, imágenes y video." },
+      { t: "Automatización de Flujos", d: "Integración directa de IA en procesos de trabajo diarios", img: "img/Absolute_Reality_v16_Generate_an_image_depicting_an_online_str_0.jpg", n: "El objetivo final no es usar herramientas aisladas, sino integrar la IA de forma invisible en nuestros procesos cotidianos." },
+      { t: "Prompt Engineering", d: "La habilidad clave para comunicarse eficazmente con la IA", img: "img/prompt.png", n: "Para obtener los mejores resultados, debemos dominar el Prompt Engineering: la ciencia y arte de dar instrucciones a la máquina." },
+      { t: "Naturaleza Probabilística", d: "Modelos probabilísticos requieren instrucciones precisas para evitar errores", img: "img/impredecible.png", n: "Dado que los modelos son probabilísticos, un mensaje ambiguo genera respuestas impredecibles o imprecisas." },
+      { t: "Regla de Especificación", d: "Lo que no especifiques será decidido por la IA", img: "img/regla_especificacion.jpg", n: "Recuerda esta regla de oro: todo detalle que omitas en tu instrucción será asumido al azar por el modelo." },
+      { t: "Estructura del Prompt", d: "Tres pilares fundamentales: Tarea, Contexto y Formato deseado", img: "img/estructura.png", n: "Un prompt profesional se sostiene sobre tres pilares claros: la Tarea, el Contexto y el Formato de entrega." },
+      { t: "Pilar: Tarea", d: "Definición clara de la acción concreta requerida al modelo", img: "img/estructura.png", n: "Primero, define la Tarea usando verbos de acción precisos: 'resume', 'analiza', 'compara' o 'redacta'." },
+      { t: "Pilar: Contexto", d: "Información de fondo indispensable para guiar la respuesta", img: "img/contexto.jpg", n: "Segundo, aporta el Contexto: explica la audiencia, los antecedentes y el objetivo de la información." },
+      { t: "Pilar: Formato", d: "Especificación del diseño, estructura y longitud de entrega", img: "img/precision.jpg", n: "Tercero, indica el Formato: exige tablas, listas con viñetas, tono profesional o un número exacto de palabras." },
+      { t: "Comunicación Efectiva", d: "Claridad, precisión y eliminación estricta de palabras innecesarias", img: "img/efectiva.png", n: "Busca la máxima claridad y elimina rodeos innecesarios. Sé directo y específico en tus requerimientos." },
+      { t: "Asignación de Roles", d: "Definición de la perspectiva experta que debe asumir la IA", img: "img/roles.jpg", n: "Asigna un rol experto al modelo, por ejemplo: 'Actúa como un analista financiero senior con 10 años de experiencia'." },
+      { t: "Técnica 'Pregúntame'", d: "Solicitar a la IA preguntas aclaratorias antes de responder", img: "img/consejos.jpg", n: "Usa la técnica 'Pregúntame': pide al modelo que te haga preguntas antes de responder para asegurar que tiene toda la información necesaria." },
+      { t: "Fronteras Tecnológicas", d: "Conceptos teóricos hacia la inteligencia de nivel humano", img: "img/singu.jpg", n: "Miremos hacia el futuro y exploremos los conceptos teóricos sobre la evolución de la inteligencia sintética." },
+      { t: "Inteligencia General / AGI", d: "Sistema capaz de aprender cualquier tarea intelectual humana", img: "img/agi.jpg", n: "La AGI o Inteligencia General Artificial se define como un sistema capaz de realizar cualquier trabajo intelectual con la misma solvencia que un humano." },
+      { t: "Superinteligencia / ASI", d: "Inteligencia sintética que supera ampliamente la capacidad humana global", img: "img/supint.jpg", n: "Un paso más allá está la ASI o Superinteligencia, un nivel donde la IA superaría la capacidad combinada de las mejores mentes humanas." },
+      { t: "La Singularidad", d: "Punto donde el avance tecnológico supera la comprensión humana", img: "img/singu.jpg", n: "Teóricos como Ray Kurzweil llaman 'Singularidad' al momento en que el progreso tecnológico sea tan veloz que resulte impredecible." },
+      { t: "Niveles AGI DeepMind", d: "Clasificación de cinco niveles basada en capacidad y generalidad", img: "img/agi.jpg", n: "Para medir este avance con rigor, Google DeepMind propuso una taxonomía clara de cinco niveles de AGI." },
+      { t: "AGI Nivel 1 y 2", d: "De nivel emergente actual hacia rendimiento de adulto capacitado", img: "img/agi.jpg", n: "Actualmente nos encontramos en el Nivel 1 o Emergente, y avanzamos hacia el Nivel 2, donde la IA igualará a un adulto calificado en múltiples tareas." },
+      { t: "AGI Nivel 3 a 5", d: "Evolución proyectada hacia niveles experto, excepcional y superhumano", img: "img/supint.jpg", n: "Los niveles superiores contemplan capacidad de nivel experto, desempeño excepcional y, finalmente, capacidad superhumana." },
+      { t: "Aplicaciones Industriales", d: "Transformación de la manufactura y optimización logística global", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", n: "Analicemos el impacto real de estas tecnologías en los sectores clave de la economía global." },
+      { t: "IA en Salud", d: "Cuarenta y siete por ciento despliega agentes médicos clínicos", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", n: "En medicina, casi la mitad de las instituciones de salud están implementando agentes para optimizar el diagnóstico y la gestión médica." },
+      { t: "Diagnóstico e Imágenes", d: "Asistencia en decisiones clínicas y análisis fotorrealista de imágenes", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", n: "La IA asiste en la detección precoz de patologías analizando imágenes médicas con una precisión sin precedentes." },
+      { t: "IA en Educación", d: "Personalización de contenidos y tutoría adaptativa para estudiantes", img: "img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg", n: "En educación, la IA habilita el aprendizaje personalizado, adaptando el ritmo y los explicativos al nivel de cada estudiante." },
+      { t: "Eficiencia Docente", d: "Automatización de tareas administrativas y diseño de actividades", img: "img/edu.jpg", n: "Para los docentes, representa una herramienta que automatiza la corrección y libera tiempo para la mentoría humana directa." },
+      { t: "Vida Cotidiana", d: "Integración en asistentes virtuales y recomendaciones en línea", img: "img/Absolute_Reality_v16_Applications_of_the_IA_in_the_actual_life_0.jpg", n: "En nuestra vida cotidiana, la IA impulsa desde recomendaciones de entretenimiento hasta asistentes de voz inteligentes." },
+      { t: "Servicios Inteligentes", d: "Búsqueda semántica, traducción instantánea y detección de fraudes", img: "img/Absolute_Reality_v16_Illustrate_a_search_engine_like_Google_pr_0.jpg", n: "En los servicios financieros y digitales, la IA trabaja en segundo plano detectando fraudes y realizando traducciones en tiempo real." },
+      { t: "Vehículos Autónomos", d: "Procesamiento sensorial en tiempo real para navegación segura", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", n: "En transporte, los vehículos autónomos combinan visión por computadora y sensores para navegar de forma segura." },
+      { t: "Retorno de Inversión / ROI", d: "Ochenta y cinco por ciento reporta crecimiento en ingresos", img: "img/Absolute_Reality_v16_Generate_an_image_representing_AIbased_fr_0.jpg", n: "Los datos de mercado confirman que el 85% de las empresas que adoptan IA reportan retornos de inversión positivos." },
+      { t: "Desafíos Éticos", d: "Normativas globales para garantizar la seguridad y responsabilidad", img: "img/desafios_eticos.jpg", n: "El avance acelerado exige abordar los desafíos éticos, legales y de gobernanza a nivel internacional." },
+      { t: "Sesgo Algorítmico", d: "Prevención de errores discriminatorios heredados de datos históricos", img: "img/Absolute_Reality_v16_Illustrate_the_concept_of_Algorithmic_Bia_0.jpg", n: "Uno de los mayores riesgos es el sesgo algorítmico: si los datos de entrenamiento contienen prejuicios, el modelo los replicará." },
+      { t: "Privacidad y Datos", d: "Protección de información personal y gobernanza de transparencia", img: "img/privacidad.jpg", n: "La privacidad de los datos es prioritaria. Las empresas deben garantizar que la información confidencial no sea expuesta." },
+      { t: "Ley de IA de la UE", d: "Marco regulatorio pionero basado en niveles de riesgo", img: "img/regulaciones.jpg", n: "La Unión Europea ha marcado el rumbo global con la Ley de IA (EU AI Act), la primera regulación integral del sector." },
+      { t: "Niveles de Riesgo EU", d: "Prohibición de riesgos inaceptables y exigencias a alto riesgo", img: "img/armas.jpg", n: "Esta norma clasifica los sistemas según su nivel de riesgo, prohibiendo aplicaciones peligrosas y regulando las de alto impacto." },
+      { t: "Propiedad Intelectual", d: "Debate legal entre doctrina Fair Use y excepciones TDM", img: "img/derechos.jpg", n: "En materia de propiedad intelectual, existe un intenso debate sobre si usar contenido protegido para entrenar IA es un uso legítimo o una infracción." },
+      { t: "Principios Éticos Clave", d: "Transparencia, equidad, seguridad, privacidad y beneficio social global", img: "img/principios_eticos.jpg", n: "El desarrollo responsable debe guiarse por principios claros: equidad, transparencia, seguridad y beneficio común." },
+      { t: "Impacto en el Empleo", d: "Cincuenta y nueve por ciento con exposición laboral moderada", img: "img/desplazamiento%20labora.jpg", n: "Hablemos del mercado laboral: casi el 60% de los empleos experimentará una exposición significativa a estas tecnologías." },
+      { t: "Aumento de Capacidad", d: "La IA automatiza tareas repetitivas potenciando capacidades humanas", img: "img/surf.png", n: "Lejos de una destrucción masiva de empleo, el fenómeno principal es el aumento de capacidades: la IA asume lo repetitivo para potenciar al profesional." },
+      { t: "Estrategias de Adaptación", d: "Dominio de herramientas, pensamiento crítico y alfabetización digital", img: "img/estrategias.png", n: "La clave de la empleabilidad futura estará en la alfabetización digital, la agilidad de aprendizaje y el dominio de estas herramientas." },
+      { t: "Diferenciadores Humanos", d: "Creatividad, empatía y juicio estratégico como diferenciadores clave", img: "img/aprendizaje.png", n: "Nuestros mayores activos seguirán siendo insustituibles: la empatía humana, la ética, el liderazgo y el juicio estratégico." },
+      { t: "Reflexión Final", d: "La IA es el comienzo de nueva creación de valor", img: "img/futuro.png", n: "En conclusión, la IA no viene a reemplazar el talento humano, sino a inaugurar una era sin precedentes de creatividad y colaboración. Muchas gracias." }
     ];
 
     let currentIndex = 0;
     const total = slides.length;
     let notesVisible = false;
 
-    const contentEl = document.getElementById("slideContent");
+    const titleEl = document.getElementById("slideTitle");
+    const descEl = document.getElementById("slideDesc");
     const imgEl = document.getElementById("slideImg");
     const cardEl = document.getElementById("slideCard");
     const counterEl = document.getElementById("counter");
@@ -378,21 +331,23 @@
 
     function handleImageError(img) {
       img.onerror = null;
-      img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%230f172a'/><circle cx='400' cy='300' r='120' fill='%2338bdf8' opacity='0.15'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='22' fill='%2338bdf8' font-weight='bold'>INTELIGENCIA ARTIFICIAL</text></svg>";
+      img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%230f172a'/><circle cx='400' cy='300' r='120' fill='%239b5de5' opacity='0.3'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='26' fill='%2300f5d4' font-weight='bold'>INTELIGENCIA ARTIFICIAL</text></svg>";
     }
 
     function renderSlide(index) {
       const data = slides[index];
 
+      // Alternancia de diseño: par derecha, impar izquierda
       cardEl.className = "slide-wrapper " + (index % 2 === 0 ? "layout-right" : "layout-left");
 
-      contentEl.innerHTML = data.html;
+      titleEl.innerText = data.t;
+      descEl.innerText = data.d;
       
       imgEl.style.opacity = "0.2";
       imgEl.src = data.img;
       imgEl.onload = () => { imgEl.style.opacity = "1"; };
 
-      notesText.innerText = data.n || "Sin notas adicionales para esta diapositiva.";
+      notesText.innerText = data.n;
       counterEl.innerText = `${index + 1} / ${total}`;
       tagEl.innerText = `SECCIÓN ${(index + 1).toString().padStart(2, '0')}`;
       progressEl.style.width = `${((index + 1) / total) * 100}%`;
