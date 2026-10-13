@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="no-referrer">
+  <title>La Magia de la IA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0b0f19;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 20px 15px 90px 15px;
+      color: #f1f5f9;
+    }
+
+    /* Fondo animado tecnológico */
+    svg.bg-blobs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .out-top { animation: rotate 24s linear infinite; transform-origin: 13px 25px; }
+    .in-top { animation: rotate 12s linear infinite; transform-origin: 13px 25px; }
+    .out-bottom { animation: rotate 28s linear infinite; transform-origin: 84px 93px; }
+    .in-bottom { animation: rotate 16s linear infinite; transform-origin: 84px 93px; }
+
+    /* Barra de progreso */
+    .progress-bar-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 5px;
+      background: rgba(255, 255, 255, 0.08); z-index: 50;
+    }
+    .progress-bar { height: 100%; background: #38bdf8; width: 0%; transition: width 0.3s ease; }
+
+    /* Contenedor de la Diapositiva */
+    .slide-wrapper {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      height: 82vh;
+      max-height: 750px;
+      min-height: 520px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .layout-right { flex-direction: row; }
+    .layout-left { flex-direction: row-reverse; }
+
+    .content-box {
+      flex: 1.15;
+      padding: clamp(24px, 4vw, 55px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .topic-tag {
+      font-size: 13px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 3.4vw, 42px);
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(22px, 2.6vw, 32px);
+      color: #e2e8f0;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    p.description, ul, ol {
+      font-size: clamp(16px, 1.8vw, 22px);
+      color: #94a3b8;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    ul, ol { padding-left: 24px; margin-top: 10px; }
+    li { margin-bottom: 8px; color: #cbd5e1; }
+
+    .image-box {
+      flex: 1;
+      width: 50%;
+      min-width: 40%;
+      height: 100%;
+      background: #020617;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .speaker-notes-drawer {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: rgba(30, 41, 59, 0.85);
+      border-left: 4px solid #38bdf8;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.45;
+      display: none;
+    }
+    .speaker-notes-drawer.visible { display: block; }
+
+    /* Barra de controles */
+    .controls {
+      position: fixed;
+      bottom: 18px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 18px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    button.nav-btn {
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 17px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+    }
+    button.nav-btn:hover { background: #38bdf8; color: #020617; transform: scale(1.08); }
+
+    .btn-action {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover { background: #334155; }
+
+    .slide-counter { font-size: 14px; font-weight: 700; color: #94a3b8; min-width: 65px; text-align: center; }
+
+    /* Responsividad */
+    @media (max-width: 850px) {
+      body { justify-content: flex-start; padding: 16px 12px 85px 12px; overflow-y: auto; }
+      .slide-wrapper { height: auto; min-height: auto; max-height: none; flex-direction: column !important; }
+      .image-box { width: 100%; min-width: 100%; height: 230px; order: 1; }
+      .content-box { width: 100%; padding: 22px 18px; order: 2; }
+      .btn-action span.label-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
+
+  <svg class="bg-blobs" preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+    <path fill="#9b5de5" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+    <path fill="#f15bb5" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+    <path fill="#00bbf9" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+    <path fill="#00f5d4" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+  </svg>
+
+  <div class="slide-wrapper layout-right" id="slideCard">
+    <div class="content-box">
+      <div class="topic-tag" id="slideTag">DIAPOSITIVA 01</div>
+      <div id="slideContent"></div>
+      <div class="speaker-notes-drawer" id="speakerNotes">
+        <strong>Guión del orador:</strong>
+        <div id="notesText" style="margin-top: 6px;"></div>
+      </div>
+    </div>
+    <div class="image-box">
+      <img id="slideImg" src="" alt="Ilustración" onerror="handleImageError(this)">
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="nav-btn" onclick="prevSlide()" title="Anterior (Flecha izquierda)">❮</button>
+    <div class="slide-counter" id="counter">1 / 83</div>
+    <button class="nav-btn" onclick="nextSlide()" title="Siguiente (Flecha derecha)">❯</button>
+    <button class="btn-action" onclick="toggleNotes()" title="Mostrar notas (N)">
+      <span>🎙️</span> <span class="label-text">Notas</span>
+    </button>
+    <button class="btn-action" id="fullscreenBtn" onclick="toggleFullscreen()" title="Pantalla completa (F)">
+      <span id="fsIcon">⛶</span> <span class="label-text" id="fsText">Pantalla Completa</span>
+    </button>
+  </div>
+
+  <script>
+    const slides = [
+      { html: `<h1>La Magia de la IA</h1><p class="description">Introducción a la Inteligencia Artificial</p>`, img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg", n: "Bienvenidos a la presentación sobre La Magia de la IA." },
+      { html: `<h1>Introducción</h1><p class="description">Conceptos clave para comprender la revolución inteligente actual</p>`, img: "img/3D_Animation_Style_Create_an_image_illustrating_the_concept_of_0.jpg", n: "Desmitifiquemos qué es realmente la tecnología de inteligencia artificial." },
+      { html: `<h1>¿Qué es la Inteligencia?</h1><p class="description">Capacidad mental de <strong>adquirir</strong>, <strong>procesar</strong>, <strong>comprender</strong>, <strong>aplicar</strong> y <strong>adaptar</strong> el <strong>conocimiento</strong></p>`, img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_Generat_0.jpg", n: "" },
+      { html: `<h1>La neurona</h1><p class="description">Unidad fundamental del sistema nervioso biológico</p>`, img: "img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg", n: "" },
+      { html: `<h2>Estructura Neuronal</h2><p class="description">El axón manda señales eléctricas a través de las dendritas a otras neuronas, creando sinapsis</p>`, img: "img/ilustracion-que-muestra-los-4-tipos-de-neuronas-de-izquierda-a-derecha-unipolar-bipolar-multipolar-y-piramidal-g157be.jpg", n: "" },
+      { html: `<h2>El Cerebro Humano</h2><p class="description">El cerebro contiene 86 mil millones de neuronas.<br>Cada neurona envía hasta 1000 impulsos por segundo y se conecta a miles de otras.</p>`, img: "img/neuronas-161445.jpg", n: "" },
+      { html: `<h2>Densidad Sináptica</h2><p class="description">1000 veces más sinapsis biológicas que la mayor IA actual... por ahora.</p>`, img: "img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg", n: "" },
+      { html: `<h1>¿Qué es la Inteligencia Artificial?</h1><p class="description">Algoritmos y modelos que permiten a las máquinas <strong>analizar</strong> datos, <strong>aprender</strong> y <strong>decidir</strong>.</p>`, img: "img/3D_Animation_Style_Generate_an_image_representing_the_concept_0.jpg", n: "" },
+      { html: `<h1>Funcionamiento de la IA</h1><p class="description">Sistemas que <strong>aprenden</strong> de la experiencia, resuelven problemas y reconocen patrones ocultos en grandes volúmenes de datos.</p>`, img: "img/DreamShaper_v7_Illustrate_the_process_of_How_AI_Works_showing_0.jpg", n: "" },
+      { html: `<h1>Neurona artificial</h1><p class="description">La unidad matemática que procesa y pondera entradas numéricas</p>`, img: "img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg", n: "" },
+      { html: `<h1>Redes Neuronales Artificiales</h1><p class="description">Múltiples capas de neuronas artificiales interconectadas trabajando en paralelo.</p>`, img: "img/neuroIA.png", n: "" },
+      { html: `<h1>Cerebro artificial más sencillo</h1><p class="description">El perceptrón simple: la unidad computacional elemental.</p>`, img: "img/uniNeuroIA.png", n: "" },
+      { html: `<h1>Cerebros artificiales</h1><p class="description">Conexiones multicapa complejas para resolver tareas de clasificación.</p>`, img: "img/cerebros35NeuroIA.png", n: "" },
+      { html: `<h1>Capas Ocultas Profundas</h1><p class="description">Extracción jerárquica de características en Deep Learning.</p>`, img: "img/cerebros66NeuroIA.png", n: "" },
+      { html: `<h1>Redes Densas</h1><p class="description">Propagación de información a través de nodos de alta densidad.</p>`, img: "img/cerebros8NeuroIA.png", n: "" },
+      { html: `<h1>Arquitectura Conectiva</h1><p class="description">Evolución de modelos de redes neuronales a gran escala.</p>`, img: "img/cerebros81NeuroIA.png", n: "" },
+      
+      /* FALTANTE 1: Diapositiva 17 */
+      { html: `<h1>Pérdida / Loss</h1><p class="description">La medida matemática del error entre las predicciones del modelo y los valores reales.</p>`, img: "img/perdida.jpg", n: "¿Cómo aprende la IA? Optimizando la función de pérdida mediante descenso de gradiente." },
+      
+      { html: `<h1>Machine Learning</h1><p class="description">Crea sistemas que reconocen patrones, toman decisiones y mejoran continuamente con datos.</p>`, img: "img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg", n: "" },
+      
+      /* FALTANTE 2: Diapositiva 19 */
+      { html: `<h1>Historia y Evolución de la IA</h1><p class="description">De los fundamentos teóricos pioneros de la computación a los modelos agénticos modernos.</p>`, img: "img/historia_ia.jpg", n: "" },
+      
+      { html: `<h1>Pioneros de la IA</h1><p class="description">De Alan Turing y John McCarthy a la revolución contemporánea.</p>`, img: "img/pioneros.png", n: "Alan Turing planteó el test de imitación en 1950. McCarthy acuñó el término en Dartmouth en 1956." },
+      
+      /* FALTANTE 3: Diapositiva 21 */
+      { html: `<h1>Los Inviernos de la IA</h1><p class="description">Periodos de escepticismo y recorte de financiamiento donde las expectativas superaron al hardware de la época.</p>`, img: "img/invierno_intro.jpg", n: "Tras el informe Lighthill los fondos públicos cayeron drásticamente." },
+      
+      { html: `<h1>El Ciclo de Investigación</h1><p class="description">1970 - 2000: Altibajos en el desarrollo de la computación inteligente.</p>`, img: "img/invierno.png", n: "" },
+      
+      /* FALTANTE 4: Diapositiva 23 */
+      { html: `<h1>La Revolución de la IA Generativa</h1><p class="description">El salto de sistemas predictivos a modelos con capacidades de síntesis y creación multimodal.</p>`, img: "img/revolucion_generativa.jpg", n: "" },
+      
+      { html: `<h1>La Era de la Atención</h1><p class="description">2017 - 2022: La invención de la arquitectura Transformer impulsa un salto de escala cualitativo.</p>`, img: "img/atencion.png", n: "El paper 'Attention Is All You Need' de Google cambió para siempre la historia del PLN." },
+      { html: `<h1>Tipos de IA</h1><p class="description">De la ciencia ficción a las capacidades de despliegue real en la industria.</p>`, img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", n: "" },
+      { html: `<h1>Inteligencia Artificial General (AGI)</h1><p class="description">Sistemas hipotéticos con la facultad de aprender y ejecutar cualquier tarea intelectual al nivel de un humano.</p>`, img: "img/agi.jpg", n: "" },
+      { html: `<h1>Superinteligencia (ASI)</h1><p class="description">Capacidad cognitiva sintética que superaría ampliamente a las mejores mentes humanas combinadas.</p>`, img: "img/supint.jpg", n: "" },
+      { html: `<h1>Singularidad Tecnológica</h1><p class="description">Punto teórico donde el progreso técnico y la auto-mejora recursiva de la IA escapan a la previsión humana.</p>`, img: "img/singu.jpg", n: "" },
+      { html: `<h1>Modelos de Lenguaje</h1><p class="description">Taxonomía y arquitecturas que impulsan la comprensión y generación de texto.</p>`, img: "img/modeloslen.jpg", n: "" },
+      { html: `<h2>LLM (Large Language Models)</h2><p class="description">Modelos masivos de escala frontera como Gemini 3.8 Flash, GPT-4o y Claude para razonamiento complejo.</p>`, img: "img/llm.jpg", n: "" },
+      { html: `<h2>SLM (Small Language Models)</h2><p class="description">Modelos compactos de alta eficiencia orientados a ejecución local en terminales móviles y PCs.</p>`, img: "img/sml.jpg", n: "" },
+      { html: `<h1>Herramientas de IA Actuales</h1><p class="description">El ecosistema de producción que está transformando todas las áreas profesionales.</p>`, img: "img/herrami.jpg", n: "" },
+      { html: `<h2>Chatbots de Razonamiento</h2><ul><li>ChatGPT</li><li>Gemini 3.8 Flash</li><li>Claude</li><li>Qwen</li><li>Meta Llama</li></ul>`, img: "img/chatbots.jpg", n: "" },
+      { html: `<h2>Generadores de Contenido Visual y Video</h2><ul><li>Midjourney</li><li>Adobe Firefly</li><li>Runway</li><li>Kling AI</li><li>Sora</li></ul>`, img: "img/gencont.jpg", n: "" },
+      
+      /* FALTANTE 5: Diapositiva 35 */
+      { html: `<h2>Generación de Música y Audio</h2><p class="description">Composición de piezas musicales completas y voces sintéticas mediante instrucciones.</p><ul><li>Suno</li><li>Udio</li><li>Lyria</li></ul>`, img: "img/suno_musica.jpg", n: "Plataformas como Suno han democratizado la producción orquestal y vocal con texto." },
+      
+      { html: `<h2>Asistentes de Desarrollo</h2><ul><li>Cursor</li><li>Windsurf</li><li>GitHub Copilot</li><li>Tabnine</li></ul>`, img: "img/desarrollo.jpg", n: "" },
+      
+      /* FALTANTE 6: Diapositiva 37 */
+      { html: `<h2>Investigación y Síntesis</h2><p class="description">Motores de búsqueda semántica con cita de fuentes y análisis de documentos extensos.</p><ul><li>Perplexity</li><li>NotebookLM</li></ul>`, img: "img/investigacion.jpg", n: "" },
+      
+      /* FALTANTE 7: Diapositiva 38 */
+      { html: `<h1>Prompt Engineering</h1><p class="description">La ciencia y el arte de formular instrucciones precisas para gobernar modelos probabilísticos.</p>`, img: "img/prompt_engineering.jpg", n: "" },
+      
+      { html: `<h2>La Habilidad del Siglo XXI</h2><p class="description">Comunicarse efectivamente con inteligencias artificiales para obtener respuestas exactas.</p>`, img: "img/prompt.png", n: "" },
+      { html: `<h1>La IA es Impredecible</h1><p class="description">Al ser modelos probabilísticos, una instrucción difusa produce respuestas ambiguas o alucinaciones.</p>`, img: "img/impredecible.png", n: "" },
+      { html: `<h1>Estructura de un Buen Prompt</h1><ol><li><strong>Tarea:</strong> Acción concreta que se le solicita al modelo.</li><li><strong>Contexto:</strong> Datos de fondo y audiencia objetivo.</li><li><strong>Formato:</strong> Estilo de salida requerido (tabla, lista, código).</li></ol>`, img: "img/estructura.png", n: "" },
+      { html: `<h1>Comunicación Efectiva</h1><ul><li>Claridad y concisión.</li><li>Eliminación estricta de ambigüedades.</li><li>Asignación de roles profesionales.</li><li>Técnica de aclaración previa ('Pregúntame').</li></ul>`, img: "img/efectiva.png", n: "" },
+      { html: `<h1>Consejos para Usar IA</h1><p class="description">Mejores prácticas para optimizar el flujo de trabajo diario.</p>`, img: "img/consejos.jpg", n: "" },
+      
+      /* FALTANTE 8: Diapositiva 44 */
+      { html: `<h2>La Regla de Oro</h2><p class="description" style="font-size: 28px; line-height: 1.6; color: #38bdf8;">"Todo lo que tú no le especifiques explícitamente a la IA, la IA lo decidirá al azar por ti."</p>`, img: "img/regla_especificacion.jpg", n: "" },
+      
+      { html: `<h2>Precisión</h2><p class="description">Instrucciones directas, usando verbos de acción bien delimitados.</p>`, img: "img/precision.jpg", n: "" },
+      { html: `<h2>Contexto</h2><p class="description">Proveer antecedentes suficientes para guiar el marco conceptual de la respuesta.</p>`, img: "img/contexto.jpg", n: "" },
+      { html: `<h2>Roles</h2><p class="description">Instruir al modelo para que adopte la postura de un especialista con experiencia probada.</p>`, img: "img/roles.jpg", n: "" },
+      { html: `<h2>Ejemplos (Few-Shot)</h2><p class="description">Brindar pares de entrada y salida modelo para estandarizar el patrón de entrega.</p>`, img: "img/ejemplo.jpg", n: "" },
+      { html: `<h1>Aplicaciones de la IA en la Industria</h1><p class="description">Automatización de flujos de trabajo, optimización de logística y analítica predictiva en manufactura.</p>`, img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", n: "" },
+      { html: `<h1>Aplicaciones en la Educación</h1><p class="description">Tutoría personalizada adaptada a las necesidades, ritmo y estilo cognitivo de cada alumno.</p>`, img: "img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg", n: "" },
+      { html: `<h1>Aplicaciones en la Medicina</h1><p class="description">Detección temprana mediante diagnóstico por imágenes y asistencia en decisiones clínicas de precisión.</p>`, img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", n: "" },
+      { html: `<h1>IA en la Vida Cotidiana</h1><p class="description">Integración invisible en las tecnologías que usamos cotidianamente.</p>`, img: "img/Absolute_Reality_v16_Applications_of_the_IA_in_the_actual_life_0.jpg", n: "" },
+      { html: `<h1>Asistentes Virtuales</h1><p class="description">Interacción por voz y automatización doméstica inteligente.</p>`, img: "img/Absolute_Reality_v16_Create_an_image_illustrating_a_virtual_as_0.jpg", n: "" },
+      { html: `<h1>Recomendaciones en Línea</h1><p class="description">Filtrado colaborativo y personalización en plataformas de streaming y comercio electrónico.</p>`, img: "img/Absolute_Reality_v16_Generate_an_image_depicting_an_online_str_0.jpg", n: "" },
+      { html: `<h1>Motores de Búsqueda Semántica</h1><p class="description">Recuperación de información basada en intenciones y contexto más allá de palabras clave.</p>`, img: "img/Absolute_Reality_v16_Illustrate_a_search_engine_like_Google_pr_0.jpg", n: "" },
+      { html: `<h1>Traducción de Idiomas</h1><p class="description">Sistemas neuronales de traducción instantánea preservando matices contextuales.</p>`, img: "img/Absolute_Reality_v16_Create_an_image_showing_how_a_person_tran_0.jpg", n: "" },
+      { html: `<h1>Detección de Fraudes</h1><p class="description">Análisis en milisegundos de millones de transacciones bancarias para identificar anomalías.</p>`, img: "img/Absolute_Reality_v16_Generate_an_image_representing_AIbased_fr_0.jpg", n: "" },
+      { html: `<h1>Vehículos Autónomos</h1><p class="description">Visión por computadora y fusión de sensores para navegación espacial segura en tiempo real.</p>`, img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", n: "" },
+      
+      /* FALTANTE 9: Diapositiva 59 */
+      { html: `<h1>Regulaciones y Normativas</h1><p class="description">Las decisiones algorítmicas impactan en derechos fundamentales; la rendición de cuentas es indispensable.</p>`, img: "img/regulaciones.jpg", n: "" },
+      
+      /* FALTANTE 10: Diapositiva 60 */
+      { html: `<h1>Desafíos Éticos en IA</h1><p class="description">Riesgos sistémicos derivados del despliegue masivo y la dependencia algorítmica.</p>`, img: "img/desafios_eticos.jpg", n: "" },
+      
+      { html: `<h1>Sesgo Algorítmico</h1><p class="description">La perpetuación involuntaria de discriminaciones históricas presentes en los datos de entrenamiento.</p>`, img: "img/Absolute_Reality_v16_Illustrate_the_concept_of_Algorithmic_Bia_0.jpg", n: "" },
+      { html: `<h1>Privacidad y Datos Personales</h1><p class="description">Protección de información confidencial y derechos de los usuarios en la era de los grandes modelos.</p>`, img: "img/privacidad.jpg", n: "" },
+      { html: `<h2>Desplazamiento Laboral</h2><p class="description">La transformación de perfiles ocupacionales y la necesidad de reconversión profesional.</p>`, img: "img/desplazamiento%20labora.jpg", n: "" },
+      { html: `<h2>Armas Autónomas</h2><p class="description">El dilema ético internacional sobre sistemas letales sin control humano directo.</p>`, img: "img/armas.jpg", n: "" },
+      { html: `<h2>Derechos de Autor y Propiedad Intelectual</h2><p class="description">El debate sobre el uso legítimo de contenidos protegidos para el entrenamiento de IA generativa.</p>`, img: "img/derechos.jpg", n: "" },
+      { html: `<h2>Dependencia y Adicción a la Tecnología</h2><p class="description">Impacto en la cognición y las relaciones interpersonales mediadas por algoritmos persuasivos.</p>`, img: "img/adiction.jpg", n: "" },
+      { html: `<h2>Autenticidad de los Medios (Deepfakes)</h2><p class="description">El reto de verificar la procedencia de contenidos sintéticos en la era de la desinformación.</p>`, img: "img/media.jpg", n: "" },
+      
+      /* FALTANTE 11: Diapositiva 68 */
+      { html: `<h1>Principios Éticos en el Uso de la IA</h1><p class="description">El marco axiológico que debe regir el diseño e implementación de sistemas inteligentes.</p>`, img: "img/principios_eticos.jpg", n: "" },
+      
+      { html: `<h2>Transparencia</h2><p class="description">Explicabilidad algorítmica y divulgación clara cuando un contenido ha sido sintetizado.</p>`, img: "img/transpa.jpg", n: "" },
+      { html: `<h2>Equidad y No Discriminación</h2><p class="description">Auditorías rigurosas para garantizar la imparcialidad en decisiones de alto impacto social.</p>`, img: "img/discrim.jpg", n: "" },
+      { html: `<h2>Gobernanza de Datos</h2><p class="description">Cumplimiento de estándares de custodia, anonimización y consentimiento informado.</p>`, img: "img/data.jpg", n: "" },
+      { html: `<h2>Beneficio Social y Bien Común</h2><p class="description">Alinear el avance técnico con la sostenibilidad humana y el desarrollo equitativo.</p>`, img: "img/social.jpg", n: "" },
+      { html: `<h2>Seguridad y Robustez</h2><p class="description">Resistencia ante ataques de inyección, envenenamiento de datos y fallos en cascada.</p>`, img: "img/security.jpg", n: "" },
+      { html: `<h2>Diseño Ético Desde el Origen</h2><p class="description">Incorporación de salvaguardas morales desde la conceptualización de los modelos.</p>`, img: "img/etical.jpg", n: "" },
+      { html: `<h2>Colaboración Internacional</h2><p class="description">Tratados y estándares globales interoperables entre organismos reguladores.</p>`, img: "img/internal.jpg", n: "" },
+      { html: `<h2>Educación y Concienciación</h2><p class="description">Alfabetización digital para capacitar a la ciudadanía en el uso crítico y seguro de la IA.</p>`, img: "img/edu.jpg", n: "" },
+      { html: `<h1>¿Nos está haciendo tontos?</h1><p class="description">El debate cognitivo: ¿delegación intelectual o amplificación del pensamiento humano?</p>`, img: "img/aprendizaje.png", n: "Estudios muestran cambios en patrones de atención; la clave es el uso complementario." },
+      
+      /* FALTANTE 12: Diapositiva 78 */
+      { html: `<h1>La IA y el Futuro del Trabajo</h1><p class="description">La evolución del empleo: de la sustitución de tareas repetitivas a la colaboración humano-máquina.</p>`, img: "img/futuro_trabajo.jpg", n: "" },
+      
+      { html: `<h2>Adaptación en la Era de la IA</h2><p class="description">Subirse a la ola: cómo convertir la automatización en un multiplicador del talento.</p>`, img: "img/surf.png", n: "" },
+      { html: `<h1>Estrategias de Adaptación</h1><p class="description">Directrices prácticas para prosperar en un mercado laboral transformado.</p>`, img: "img/estrategias.png", n: "" },
+      
+      /* FALTANTE 13: Diapositiva 81 */
+      { html: `<h2>Los 4 Pilares de la Adaptación</h2><ol><li>Aprender a usar la IA efectivamente en tus flujos diarios.</li><li>Desarrollar un pensamiento crítico inquebrantable.</li><li>Enfocarse en lo exclusivamente humano: creatividad y empatía.</li><li>Dominar el Prompt Engineering y el diseño de instrucciones.</li></ol>`, img: "img/estrategias_pilares.jpg", n: "" },
+      
+      /* FALTANTE 14: Diapositiva 82 */
+      { html: `<h1>Reflexión Final</h1><p class="description">La gran síntesis de la revolución inteligente.</p>`, img: "img/reflexion_final.jpg", n: "" },
+      
+      { html: `<h2>"La IA no es el fin del trabajo humano,</h2><h2>es el comienzo de una nueva forma de crear valor."</h2>`, img: "img/futuro.png", n: "El futuro pertenece a quienes sepan combinar inteligencia biológica y sintética." }
+    ];
+
+    let currentIndex = 0;
+    const total = slides.length;
+    let notesVisible = false;
+
+    const contentEl = document.getElementById("slideContent");
+    const imgEl = document.getElementById("slideImg");
+    const cardEl = document.getElementById("slideCard");
+    const counterEl = document.getElementById("counter");
+    const progressEl = document.getElementById("progressBar");
+    const notesDrawer = document.getElementById("speakerNotes");
+    const notesText = document.getElementById("notesText");
+    const tagEl = document.getElementById("slideTag");
+    const fsIcon = document.getElementById("fsIcon");
+    const fsText = document.getElementById("fsText");
+
+    function handleImageError(img) {
+      img.onerror = null;
+      img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'><rect width='800' height='600' fill='%230f172a'/><circle cx='400' cy='300' r='120' fill='%2338bdf8' opacity='0.15'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='22' fill='%2338bdf8' font-weight='bold'>INTELIGENCIA ARTIFICIAL</text></svg>";
+    }
+
+    function renderSlide(index) {
+      const data = slides[index];
+
+      cardEl.className = "slide-wrapper " + (index % 2 === 0 ? "layout-right" : "layout-left");
+
+      contentEl.innerHTML = data.html;
+      
+      imgEl.style.opacity = "0.2";
+      imgEl.src = data.img;
+      imgEl.onload = () => { imgEl.style.opacity = "1"; };
+
+      notesText.innerText = data.n || "Sin notas adicionales para esta diapositiva.";
+      counterEl.innerText = `${index + 1} / ${total}`;
+      tagEl.innerText = `SECCIÓN ${(index + 1).toString().padStart(2, '0')}`;
+      progressEl.style.width = `${((index + 1) / total) * 100}%`;
+    }
+
+    function nextSlide() {
+      if (currentIndex < total - 1) {
+        currentIndex++;
+        renderSlide(currentIndex);
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderSlide(currentIndex);
+      }
+    }
+
+    function toggleNotes() {
+      notesVisible = !notesVisible;
+      notesDrawer.classList.toggle("visible", notesVisible);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
+    }
+
+    function updateFullscreenUI() {
+      const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (isFullscreen) {
+        fsIcon.innerText = "🗗";
+        fsText.innerText = "Salir";
+      } else {
+        fsIcon.innerText = "⛶";
+        fsText.innerText = "Pantalla Completa";
+      }
+    }
+
+    document.addEventListener("fullscreenchange", updateFullscreenUI);
+    document.addEventListener("webkitfullscreenchange", updateFullscreenUI);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+        nextSlide();
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        prevSlide();
+      } else if (e.key.toLowerCase() === "n") {
+        toggleNotes();
+      } else if (e.key.toLowerCase() === "f") {
+        toggleFullscreen();
+      }
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    document.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    document.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
+
+    renderSlide(0);
+  </script>
+</body>
+</html>
