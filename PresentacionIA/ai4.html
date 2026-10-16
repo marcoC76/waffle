@@ -65,6 +65,11 @@
     .layout-right { flex-direction: row; }
     .layout-left { flex-direction: row-reverse; }
 
+    .layout-full { flex-direction: row; }
+    .slide-wrapper.layout-full .content-box { display: none; }
+    .slide-wrapper.layout-full .image-box { flex: 1; width: 100%; min-width: 100%; }
+    .slide-wrapper.layout-full .image-box img { object-fit: contain; }
+
     /* Bloque de texto */
     .content-box {
       flex: 1.15;
@@ -75,13 +80,22 @@
       overflow-y: auto;
     }
 
-    .topic-tag {
-      font-size: 13px;
+    .slide-number {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 20;
+      font-size: 14px;
       font-weight: 800;
-      color: #9b5de5;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+      color: #ffffff;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 1px;
+      pointer-events: none;
     }
 
     h1 {
@@ -203,7 +217,7 @@
 
   <div class="slide-wrapper layout-right" id="slideCard">
     <div class="content-box">
-      <div class="topic-tag" id="slideTag">SECCIÓN 01</div>
+      <div class="slide-number" id="slideNumber">01</div>
       <h1 id="slideTitle">La Magia de la IA</h1>
       <p class="description" id="slideDesc">De Teoría a Agentes</p>
       <div class="speaker-notes-drawer" id="speakerNotes">
@@ -217,7 +231,7 @@
 
   <div class="controls">
     <button class="nav-btn" onclick="prevSlide()" title="Anterior (Flecha izquierda)">❮</button>
-    <div class="slide-counter" id="counter">1 / 83</div>
+    <div class="slide-counter" id="counter">1 / 88</div>
     <button class="nav-btn" onclick="nextSlide()" title="Siguiente (Flecha derecha)">❯</button>
     <button class="btn-action" onclick="toggleNotes()" title="Mostrar notas (N)">
       <span>🎙️</span> <span class="label-text">Notas</span>
@@ -228,7 +242,7 @@
   </div>
 
   <script>
-    // 83 DIAPOSITIVAS CON NOTAS DE CÁTEDRA BASADAS EN EL MANUAL TEÓRICO (EDICIÓN 2026)
+    // 88 DIAPOSITIVAS CON NOTAS DE CÁTEDRA BASADAS EN EL MANUAL TEÓRICO (EDICIÓN 2026)
     const slides = [
       { t: "La Magia de la IA", d: "De Teoría a Agentes", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_IA_0.jpg", 
         n: "Bienvenidos a la cátedra. Hoy desmitificaremos la Inteligencia Artificial: combinaremos rigor científico de neurociencia y matemáticas con anécdotas históricas, desde cómo aprende una neurona hasta los agentes autónomos y la regulación de 2026." },
@@ -239,7 +253,7 @@
       { t: "¿Qué es la Inteligencia?", d: "Capacidad mental de procesar, comprender, aplicar y adaptar conocimiento", img: "img/Ilustration_V2_Create_an_image_to_represent_a_magic_of_Generat_0.jpg", 
         n: "La inteligencia no es solo almacenar datos como un disco duro; es la capacidad activa de adquirir, procesar, comprender, aplicar y adaptar ese conocimiento ante entornos imprevistos." },
       
-      { t: "Neurona Biológica", d: "El cerebro humano procesa información mediante 86 mil millones de neuronas", img: "img/Ilustration_V2_A_real_neuron_like_a_scientific_image_0.jpg", 
+      { t: "Neurona Biológica", d: "El cerebro humano procesa información mediante 86 mil millones de neuronas", img: "img/ilustracion-que-muestra-los-4-tipos-de-neuronas-de-izquierda-a-derecha-unipolar-bipolar-multipolar-y-piramidal-g157be.jpg", contain: true, 
         n: "El cerebro humano cuenta con 86 mil millones de neuronas conectadas por más de 100 billones de sinapsis electroquímicas masivamente paralelas. Su arquitectura es pura maravilla evolutiva." },
       
       { t: "Biología vs. Computación", d: "Billones de sinapsis biológicas superan la complejidad actual sintética", img: "img/Absolute_Reality_v16_A_with_neuron_synapsis_like_a_scientific_0.jpg", 
@@ -254,49 +268,59 @@
       { t: "La Neurona Artificial", d: "Unidad básica matemática que procesa y pondera entradas numéricas", img: "img/Absolute_Reality_v16_An_artificial_neuron_from_IA_0.jpg", 
         n: "La neurona artificial (perceptrón) es simplemente una ecuación lineal vestida de gala: multiplica entradas (x) por 'pesos' (w), suma un sesgo o bias (b) y pasa el resultado por una función de activación (ReLU, Sigmoide) que decide si 'dispara' o se queda callada." },
       
-      { t: "Redes Neuronales", d: "Capas interconectadas de nodos procesando información en paralelo", img: "img/neuroIA.png", 
+      { t: "Redes Neuronales", d: "Capas interconectadas de nodos procesando información en paralelo", img: "img/neuroIA.png", contain: true, 
         n: "Al conectar miles de estas ecuaciones en capas secuenciales, creamos una red neuronal capaz de realizar multiplicaciones masivas de matrices en paralelo sobre tarjetas gráficas (GPUs)." },
       
       { t: "Función de Pérdida / Loss", d: "Medida matemática del error entre predicción y valor real", img: "img/perdida.jpg", 
         n: "Analogía de la salsa (del manual): Los pesos (w) son cucharadas de condimento. La Función de Pérdida (Loss) es el grito de tu abuelita al probar la salsa diciendo: '¡Le falta sal y pica como el demonio!'. Mide matemáticamente qué tan lejos estás de la receta perfecta." },
       
+      { t: "Cerebro artificial más sencillo", d: "", img: "img/uniNeuroIA.png", n: "", contain: true },
+      
+      { t: "", d: "", img: "img/cerebros35NeuroIA.png", n: "", full: true },
+      
+      { t: "", d: "", img: "img/cerebros66NeuroIA.png", n: "", full: true },
+      
+      { t: "", d: "", img: "img/cerebros8NeuroIA.png", n: "", full: true },
+      
+      { t: "", d: "", img: "img/cerebros81NeuroIA.png", n: "", full: true },
+      
       { t: "Machine Learning", d: "Algoritmos que optimizan parámetros automáticamente a partir de datos", img: "img/Absolute_Reality_v16_Generate_an_image_illustrating_the_concep_0.jpg", 
         n: "El Descenso de Gradiente es ir ajustando la receta paso a pasito; Backpropagation es la regla de la cadena que calcula exactamente cuántas pizcas de sal mover hasta que la abuelita diga: 'Quedó perfecta'." },
       
-      { t: "Deep Learning", d: "Aprendizaje profundo mediante múltiples capas ocultas de abstracción", img: "img/cerebros8NeuroIA.png", 
+      { t: "Deep Learning", d: "Aprendizaje profundo mediante múltiples capas ocultas de abstracción", img: "img/neuronas-161445.jpg", 
         n: "El Deep Learning añade decenas de capas ocultas. Cuidado con las dos tragedias del entrenamiento: Overfitting (el alumno que memoriza exámenes viejos de pe a pa y reprueba si cambias una coma) y Underfitting (el que ni entendió la clase)." },
       
       { t: "Historia de la IA", d: "Orígenes teóricos y grandes hitos de la computación inteligente", img: "img/historia_ia.jpg", 
         n: "Como dice el manual: La historia de la IA no es una línea recta de triunfos; es una telenovela dramática llena de promesas exageradas, presupuestos cancelados y avances inesperados." },
       
-      { t: "Los Inicios - 1950s", d: "Alan Turing propone computadoras capaces de pensamiento humano", img: "img/pioneros.png", 
+      { t: "Los Inicios - 1950s", d: "Alan Turing propone computadoras capaces de pensamiento humano", img: "img/historia_ia_1950_turing.jpg", 
         n: "Chisme histórico #1: En 1950 Alan Turing estaba harto de que los filósofos discutieran qué demonios significaba 'pensar'. Decidió saltarse la metafísica y propuso el 'Juego de la Imitación'." },
       
-      { t: "El Test de Turing", d: "Evaluación de imitación conversacional entre humano y máquina", img: "img/pioneros.png", 
+      { t: "El Test de Turing", d: "Evaluación de imitación conversacional entre humano y máquina", img: "img/test_de_turing.jpg", 
         n: "La premisa de Turing fue tajante: Si una persona conversa a través de un teletipo con una máquina y no logra distinguir si habla con un humano o un programa, la máquina es inteligente y punto." },
       
-      { t: "Nacimiento del Término", d: "John McCarthy define Inteligencia Artificial en Dartmouth (1956)", img: "img/pioneros.png", 
+      { t: "Nacimiento del Término", d: "John McCarthy define Inteligencia Artificial en Dartmouth (1956)", img: "img/nacimiento_termino_dartmouth.jpg", 
         n: "Verano de 1956: McCarthy, Marvin Minsky, Claude Shannon y Rochester se reúnen en Dartmouth College. Eufóricos, juraron que en un solo verano con 10 hombres lograrían que una máquina usara lenguaje. Pecaron de optimistas." },
       
       { t: "Inviernos de la IA", d: "Recortes de financiamiento por expectativas infladas y hardware limitado", img: "img/invierno.png", 
         n: "El optimismo sin freno trajo los 'Inviernos de la IA' (los 70 y late 80). Tras el devastador Informe Lighthill de 1973 en Reino Unido y recortes de DARPA, se retiraron fondos porque la IA era 'más promesa que realidad'." },
       
-      { t: "El Renacimiento - 1980s", d: "Redes multicapa e introducción del algoritmo de retropropagación", img: "img/uniNeuroIA.png", 
+      { t: "El Renacimiento - 1980s", d: "Redes multicapa e introducción del algoritmo de retropropagación", img: "img/renacimiento_1980s_redes_multicapa.jpg", 
         n: "En los 80, Rumelhart, Geoffrey Hinton y Williams resucitaron el campo al popularizar la retropropagación para entrenar redes de varias capas, demostrando que podían aprender representaciones no lineales." },
       
-      { t: "Desvanecimiento del Gradiente", d: "Pérdida de información en capas profundas solucionada en 2006", img: "img/cerebros81NeuroIA.png", 
+      { t: "Desvanecimiento del Gradiente", d: "Pérdida de información en capas profundas solucionada en 2006", img: "img/Absolute_Reality_v16_Create_an_image_illustrating_a_virtual_as_0.jpg", 
         n: "Al apilar muchas capas, la señal matemática se desvanecía (Gradient Vanishing). En 2006, Geoffrey Hinton demostró cómo pre-entrenar redes profundas capa por capa, inaugurando oficialmente la era moderna del Deep Learning." },
       
-      { t: "Arquitectura Transformer", d: "Publicación de 'Attention Is All You Need' en 2017", img: "img/atencion.png", 
+      { t: "Arquitectura Transformer", d: "Publicación de 'Attention Is All You Need' en 2017", img: "img/transformer_arquitectura.jpg", 
         n: "El terremoto definitivo ocurrió en junio de 2017 con investigadores de Google. Tiraron a la basura las redes recurrentes (RNNs) que leían palabra por palabra de forma lenta, e introdujeron el Transformer." },
       
       { t: "Mecanismo de Atención", d: "Asignación de importancia contextual a cada palabra simultáneamente", img: "img/atencion.png", 
         n: "El mecanismo de atención calcula la relación matemática de cada palabra con todas las demás dentro de una oración en paralelo sobre GPUs. Esto permitió procesar bibliotecas enteras en lugar de frases sueltas." },
       
-      { t: "Modelos Generativos GPT", d: "OpenAI desarrolla la arquitectura GPT impulsando la IA generativa", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", 
+      { t: "Modelos Generativos GPT", d: "OpenAI desarrolla la arquitectura GPT impulsando la IA generativa", img: "img/modelos_gpt_generativos.jpg", 
         n: "OpenAI tomó los Transformers y escaló el pre-entrenamiento autoregresivo: predecir el siguiente token a escala masiva, dando vida a GPT-1, GPT-2 y GPT-3." },
       
-      { t: "El Hito ChatGPT - 2022", d: "Cien millones de usuarios alcanzados en menos de dos meses", img: "img/chatbots.jpg", 
+      { t: "El Hito ChatGPT - 2022", d: "Cien millones de usuarios alcanzados en menos de dos meses", img: "img/chatgpt_hito_2022.jpg", 
         n: "Chisme histórico #2: El 30 de noviembre de 2022 OpenAI lanzó ChatGPT casi como un 'experimento de bajo perfil' con GPT-3.5. Ni ellos previeron el bombazo: 100 millones de usuarios en menos de 2 meses, desatando la carrera tecnológica actual." },
       
       { t: "Evolución Agéntica", d: "Transición actual de respuestas conversacionales a acciones autónomas", img: "img/revolucion_generativa.jpg", 
@@ -311,19 +335,19 @@
       { t: "SLM - Small Language Models", d: "Modelos compactos eficientes para ejecución en dispositivos locales", img: "img/sml.jpg", 
         n: "Tienen entre 1B y 10B parámetros. Corren directo en tu laptop, celular o auto. Ofrecen latencia casi nula, costo marginal cero y garantía absoluta de privacidad: los datos nunca salen de tu dispositivo." },
       
-      { t: "Comparativa LLM vs. SLM", d: "LLM ofrece razonamiento profundo; SLM prioriza latencia y privacidad", img: "img/sml.jpg", 
+      { t: "Comparativa LLM vs. SLM", d: "LLM ofrece razonamiento profundo; SLM prioriza latencia y privacidad", img: "img/comparativa_llm_slm.jpg", 
         n: "La batalla no es excluyente: el LLM gana en profundidad de razonamiento abstracto; el SLM gana en velocidad instantánea, ahorro energético y confidencialidad estricta." },
       
-      { t: "Arquitecturas Híbridas", d: "Combinación de procesamiento local SLM con potencia LLM nube", img: "img/modeloslen.jpg", 
+      { t: "Arquitecturas Híbridas", d: "Combinación de procesamiento local SLM con potencia LLM nube", img: "img/arquitecturas_hibridas.jpg", 
         n: "Estrategia real de las empresas en 2026: Usan un SLM local como 'recepcionista inteligente' que responde dudas sencillas y filtra spam gratis; solo si la consulta es un problema espeso de razonamiento, la redirigen al LLM en la nube." },
       
       { t: "Agentes de IA", d: "Sistemas autónomos impulsados por metas sin supervisión constante", img: "img/Leonardo_Vision_XL_A_wideangle_shot_of_various_futuristic_huma_2.jpg", 
         n: "Para que un modelo sea un agente requiere 4 pilares: Percepción (ver y escuchar), Motor de Decisión (pensar), Memoria (recordar) y Herramientas/APIs (actuar en el mundo real)." },
       
-      { t: "Módulo de Percepción", d: "Procesamiento e interpretación de datos multimodales en tiempo real", img: "img/Absolute_Reality_v16_Illustrate_a_selfdriving_car_using_sensor_0.jpg", 
+      { t: "Módulo de Percepción", d: "Procesamiento e interpretación de datos multimodales en tiempo real", img: "img/modulo_percepcion.jpg", 
         n: "La percepción permite al agente capturar entradas multimodales del entorno digital o físico: visión computacional, reconocimiento de voz, lecturas de pantalla en tiempo real y telemetría de sensores." },
       
-      { t: "Motor de Decisión", d: "Razonamiento lógico, planificación paso a paso y priorización de metas", img: "img/estrategias.png", 
+      { t: "Motor de Decisión", d: "Razonamiento lógico, planificación paso a paso y priorización de metas", img: "img/motor_decision.jpg", 
         n: "El motor de decisión es su cerebro analítico: utiliza marcos como Chain-of-Thought (pensamiento encadenado) y ReAct (razonar + actuar) para desglosar una meta compleja en tareas lógicas antes de ejecutar." },
       
       { t: "Sistema de Memoria", d: "Bancos contextuales a corto y largo plazo para aprendizaje continuo", img: "img/data.jpg", 
@@ -332,10 +356,10 @@
       { t: "Uso de Herramientas", d: "Ejecución autónoma de APIs, código y sistemas externos", img: "img/herrami.jpg", 
         n: "Aquí ocurre la magia práctica: el agente tiene brazos digitales. Puede abrir una terminal de código, consultar bases de datos con SQL, disparar llamadas REST API y enviar correos de confirmación." },
       
-      { t: "Sistemas Multi-Agente", d: "Colaboración y coordinación entre múltiples agentes especializados", img: "img/desarrollo.jpg", 
+      { t: "Sistemas Multi-Agente", d: "Colaboración y coordinación entre múltiples agentes especializados", img: "img/sistemas_multiagente.jpg", 
         n: "Ya no se contrata un solo software. Se configura un equipo multi-agente: un agente investigador recopila datos, un agente programador redacta el código y un agente crítico revisa que no haya errores antes de publicar." },
       
-      { t: "Adopción Empresarial", d: "Cuarenta por ciento de aplicaciones incorporan agentes de tareas", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", 
+      { t: "Adopción Empresarial", d: "Cuarenta por ciento de aplicaciones incorporan agentes de tareas", img: "img/adopcion_empresarial.jpg", 
         n: "Dato clave de la industria en 2026: El 40% de las aplicaciones empresariales ya integran agentes especializados. El software dejó de ser una herramienta pasiva para convertirse en un colega de trabajo digital." },
       
       { t: "Ecosistema Generativo", d: "Herramientas avanzadas para texto, imagen, video, código y audio", img: "img/gencont.jpg", 
@@ -344,7 +368,7 @@
       { t: "Chatbots Avanzados", d: "ChatGPT, Gemini 3.8 Flash, Claude y Qwen liderando razonamiento avanzado", img: "img/chatbots.jpg", 
         n: "En texto y razonamiento: GPT-4o, Gemini 3.8 Flash, Claude 3.5 y Qwen lideran con ventanas de contexto de millones de tokens y capacidades de deducción matemática y lógica de nivel universitario." },
       
-      { t: "Generación de Imágenes", d: "Midjourney, DALL-E y Firefly para creación visual fotorrealista", img: "img/gencont.jpg", 
+      { t: "Generación de Imágenes", d: "Midjourney, DALL-E y Firefly para creación visual fotorrealista", img: "img/generacion_imagenes.jpg", 
         n: "En el terreno visual: Midjourney v6, DALL-E 3 y Adobe Firefly han conquistado el fotorrealismo, el control preciso de tipografía integrada y la consistencia de personajes a través de múltiples escenas." },
       
       { t: "Generación de Video", d: "Sora2, Kling y Runway transformando la producción audiovisual profesional", img: "img/media.jpg", 
@@ -377,7 +401,7 @@
       { t: "Estructura del Prompt", d: "Tres pilares fundamentales: Tarea, Contexto y Formato deseado", img: "img/estructura.png", 
         n: "Los 3 Pilares Indestructibles: Para tener control profesional absoluto de cualquier modelo necesitas dominar la tríada: Tarea (verbo), Contexto (antecedentes) y Formato (estructura de entrega)." },
       
-      { t: "Pilar: Tarea", d: "Definición clara de la acción concreta requerida al modelo", img: "img/estructura.png", 
+      { t: "Pilar: Tarea", d: "Definición clara de la acción concreta requerida al modelo", img: "img/pilar_tarea.jpg", 
         n: "Pilar 1 - Tarea: Define la acción concreta con verbos imperativos inequívocos. Usa 'Sintetiza', 'Audita', 'Redacta', 'Compara'. Evita peticiones difusas como 'ayúdame con esto'." },
       
       { t: "Pilar: Contexto", d: "Información de fondo indispensable para guiar la respuesta", img: "img/contexto.jpg", 
@@ -395,7 +419,7 @@
       { t: "Técnica 'Pregúntame'", d: "Solicitar a la IA preguntas aclaratorias antes de responder", img: "img/consejos.jpg", 
         n: "Técnica 'Pregúntame Antes de Responder': Agrega al final: 'Si antes de redactar necesitas información adicional o identificar ambigüedades en mi solicitud, hazme hasta 3 preguntas aclaratorias'. Evita que asuma disparates." },
       
-      { t: "Fronteras Tecnológicas", d: "Conceptos teóricos hacia la inteligencia de nivel humano", img: "img/singu.jpg", 
+      { t: "Fronteras Tecnológicas", d: "Conceptos teóricos hacia la inteligencia de nivel humano", img: "img/fronteras_tecnologicas.jpg", 
         n: "En el debate público se confunde constantemente la IA actual con AGI o Superinteligencia. Para poner orden científico, revisemos la taxonomía oficial de Google DeepMind de 5 niveles." },
       
       { t: "Inteligencia General / AGI", d: "Sistema capaz de aprender cualquier tarea intelectual humana", img: "img/agi.jpg", 
@@ -407,13 +431,13 @@
       { t: "La Singularidad", d: "Punto donde el avance tecnológico supera la comprensión humana", img: "img/singu.jpg", 
         n: "Punto de inflexión hipotético teorizado por Ray Kurzweil: el momento en que una máquina pueda auto-mejorarse recursivamente a tal velocidad que el progreso escape a toda previsión humana." },
       
-      { t: "Niveles AGI DeepMind", d: "Clasificación de cinco niveles basada en capacidad y generalidad", img: "img/agi.jpg", 
+      { t: "Niveles AGI DeepMind", d: "Clasificación de cinco niveles basada en capacidad y generalidad", img: "img/niveles_agi_deepmind.jpg", 
         n: "La taxonomía de DeepMind clasifica los modelos según su rendimiento respecto a percentiles humanos: desde Nivel 0 (calculadoras sin IA) hasta Nivel 5 (Superhumana)." },
       
-      { t: "AGI Nivel 1 y 2", d: "De nivel emergente actual hacia rendimiento de adulto capacitado", img: "img/agi.jpg", 
+      { t: "AGI Nivel 1 y 2", d: "De nivel emergente actual hacia rendimiento de adulto capacitado", img: "img/agi_nivel_1_2.jpg", 
         n: "Reflexión docente del manual: Hoy estamos sólidamente en Nivel 1 (Emergente: GPT-4o, Claude, Gemini). Aprueban exámenes de medicina o leyes, pero carecen de sentido común biológico, memoria continua duradera y comprensión causal física." },
       
-      { t: "AGI Nivel 3 a 5", d: "Evolución proyectada hacia niveles experto, excepcional y superhumano", img: "img/supint.jpg", 
+      { t: "AGI Nivel 3 a 5", d: "Evolución proyectada hacia niveles experto, excepcional y superhumano", img: "img/agi_nivel_3_5.jpg", 
         n: "Nivel 3 es Experto (percentil 90 de adultos calificados); Nivel 4 es Excepcional (percentil 99 de élite mundial); Nivel 5 es Superhumano (supera a toda la humanidad). Es la frontera de investigación de los próximos años." },
       
       { t: "Aplicaciones Industriales", d: "Transformación de la manufactura y optimización logística global", img: "img/DreamShaper_v7_Create_an_image_representing_AI_Applications_in_0.jpg", 
@@ -422,7 +446,7 @@
       { t: "IA en Salud", d: "Cuarenta y siete por ciento despliega agentes médicos clínicos", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", 
         n: "Dato del Reporte NVIDIA 2026: El 47% de las organizaciones de salud están evaluando o desplegando agentes de IA en flujos clínicos: aceleración de fármacos con AlphaFold y diagnóstico imagenológico." },
       
-      { t: "Diagnóstico e Imágenes", d: "Asistencia en decisiones clínicas y análisis fotorrealista de imágenes", img: "img/Ilustration_V2_Illustrate_AI_in_Medicine_with_an_image_showing_0.jpg", 
+      { t: "Diagnóstico e Imágenes", d: "Asistencia en decisiones clínicas y análisis fotorrealista de imágenes", img: "img/diagnostico_imagenes.jpg", 
         n: "La IA no reemplaza al radiólogo; actúa como un segundo par de ojos infatigable que detecta micro-patologías milimétricas en resonancias y tomografías con precisión superior al ojo humano cansado." },
       
       { t: "IA en Educación", d: "Personalización de contenidos y tutoría adaptativa para estudiantes", img: "img/Ilustration_V2_Generate_an_image_depicting_AI_in_Education_and_0%20(1).jpg", 
@@ -492,7 +516,7 @@
     const progressEl = document.getElementById("progressBar");
     const notesDrawer = document.getElementById("speakerNotes");
     const notesText = document.getElementById("notesText");
-    const tagEl = document.getElementById("slideTag");
+    const numberEl = document.getElementById("slideNumber");
     const fsIcon = document.getElementById("fsIcon");
     const fsText = document.getElementById("fsText");
 
@@ -504,18 +528,19 @@
     function renderSlide(index) {
       const data = slides[index];
 
-      cardEl.className = "slide-wrapper " + (index % 2 === 0 ? "layout-right" : "layout-left");
+      cardEl.className = data.full ? "slide-wrapper layout-full" : "slide-wrapper " + (index % 2 === 0 ? "layout-right" : "layout-left");
 
       titleEl.innerText = data.t;
       descEl.innerText = data.d;
       
       imgEl.style.opacity = "0.2";
+      imgEl.style.objectFit = (data.contain || data.full) ? "contain" : "cover";
       imgEl.src = data.img;
       imgEl.onload = () => { imgEl.style.opacity = "1"; };
 
       notesText.innerText = data.n;
       counterEl.innerText = `${index + 1} / ${total}`;
-      tagEl.innerText = `SECCIÓN ${(index + 1).toString().padStart(2, '0')}`;
+      numberEl.innerText = (index + 1).toString().padStart(2, '0');
       progressEl.style.width = `${((index + 1) / total) * 100}%`;
     }
 
