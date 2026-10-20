@@ -19,6 +19,7 @@
       position: relative;
       overflow-x: hidden;
       padding: 20px 15px 90px 15px;
+      color-scheme: light dark;
     }
 
     /* Fondo animado SVG */
@@ -38,9 +39,9 @@
     /* Barra de progreso */
     .progress-bar-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 6px;
-      background: rgba(0, 0, 0, 0.12); z-index: 50;
+      background: var(--progress); z-index: 50;
     }
-    .progress-bar { height: 100%; background: #9b5de5; width: 0%; transition: width 0.3s ease; }
+    .progress-bar { height: 100%; background: var(--progress); width: 0%; transition: width 0.3s ease; }
 
     /* Tarjeta principal */
     .slide-wrapper {
@@ -69,6 +70,21 @@
     .slide-wrapper.layout-full .content-box { display: none; }
     .slide-wrapper.layout-full .image-box { flex: 1; width: 100%; min-width: 100%; }
     .slide-wrapper.layout-full .image-box img { object-fit: contain; }
+
+    :root {
+      --bg: #fee440;
+      --card: rgba(255, 255, 255, 0.92);
+      --text: #0f172a;
+      --progress: #9b5de5;
+      --border: rgba(255, 255, 255, 0.65);
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: rgba(15, 23, 42, 0.92);
+      --text: #f1f5f9;
+      --progress: #a78bfa;
+      --border: rgba(255, 255, 255, 0.35);
+    }
 
     /* Bloque de texto */
     .content-box {
@@ -235,6 +251,9 @@
     <button class="nav-btn" onclick="nextSlide()" title="Siguiente (Flecha derecha)">❯</button>
     <button class="btn-action" onclick="toggleNotes()" title="Mostrar notas (N)">
       <span>🎙️</span> <span class="label-text">Notas</span>
+    </button>
+    <button class="btn-action" id="themeBtn" onclick="toggleTheme()" title="Cambiar modo (T)">
+      <span id="themeIcon">☀️</span> <span class="label-text">Modo</span>
     </button>
     <button class="btn-action" id="fullscreenBtn" onclick="toggleFullscreen()" title="Pantalla completa (F)">
       <span id="fsIcon">⛶</span> <span class="label-text" id="fsText">Pantalla Completa</span>
@@ -504,6 +523,66 @@
         n: "Frase para concluir la cátedra: 'La IA no te va a quitar tu trabajo. Una persona que sepa utilizar herramientas de IA mejor que tú, esa sí te va a quitar el trabajo'. El futuro pertenece a quienes sepan combinar inteligencia biológica y sintética. ¡Muchas gracias!" }
     ];
 
+    // Atajos de teclado
+    const keyboardShortcuts = {
+      prev: '← / PageUp',
+      next: '→ / Space / PageDown',
+      notes: 'N',
+      fullscreen: 'F',
+      theme: 'T',
+      help: 'H / ?'
+    };
+
+    function showHelp() {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.background = 'rgba(0, 0, 0, 0.85)';
+      overlay.style.color = '#fff';
+      overlay.style.zIndex = 100;
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.padding = '20px';
+      
+      const title = document.createElement('h2');
+      title.style.marginBottom = '20px';
+      title.style.color = '#9b5de5';
+      title.innerText = 'Atajos de Teclado';
+      
+      const shortcutsList = document.createElement('div');
+      shortcutsList.style.textAlign = 'left';
+      shortcutsList.style.maxWidth = '80%';
+      shortcutsList.innerHTML = `
+        <div>← / PageUp</div> <span>Anterior diapositiva</div>
+        <div>→ / Space / PageDown</div> <span>Siguiente diapositiva</div>
+        <div>N</div> <span>Mostrar/ocultar notas</div>
+        <div>F</div> <span>Pantalla completa</div>
+        <div>T</div> <span>Cambiar modo (claro/oscuro)</div>
+        <div>H / ?</div> <span>Mostrar este menú</div>
+      `;
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.style.marginTop = '20px';
+      closeBtn.style.background = '#0f172a';
+      closeBtn.style.color = '#fff';
+      closeBtn.style.border = 'none';
+      closeBtn.style.padding = '10px 20px';
+      closeBtn.style.borderRadius = '8px';
+      closeBtn.style.cursor = 'pointer';
+      closeBtn.innerText = 'Cerrar';
+      closeBtn.onclick = () => overlay.remove();
+      
+      overlay.appendChild(title);
+      overlay.appendChild(shortcutsList);
+      overlay.appendChild(closeBtn);
+      document.body.appendChild(overlay);
+    }
+
     let currentIndex = 0;
     const total = slides.length;
     let notesVisible = false;
@@ -602,6 +681,8 @@
         toggleNotes();
       } else if (e.key.toLowerCase() === "f") {
         toggleFullscreen();
+      } else if (e.key.toLowerCase() === "h" || e.key === "?") {
+        showHelp();
       }
     });
 
@@ -616,6 +697,23 @@
         else prevSlide();
       }
     }, { passive: true });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? null : 'dark');
+      const icon = document.getElementById('themeIcon');
+      const text = document.querySelector('.btn-action span.label-text');
+      if (isDark) {
+        icon.innerText = '☀️';
+        text.innerText = 'Modo';
+        html.removeAttribute('color-scheme');
+      } else {
+        icon.innerText = '🌙';
+        text.innerText = 'Oscuro';
+        html.setAttribute('color-scheme', 'dark');
+      }
+    }
 
     renderSlide(0);
   </script>
